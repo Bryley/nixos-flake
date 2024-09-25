@@ -27,6 +27,10 @@
   programs.ags = {
     enable = true;
     configDir = ../../configs/ags;
+    extraPackages = with pkgs; [
+      bun   # JS runtime required for ags
+      sass  # SCSS renderer
+    ];
   };
 
   programs.neovim = {

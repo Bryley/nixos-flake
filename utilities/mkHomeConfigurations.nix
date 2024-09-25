@@ -9,7 +9,7 @@ let
     builtins.map (system: userField user system) ["aarch64-linux" "x86_64-linux"];
 
   userField = user: system:
-    { name = user.name; value = (mkHome user system); };
+    { name = "${user.name}-${system}"; value = (mkHome user system); };
 
   mkHome = user: system:
     inputs.home-manager.lib.homeManagerConfiguration {

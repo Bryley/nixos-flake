@@ -1,6 +1,8 @@
 # vim: set filetype=make:
 
+system := `nix eval --impure --raw --expr 'builtins.currentSystem'`
 generation := `sudo nix-env --list-generations -p /nix/var/nix/profiles/system | grep current | awk '{print "Generation", $1}'`
+
 
 default:
     @just --list --unsorted
@@ -17,7 +19,7 @@ gen-new-host host-name:
         nixos-generate-config --dir ./hosts/{{host-name}}
     fi
     echo -e "\nFinished generating, in order to use this host please add the following line inside of \`nixosConfigurations\` inside of 'flake.nix':\n"
-    echo -e "    {{host-name}} = mkSystem { hostname=\"{{host-name}}\"; system=\"$(nix eval --impure --raw --expr 'builtins.currentSystem')\"; };\n"
+    echo -e "    {{host-name}} = mkSystem { hostname=\"{{host-name}}\"; system=\"{{system}}\"; };\n"
 
 
 # Garbage collection
@@ -32,5 +34,6 @@ switch:
 	just home
 	-git push
 
-home:
-	nh home switch .
+
+home user='bryley':
+	nh home switch . --configuration {{user}}-{{system}}

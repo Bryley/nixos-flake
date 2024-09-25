@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-registry = {
+      url = "github:nixos/flake-registry";
+      flake = false;
+    };
     # disko = {
     #   url = "github:nix-community/disko";
     #   inputs.nixpkgs.follows = "nixpkgs";

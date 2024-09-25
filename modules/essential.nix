@@ -1,4 +1,4 @@
-{ lib, pkgs, config, users, hostname, ... }:
+{ inputs, lib, pkgs, config, users, hostname, ... }:
 let
   cfg = config.modules.essential;
 in {
@@ -10,6 +10,11 @@ in {
 
   config = lib.mkIf cfg.enable {
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    # Pin flake registry to use nixpkgs
+    nix.registry.nixpkgs.flake = inputs.nixpkgs; # For flake commands
+    nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # For legacy commands
+    nix.settings.flake-registry = "${inputs.flake-registry}/flake-registry.json";
+
     networking.networkmanager.enable = true;
 
     # Setup users

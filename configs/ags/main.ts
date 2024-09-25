@@ -14,6 +14,8 @@ import { bash, sh } from "lib/utils";
 // - [ ] Hyprland Workspaces
 // - [ ] Save options.json file for system theme.
 // - [ ] Work on popup window for altering theme
+// - [ ] Fix:
+// (com.github.Aylur.ags:14922): Gjs-Console-WARNING **: 22:28:15.306: passing the config object with default export is DEPRECATED. use App.config() instead
 
 const DEBUG = (await bash("echo $PWD")).startsWith("/home/");
 

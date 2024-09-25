@@ -22,7 +22,7 @@ const WiredIndicator = () => Widget.Label({
 });
 
 const NetworkIndicator = () => Widget.Stack({
-    items: [
+    children: [
         ['wifi', WifiIndicator()],
         ['wired', WiredIndicator()],
     ],

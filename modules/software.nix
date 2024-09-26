@@ -85,14 +85,11 @@ in {
       ++ lib.optionals cfg.includePersonal personalPkgs;
 
     # Required Services
-    programs.nix-ld.enable = true;
     services.openssh.enable = true;
-    boot.plymouth.enable = true;    # Cool logo when you boot
     
     fonts.packages = with pkgs; [
       (nerdfonts.override { fonts = [ "Hack" "Ubuntu" "CascadiaCode"  ]; })
     ];
-
 
     # Work services
     virtualisation.docker.enable = lib.mkIf cfg.includeWork true;

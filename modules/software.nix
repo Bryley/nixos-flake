@@ -40,6 +40,7 @@ let
 
   hyprlandPkgs = with pkgs; [
     wl-clipboard  # Clipboard manager for Wayland
+    hypridle  # Idle daemon for automatically suspending computer after a certain amount of time
     kitty     # Modern terminal emulator
     swww      # Wallpaper daemon
     wofi      # App launcher

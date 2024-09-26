@@ -29,9 +29,10 @@ gc:
 
 
 switch:
-	-git commit -am "{{generation}}"
+	-git add .
 	nh os switch .
 	just home
+	-git commit -am "{{generation}}"
 	-git push
 
 

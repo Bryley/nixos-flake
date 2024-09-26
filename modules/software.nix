@@ -19,6 +19,7 @@ let
     evince    # PDF viewer
     xournalpp # PDF editor
     pavucontrol # Sound GUI application
+    brightnessctl # Control screen brightness
     (python310.withPackages(ps: with ps; [ rich virtualenv pyyaml ])) # Python 3.10
 
 

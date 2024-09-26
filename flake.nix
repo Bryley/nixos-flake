@@ -26,21 +26,22 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
-  let
-    users = [
-      { name = "bryley"; fullName = "Bryley Hayter"; email = "bryleyhayter@gmail.com"; }
-    ];
-    hosts = [
-      { hostname = "laptop"; system = "x86_64-linux"; }
-    ];
-    nixosConfigurations = import ./utilities/mkNixosConfigurations.nix { inherit inputs; inherit hosts; inherit users; };
-    homeConfigurations = import ./utilities/mkHomeConfigurations.nix { inherit inputs; inherit users; };
-    # TODO disko
-    # diskoConfigurations = import ./utilities/disko.nix { inherit inputs; };
-  in {
-    inherit nixosConfigurations;
-    inherit homeConfigurations;
+    let
+      users = [
+        { name = "bryley"; fullName = "Bryley Hayter"; email = "bryleyhayter@gmail.com"; }
+      ];
+      hosts = [
+        { hostname = "laptop"; system = "x86_64-linux"; }
+      ];
+      nixosConfigurations = import ./utilities/mkNixosConfigurations.nix { inherit inputs hosts users; };
+      homeConfigurations = import ./utilities/mkHomeConfigurations.nix { inherit inputs users; };
+      # TODO disko
+      # diskoConfigurations = import ./utilities/disko.nix { inherit inputs; };
+    in
+    {
+      inherit nixosConfigurations;
+      inherit homeConfigurations;
 
-    # inherit diskoConfigurations;
-  };
+      # inherit diskoConfigurations;
+    };
 }

@@ -5,63 +5,69 @@
     ./files.nix
   ];
 
-  home.username = username;
-  home.homeDirectory = "/home/${username}";
+  home = {
+    inherit username;
+    homeDirectory = "/home/${username}";
 
-  programs.git = {
-    enable = true;
-    userName = fullName;
-    userEmail = email;
-    extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      pull.rebase = "false";
+    packages = with pkgs; [
+      bun # Needed for AGS
+      sass # Needed for AGS
+    ];
+
+    sessionVariables = {
+      EDITOR = "nvim";
     };
   };
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
+  programs = {
+    git = {
+      enable = true;
+      userName = fullName;
+      userEmail = email;
+      extraConfig = {
+        init = {
+          defaultBranch = "main";
+        };
+        pull.rebase = "false";
+      };
+    };
 
-  home.packages = with pkgs; [
-    bun   # Needed for AGS
-    sass  # Needed for AGS
-  ];
+    hyprlock.enable = true;
 
-  programs.ags = {
-    enable = true;
-    configDir = ../../configs/ags;
-  };
+    ags = {
+      enable = true;
+      configDir = ../../configs/ags;
+    };
 
-  programs.neovim = {
-    enable = true;
-    extraPackages = with pkgs; [
-      # LSPs
-      elmPackages.elm-language-server
-      helm-ls
-      htmx-lsp
-      ltex-ls
-      lua-language-server
-      nil
-      nodePackages.vscode-json-languageserver
-      pyright
-      rust-analyzer
-      tailwindcss-language-server
-      yaml-language-server
-      # TODO add `vtsls` for typescript LSP (Add when https://github.com/NixOS/nixpkgs/pull/319501 request is done)
+    neovim = {
+      enable = true;
+      extraPackages = with pkgs; [
+        # LSPs
+        elmPackages.elm-language-server
+        helm-ls
+        htmx-lsp
+        ltex-ls
+        lua-language-server
+        nil
+        nodePackages.vscode-json-languageserver
+        pyright
+        rust-analyzer
+        tailwindcss-language-server
+        yaml-language-server
+        # TODO add `vtsls` for typescript LSP (Add when https://github.com/NixOS/nixpkgs/pull/319501 request is done)
 
-      # Formatters/Linters
-      biome
-      black
-      elmPackages.elm-format
-      mdformat
-      nixpkgs-fmt
-      nodePackages.prettier
-      nodePackages.prettier
-      statix
-      stylua
-    ];
+        # Formatters/Linters
+        biome
+        black
+        elmPackages.elm-format
+        mdformat
+        nixpkgs-fmt
+        nodePackages.prettier
+        nodePackages.prettier
+        statix
+        stylua
+      ];
+    };
   };
 
   home.stateVersion = "23.11";

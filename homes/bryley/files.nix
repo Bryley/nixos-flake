@@ -5,7 +5,8 @@ in
 {
   home.file = {
     ".config/hypr" = {
-      source = dir + "/hypr";
+      source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/nixos-flake/configs/hypr";
       recursive = true;
     };
     ".config/nushell" = {

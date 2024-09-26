@@ -68,7 +68,7 @@ in {
       bluetooth.powerOnBoot = true;
 
       # Used to hopefully increase battery life
-      hardware.enableAllFirmware = true;
+      enableAllFirmware = true;
     };
     services.blueman.enable = true; # GUI for bluetooth
 

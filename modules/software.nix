@@ -45,6 +45,7 @@ let
     swww      # Wallpaper daemon
     wofi      # App launcher
     lxqt.lxqt-policykit # Polkit Authentication Agent
+    inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # Cursor theme
     inputs.zen-browser.packages."${system}".specific  # Web browser # TODO update when in nixpkgs
   ];
 

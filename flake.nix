@@ -23,6 +23,10 @@
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mcmojave-hyprcursor = {
+      url = "github:libadoxon/mcmojave-hyprcursor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

@@ -38,24 +38,29 @@
     enable = true;
     extraPackages = with pkgs; [
       # LSPs
-      nil
-      lua-language-server
-      rust-analyzer
-      nodePackages.vscode-json-languageserver
-      yaml-language-server
       elmPackages.elm-language-server
-      tailwindcss-language-server
-      pyright
-      htmx-lsp
       helm-ls
+      htmx-lsp
       ltex-ls
+      lua-language-server
+      nil
+      nodePackages.vscode-json-languageserver
+      pyright
+      rust-analyzer
+      tailwindcss-language-server
+      yaml-language-server
       # TODO add `vtsls` for typescript LSP (Add when https://github.com/NixOS/nixpkgs/pull/319501 request is done)
 
       # Formatters/Linters
-      stylua
-      nodePackages.prettier
+      biome
+      black
       elmPackages.elm-format
+      mdformat
+      nixpkgs-fmt
+      nodePackages.prettier
+      nodePackages.prettier
       statix
+      stylua
     ];
   };
 

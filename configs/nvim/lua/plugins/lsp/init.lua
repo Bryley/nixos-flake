@@ -4,37 +4,34 @@ local settings = require("plugins.lsp.settings")
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local LSP_SERVERS = {
-    {
-        -- Rust (handled using `rustaceanvim` plugin)
-        function()
-            vim.g.rustaceanvim = {
-                tools = {},
-                server = {
-                    on_attach = functions.default_on_attach,
-                    default_settings = settings.settings(),
-                },
-                dap = {},
-            }
-        end,
-        "lua_ls",
-        "pyright",
-        "htmx",
-        "jsonls",
-        "yamlls",
-        "helm_ls",
-        "elmls",
-        "tailwindcss",
-        "nushell",
-        "nil",
-        "vtsls",
-        "ltex-ls",
-    },
+    -- Rust (handled using `rustaceanvim` plugin)
+    function()
+        vim.g.rustaceanvim = {
+            tools = {},
+            server = {
+                on_attach = functions.default_on_attach,
+                default_settings = settings.settings(),
+            },
+            dap = {},
+        }
+    end,
+    "lua_ls", -- Lua
+    "pyright", -- Python
+    "htmx", -- HTMX
+    "jsonls", -- JSON
+    "yamlls", -- YAML
+    "helm_ls", -- Helm
+    "elmls", -- ELM
+    "tailwindcss", -- Tailwind
+    "nushell", -- Nushell
+    "nil_ls", -- Nix
+    "vtsls", -- Typescript
+    "ltex", -- Latex and markdown
 }
 
 -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md
 local LINTERS = {
     code_actions = {
-        "gitsigns", -- Git
         "statix", -- Nix
     },
     completion = {
@@ -95,6 +92,8 @@ return {
                         filetypes = settings.filetypes[value],
                         init_options = settings.init_options[value],
                     })
+                else
+                    value()
                 end
             end
         end,

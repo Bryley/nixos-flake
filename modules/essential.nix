@@ -9,18 +9,24 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-    # Pin flake registry to use nixpkgs
-    nix.registry.nixpkgs.flake = inputs.nixpkgs; # For flake commands
-    nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # For legacy commands
-    nix.settings.flake-registry = "${inputs.flake-registry}/flake-registry.json";
+    nix = {
+      settings.experimental-features = [ "nix-command" "flakes" ];
+      # Pin flake registry to use nixpkgs
+      registry.nixpkgs.flake = inputs.nixpkgs; # For flake commands
+      nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # For legacy commands
+      settings.flake-registry = "${inputs.flake-registry}/flake-registry.json";
+    };
 
-    networking.networkmanager.enable = true;
+    networking = {
+      networkmanager.enable = true;
+      hostName = hostname;
+    };
+
 
     # Setup users
     users.users = builtins.listToAttrs (builtins.map (user:
       {
-        name = user.name;
+        inherit (user) name;
         value = {
           isNormalUser = true;
           description = user.fullName;
@@ -30,8 +36,6 @@ in {
       }
     ) users);
 
-    networking.hostName = hostname;
-
     time.timeZone = "Australia/Brisbane";
 
     i18n.defaultLocale = "en_AU.UTF-8";
@@ -39,9 +43,6 @@ in {
     # Limit the number of generations to keep
     boot.loader.systemd-boot.configurationLimit = 10;
     nix.settings.auto-optimise-store = true;
-
-    # Used to hopefully increase battery life
-    hardware.enableAllFirmware = true;
 
     # Sound (see https://wiki.nixos.org/wiki/PipeWire)
     security.rtkit.enable = true;
@@ -61,11 +62,18 @@ in {
     # catia/patchage: similar to qjackctl and carla.
     # Helvum: GTK-based patchbay for PipeWire (uses the PipeWire protocol). Volume control is planned for later.
 
-    # Bluetooth (see: https://wiki.nixos.org/wiki/Bluetooth)
-    hardware.bluetooth.enable = true;
-    hardware.bluetooth.powerOnBoot = true;
+    hardware = {
+      # Bluetooth (see: https://wiki.nixos.org/wiki/Bluetooth)
+      bluetooth.enable = true;
+      bluetooth.powerOnBoot = true;
+
+      # Used to hopefully increase battery life
+      hardware.enableAllFirmware = true;
+    };
     services.blueman.enable = true; # GUI for bluetooth
 
+    # Enable the lock service to work
+    security.pam.services.hyprlock = {};
 
     # Disable Firewall entirely (TODO stricter rules with the firewall)
     networking.firewall.enable = false;

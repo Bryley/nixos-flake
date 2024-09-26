@@ -1,59 +1,61 @@
 { inputs, lib, config, pkgs, ... }:
 let
   requiredPkgs = with pkgs; [
-    git       # Version Control
-    nh        # NixOS helper commands
-    home-manager  # CLI tool for updating dotfiles
-    just      # Command runner
+    git # Version Control
+    nh # NixOS helper commands
+    home-manager # CLI tool for updating dotfiles
+    just # Command runner
     fastfetch # Neofetch alternative
-    zip       # Zipping software
-    unzip     # unzipping software
-    wget      # Curl alternative
-    file      # Information about a file
-    ripgrep   # Grep alternative
-    fd        # Better find command
-    bat       # Better cat command
-    fzf       # Fuzzy finder cli
-    jq        # JSON parser for command line
-    usbutils  # USB tools like `lsusb`
-    evince    # PDF viewer
+    zip # Zipping software
+    unzip # unzipping software
+    wget # Curl alternative
+    file # Information about a file
+    ripgrep # Grep alternative
+    fd # Better find command
+    bat # Better cat command
+    fzf # Fuzzy finder cli
+    jq # JSON parser for command line
+    usbutils # USB tools like `lsusb`
+    evince # PDF viewer
     xournalpp # PDF editor
     pavucontrol # Sound GUI application
     brightnessctl # Control screen brightness
-    (python310.withPackages(ps: with ps; [ rich virtualenv pyyaml ])) # Python 3.10
+    sddm-astronaut # SDDM login screen theme
+    (python310.withPackages (ps: with ps; [ rich virtualenv pyyaml ])) # Python 3.10
 
 
-    neovim    # Text Editor
-    nushell   # Modern shell
-    zellij    # Modern terminal multiplexer
+    neovim # Text Editor
+    nushell # Modern shell
+    zellij # Modern terminal multiplexer
     distrobox # Basic docker wrapper for quick FHS system
   ];
 
   workPkgs = with pkgs; [
-    gimp      # Image editor
-    inkscape  # SVG editor
-    hurl      # Restful API tester
+    gimp # Image editor
+    inkscape # SVG editor
+    hurl # Restful API tester
     dbeaver-bin # Database GUI
-    obsidian  # Note taking
-    ngrok     # Quick servers
+    obsidian # Note taking
+    ngrok # Quick servers
   ];
 
   hyprlandPkgs = with pkgs; [
-    wl-clipboard  # Clipboard manager for Wayland
-    hypridle  # Idle daemon for automatically suspending computer after a certain amount of time
-    kitty     # Modern terminal emulator
-    swww      # Wallpaper daemon
-    wofi      # App launcher
+    wl-clipboard # Clipboard manager for Wayland
+    hypridle # Idle daemon for automatically suspending computer after a certain amount of time
+    kitty # Modern terminal emulator
+    swww # Wallpaper daemon
+    wofi # App launcher
     lxqt.lxqt-policykit # Polkit Authentication Agent
     inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # Cursor theme
-    inputs.zen-browser.packages."${system}".specific  # Web browser # TODO update when in nixpkgs
+    inputs.zen-browser.packages."${system}".specific # Web browser # TODO update when in nixpkgs
   ];
 
-  personalPkgs = [];
+  personalPkgs = [ ];
 
   cfg = config.modules.software;
-in {
-  imports = [];
+in
+{
+  imports = [ ];
 
   options.modules.software = {
     enable = lib.mkEnableOption "Enables the software module";
@@ -78,7 +80,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    
+
     # Needed for obsidian
     nixpkgs.config.allowUnfree = true;
 
@@ -89,9 +91,9 @@ in {
 
     # Required Services
     services.openssh.enable = true;
-    
+
     fonts.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Hack" "Ubuntu" "CascadiaCode"  ]; })
+      (nerdfonts.override { fonts = [ "Hack" "Ubuntu" "CascadiaCode" ]; })
     ];
 
     # Work services

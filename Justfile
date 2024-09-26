@@ -36,4 +36,5 @@ switch:
 
 
 home user='bryley':
+	-git add .
 	nh home switch . --configuration {{user}}-{{system}}

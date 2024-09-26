@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 let
   dir = ../../configs;
 in
@@ -13,8 +13,10 @@ in
       recursive = true;
     };
     ".config/nvim" = {
-      source = dir + "/nvim";
-      recursive = true;
+      # source = dir + "/nvim";
+      source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/nixos-flake/configs/nvim";
+      # recursive = true;
     };
     ".config/zellij" = {
       source = dir + "/zellij";

@@ -46,12 +46,16 @@
       elmPackages.elm-language-server
       tailwindcss-language-server
       pyright
+      htmx-lsp
+      helm-ls
+      ltex-ls
       # TODO add `vtsls` for typescript LSP (Add when https://github.com/NixOS/nixpkgs/pull/319501 request is done)
 
-      # Formatters
+      # Formatters/Linters
       stylua
       nodePackages.prettier
       elmPackages.elm-format
+      statix
     ];
   };
 

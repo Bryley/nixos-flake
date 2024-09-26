@@ -22,15 +22,15 @@
     kernelParams = [ "iwlwifi.11n_disable=1" "iwlwifi.swcrypto=1" ];
   };
 
-  # Setup login screen
-  services.displayManager = {
-    enable = true;
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-      theme = "astronaut";
-    };
-  };
+  # # TODO get working: Setup login screen
+  # services.displayManager = {
+  #   enable = true;
+  #   sddm = {
+  #     enable = true;
+  #     wayland.enable = true;
+  #     theme = "astronaut";
+  #   };
+  # };
 
   system.stateVersion = "24.11";
 

@@ -49,7 +49,7 @@
         ltex-ls
         lua-language-server
         nil
-        nodePackages.vscode-json-languageserver
+        vscode-langservers-extracted
         pyright
         rust-analyzer
         tailwindcss-language-server

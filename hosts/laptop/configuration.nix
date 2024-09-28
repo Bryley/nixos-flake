@@ -22,6 +22,15 @@
     kernelParams = [ "iwlwifi.11n_disable=1" "iwlwifi.swcrypto=1" ];
   };
 
+  modules.nvidia = {
+    enable = true;
+    prime = {
+      enable = true;
+      intelPci = "0:2:0";
+      nvidiaPci = "1:0:0";
+    };
+  };
+
   # # TODO get working: Setup login screen
   # services.displayManager = {
   #   enable = true;

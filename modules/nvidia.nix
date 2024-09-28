@@ -14,22 +14,22 @@ in
         type = lib.types.str;
         default = "";
         example = "1:0:0";
-        description = "The Intel PCI Bus";
+        description = "The Intel PCI Bus (hint: use `lspci | grep -i vga)`";
       };
       nvidiaPci = lib.mkOption {
         type = lib.types.str;
         default = "";
         example = "0:2:0";
-        description = "The Nvidia GPU PCI Bus";
+        description = "The Nvidia GPU PCI Bus (hint: use `lspci | grep -i vga)";
       };
     };
   };
 
   config = lib.mkIf cfg.enable {
-    assertions = [ {
+    assertions = [{
       assertion = !cfg.prime.enable || (cfg.prime.enable && cfg.prime.intelPci != "" && cfg.prime.nvidiaPci != "");
       message = "intelPci and nvidiaPci must be set when prime offloading is enabled.";
-    } ];
+    }];
 
     # Enable OpenGL
     hardware.graphics = {

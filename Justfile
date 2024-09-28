@@ -2,6 +2,7 @@
 
 system := `nix eval --impure --raw --expr 'builtins.currentSystem'`
 generation := `sudo nix-env --list-generations -p /nix/var/nix/profiles/system | grep current | awk '{print "Generation", $1}'`
+hostname := `sudo cat /etc/hostname`
 
 
 default:
@@ -18,8 +19,10 @@ gen-new-host host-name:
         echo "Running on an installed system"
         nixos-generate-config --dir ./hosts/{{host-name}}
     fi
-    echo -e "\nFinished generating, in order to use this host please add the following line inside of \`nixosConfigurations\` inside of 'flake.nix':\n"
-    echo -e "    {{host-name}} = mkSystem { hostname=\"{{host-name}}\"; system=\"{{system}}\"; };\n"
+    echo -e "\nFinished generating, in order to use this host please add the following line inside of the \`hosts\` variable inside of 'flake.nix':\n"
+    echo -e "    { hostname = \"{{host-name}}\"; system = \"{{system}}\"; }\n"
+    # echo -e "\nFinished generating, in order to use this host please add the following line inside of \`nixosConfigurations\` inside of 'flake.nix':\n"
+    # echo -e "    {{host-name}} = mkSystem { hostname=\"{{host-name}}\"; system=\"{{system}}\"; };\n"
 
 
 # Garbage collection
@@ -32,7 +35,7 @@ switch:
 	-git add .
 	nh os switch .
 	just home
-	-git commit -am "{{generation}}"
+	-git commit -am "{{hostname}} - {{generation}}"
 	-git push
 
 

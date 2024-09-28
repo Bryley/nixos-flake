@@ -37,6 +37,7 @@
       ];
       hosts = [
         { hostname = "laptop"; system = "x86_64-linux"; }
+        { hostname = "desktop"; system = "x86_64-linux"; }
       ];
       nixosConfigurations = import ./utilities/mkNixosConfigurations.nix { inherit inputs hosts users; };
       homeConfigurations = import ./utilities/mkHomeConfigurations.nix { inherit inputs users; };
@@ -44,8 +45,7 @@
       # diskoConfigurations = import ./utilities/disko.nix { inherit inputs; };
     in
     {
-      inherit nixosConfigurations;
-      inherit homeConfigurations;
+      inherit nixosConfigurations homeConfigurations;
 
       # inherit diskoConfigurations;
     };

@@ -7,10 +7,30 @@ in
   imports = [ ];
 
   options.modules.nvidia = {
-    enable = lib.mkEnableOption "Enables the use of nvidia for this PC";
+    enable = lib.mkEnableOption "the use of nvidia for this PC";
+    prime = {
+      enable = lib.mkEnableOption "offloading support using prime";
+      intelPci = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+        example = "1:0:0";
+        description = "The Intel PCI Bus";
+      };
+      nvidiaPci = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+        example = "0:2:0";
+        description = "The Nvidia GPU PCI Bus";
+      };
+    };
   };
 
   config = lib.mkIf cfg.enable {
+    assertions = [ {
+      assertion = !cfg.prime.enable || (cfg.prime.enable && cfg.prime.intelPci != "" && cfg.prime.nvidiaPci != "");
+      message = "intelPci and nvidiaPci must be set when prime offloading is enabled.";
+    } ];
+
     # Enable OpenGL
     hardware.graphics = {
       enable = true;
@@ -33,13 +53,14 @@ in
       # Ensures tear-free experience, useful but can be turned off if no screen tearing.
       forceFullCompositionPipeline = true;
 
-      # TODO, test if nessessary
+      powerManagement.finegrained = lib.mkIf cfg.prime.enable true;
+
       # Enables offloading for better power management for laptops
-      # prime = {
-      #   offload.enable = true;
-      #   intelBusId = "PCI:0:2:0";
-      #   nvidiaBusId = "PCI:1:0:0";
-      # };
+      prime = {
+        offload.enable = lib.mkIf cfg.prime.enable true;
+        intelBusId = "PCI:${cfg.prime.intelPci}";
+        nvidiaBusId = "PCI:${cfg.prime.nvidiaPci}";
+      };
 
       nvidiaSettings = true;
     };

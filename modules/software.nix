@@ -58,7 +58,7 @@ in
   imports = [ ];
 
   options.modules.software = {
-    enable = lib.mkEnableOption "Enables the software module";
+    enable = lib.mkEnableOption "the software module";
 
     includeWork = lib.mkOption {
       type = lib.types.bool;
@@ -69,12 +69,12 @@ in
     includeHyprland = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "Enables Hyprland and all required software";
+      description = "Hyprland and all required software";
     };
 
     includePersonal = lib.mkOption {
       type = lib.types.bool;
-      default = false;
+      default = true;
       description = "Adds personal packages like steam";
     };
   };

@@ -64,5 +64,13 @@ in
 
       nvidiaSettings = true;
     };
+
+    systemd.services.hyprland = lib.mkIf cfg.prime.enable {
+      environment = {
+        __NV_PRIME_RENDER_OFFLOAD = "1";
+        __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+        __NV_PRIME_RENDER_OFFLOAD_PROVIDER = "NVIDIA-G0";
+      };
+    };
   };
 }

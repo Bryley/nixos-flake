@@ -20,7 +20,7 @@ let
     xournalpp # PDF editor
     pavucontrol # Sound GUI application
     brightnessctl # Control screen brightness
-    sddm-astronaut # SDDM login screen theme
+    virtualgl # Some GPU commands `glxinfo` for instance
     (python310.withPackages (ps: with ps; [ rich virtualenv pyyaml ])) # Python 3.10
 
 

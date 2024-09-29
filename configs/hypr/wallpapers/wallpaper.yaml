@@ -49,23 +49,23 @@ images:
   - light
   - dark
   - real
-- name: ./mountains.png
-  tags:
-  - landscape
-  - dark
-  - space
+# - name: ./mountains.png
+#   tags:
+#   - landscape
+#   - dark
+#   - space
 - name: ./nature.jpg
   tags:
   - landscape
   - dark
   - space
   - real
-- name: ./nord_car_live.gif
-  tags:
-  - city
-  - dark
-  - space
-  - live
+# - name: ./nord_car_live.gif
+#   tags:
+#   - city
+#   - dark
+#   - space
+#   - live
 - name: ./oled-mountains.jpg
   tags:
   - landscape
@@ -144,12 +144,12 @@ images:
   - light
   - dark
   - real
-- name: ./waterfall.gif
-  tags:
-  - landscape
-  - light
-  - dark
-  - live
+# - name: ./waterfall.gif
+#   tags:
+#   - landscape
+#   - light
+#   - dark
+#   - live
 - name: ./wide_tokyonight_skyline.jpg
   tags:
   - landscape

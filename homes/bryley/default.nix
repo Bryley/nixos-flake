@@ -39,6 +39,14 @@
       configDir = ../../configs/ags;
     };
 
+    direnv = {
+      enable = true;
+      enableNushellIntegration = true;
+      nix-direnv.enable = true;
+    };
+
+    nushell.enable = true;
+
     neovim = {
       enable = true;
       extraPackages = with pkgs; [

@@ -178,6 +178,16 @@ $env.config = {
 
     color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
     edit_mode: vi
+    hooks: {
+        # Dir-env hook
+        pre_prompt: [{ ||
+            if (which direnv | is-empty) {
+            return
+            }
+
+            direnv export json | from json | default {} | load-env
+        }]
+    }
 }
 
 # Handy aliases and small shell scripts
@@ -210,15 +220,17 @@ def gitopen [] {
 }
 
 $env.FZF_DEFAULT_OPTS = "--layout=reverse --height=40%"
+# Removes direnv output
+$env.DIRENV_LOG_FORMAT = ""
 
-let nixld = (if (echo "/etc/NIXOS" | path exists) {
-    # If on NixOS then set up the nix_ld dynamic linker (note it needs to be installed)
-    (^nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
-} else {
-    ""
-})
-
-$env.NIX_LD = $nixld
+# let nixld = (if (echo "/etc/NIXOS" | path exists) {
+#     # If on NixOS then set up the nix_ld dynamic linker (note it needs to be installed)
+#     (^nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
+# } else {
+#     ""
+# })
+#
+# $env.NIX_LD = $nixld
 
 # $env.NIX_LD=$nixld
 

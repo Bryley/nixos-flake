@@ -36,7 +36,6 @@ local LINTERS = {
     },
     completion = {
         "luasnip", -- Lua
-        "spell", -- Spellcheck
     },
     diagnostics = {
         "statix", -- Nix

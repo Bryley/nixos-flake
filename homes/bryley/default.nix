@@ -29,6 +29,7 @@
           defaultBranch = "main";
         };
         pull.rebase = "false";
+        commit.template = "~/nixos-flake/configs/.gitmessage"
       };
     };
 

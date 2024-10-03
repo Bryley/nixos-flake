@@ -23,7 +23,6 @@ let
     virtualgl # Some GPU commands `glxinfo` for instance
     (python310.withPackages (ps: with ps; [ rich virtualenv pyyaml ])) # Python 3.10
 
-
     neovim # Text Editor
     nushell # Modern shell
     zellij # Modern terminal multiplexer

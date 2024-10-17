@@ -9,9 +9,11 @@ keymap("i", "<C-H>", "<C-W>", opts) -- Control backspace deletes a word
 
 keymap("t", "<Esc>", "<C-\\><C-n>", opts) -- Esc goes to normal mode in term
 
--- Stay in indent mode when in visual mode
+-- Stay in visual mode when in doing various tasks
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+keymap("v", "y", "ygv", opts)
 
 -- Resize Windows with arrowkeys
 keymap("n", "<Left>", "<cmd>vertical resize +1<cr>", opts)

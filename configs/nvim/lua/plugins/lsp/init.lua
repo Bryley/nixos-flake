@@ -25,7 +25,8 @@ local LSP_SERVERS = {
     "tailwindcss", -- Tailwind
     "nushell", -- Nushell
     "nil_ls", -- Nix
-    "vtsls", -- Typescript
+    -- "vtsls", -- Typescript
+    "ts_ls", -- Typescript
     "ltex", -- Latex and markdown
 }
 

@@ -64,6 +64,8 @@
         tailwindcss-language-server
         yaml-language-server
         # TODO add `vtsls` for typescript LSP (Add when https://github.com/NixOS/nixpkgs/pull/319501 request is done)
+        typescript
+        typescript-language-server
 
         # Formatters/Linters
         biome

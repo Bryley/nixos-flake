@@ -79,7 +79,11 @@ M.settings = function()
             validate = { enable = true },
         },
         yaml = {
-            schemas = {},
+            schemas = {
+                kubernetes = "*.yaml",
+                ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+                ["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
+            },
             validate = { enable = true },
         },
         ["helm-ls"] = {

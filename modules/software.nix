@@ -36,6 +36,10 @@ let
     dbeaver-bin # Database GUI
     obsidian # Note taking
     ngrok # Quick servers
+
+    kubectl # Kubernetes CLI
+    minikube # Kubernetes testing
+    helm # Kubernetes package manager
   ];
 
   hyprlandPkgs = with pkgs; [

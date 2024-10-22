@@ -51,6 +51,8 @@
     neovim = {
       enable = true;
       extraPackages = with pkgs; [
+        # Compiling for Treesitter
+        gcc
         # LSPs
         elmPackages.elm-language-server
         helm-ls

@@ -92,6 +92,7 @@ M.cmp_config = function()
             { name = "luasnip" },
             { name = "buffer", keyword_length = 3 },
             { name = "crates" },
+            { name = "vim-dadbod-completion" }
         }),
         formatting = {
             format = lspkind.cmp_format({

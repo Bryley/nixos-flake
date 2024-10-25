@@ -111,6 +111,7 @@ return {
             "folke/neodev.nvim", -- Better LSP docs support for Neovim Lua code
             "onsails/lspkind.nvim", -- Adds pictograms to dropdown
             "L3MON4D3/LuaSnip", -- Snippet engine
+            "kristijanhusak/vim-dadbod-completion", -- SQL dadbod completions
         },
         config = functions.cmp_config,
     },

@@ -152,3 +152,5 @@ $env.EDITOR = "nvim"
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 $env.PATH = ($env.PATH | split row (char esep) | prepend '~/.config/hypr/wallpapers/')
+
+$env.PATH = ($env.PATH | prepend '/opt/homebrew/opt/mysql/bin')

@@ -52,11 +52,11 @@ return {
         version = "*",
         dependencies = "nvim-tree/nvim-web-devicons",
         keys = {
-            { "<A-h>", "<cmd>bprev<cr>", mode = "n", desc = "Prev Buffer" },
-            { "<A-l>", "<cmd>bnext<cr>", mode = "n", desc = "Next Buffer" },
+            { "<A-h>", "<cmd>bprev<cr>",  mode = "n", desc = "Prev Buffer" },
+            { "<A-l>", "<cmd>bnext<cr>",  mode = "n", desc = "Next Buffer" },
             { "<A-c>", "<cmd>BufDel<cr>", mode = "n", desc = "Close Buffer" },
-            { "<A-h>", "<cmd>bprev<cr>", mode = "i", desc = "Prev Buffer" },
-            { "<A-l>", "<cmd>bnext<cr>", mode = "i", desc = "Next Buffer" },
+            { "<A-h>", "<cmd>bprev<cr>",  mode = "i", desc = "Prev Buffer" },
+            { "<A-l>", "<cmd>bnext<cr>",  mode = "i", desc = "Next Buffer" },
             { "<A-c>", "<cmd>BufDel<cr>", mode = "i", desc = "Close Buffer" },
         },
         opts = {
@@ -78,6 +78,11 @@ return {
                     delay = 200,
                     reveal = { "close" },
                 },
+                -- Doesn't work, todo fix it
+                -- custom_filter = function(buf_number)
+                --     -- Example logic to only show buffers of the current tabpage
+                --     return vim.fn.tabpagenr() == vim.fn.bufwinnr(buf_number)
+                -- end,
             },
         },
     },
@@ -206,6 +211,23 @@ return {
 
             dashboard.opts.opts.noautocmd = true
             alpha.setup(dashboard.opts)
+        end,
+    },
+    {
+        "kristijanhusak/vim-dadbod-ui",
+        dependencies = {
+            { "tpope/vim-dadbod",                     lazy = true },
+            { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
+        },
+        cmd = {
+            "DBUI",
+            "DBUIToggle",
+            "DBUIAddConnection",
+            "DBUIFindBuffer",
+        },
+        init = function()
+            -- Your DBUI configuration
+            vim.g.db_ui_use_nerd_fonts = 1
         end,
     },
 }

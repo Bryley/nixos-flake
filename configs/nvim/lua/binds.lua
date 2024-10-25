@@ -26,6 +26,12 @@ keymap("n", "<S-Right>", "<cmd>vertical resize -5<cr>", opts)
 keymap("n", "<S-Up>", "<cmd>resize +5<cr>", opts)
 keymap("n", "<S-Down>", "<cmd>resize -5<cr>", opts)
 
+-- Tabs Keybinds
+keymap("n", "<A-H>", "<cmd>tabprevious<cr>", opts)
+keymap("n", "<A-L>", "<cmd>tabnext<cr>", opts)
+keymap("n", "<A-N>", "<cmd>tabnew<cr>", opts)
+keymap("n", "<A-C>", "<cmd>tabclose<cr>", opts)
+
 -- Close the window and current buffer
 vim.api.nvim_create_user_command('Q', 'execute "BufDel" | close', {})
 

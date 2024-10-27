@@ -40,6 +40,8 @@ let
     kubectl # Kubernetes CLI
     minikube # Kubernetes testing
     helm # Kubernetes package manager
+
+    postgresql # Postgres client
   ];
 
   hyprlandPkgs = with pkgs; [

@@ -39,7 +39,7 @@ let
 
     kubectl # Kubernetes CLI
     minikube # Kubernetes testing
-    helm # Kubernetes package manager
+    kubernetes-helm # Kubernetes package manager
 
     postgresql # Postgres client
   ];

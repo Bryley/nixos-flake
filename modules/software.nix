@@ -55,7 +55,9 @@ let
     inputs.zen-browser.packages."${system}".specific # Web browser # TODO update when in nixpkgs
   ];
 
-  personalPkgs = [ ];
+  personalPkgs = with pkgs; [
+    prismlauncher
+  ];
 
   cfg = config.modules.software;
 in

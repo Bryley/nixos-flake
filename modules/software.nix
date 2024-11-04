@@ -25,6 +25,7 @@ let
 
     neovim # Text Editor
     nushell # Modern shell
+    carapace # Command line autocompletion
     zellij # Modern terminal multiplexer
     distrobox # Basic docker wrapper for quick FHS system
   ];

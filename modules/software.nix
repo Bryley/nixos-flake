@@ -105,6 +105,18 @@ in
       (nerdfonts.override { fonts = [ "Hack" "Ubuntu" "CascadiaCode" ]; })
     ];
 
+    # Enable the pueue task manager
+    systemd.user.services.pueued = {
+      enable = true;
+      description = "Pueue Daemon";
+      after = [ "network.target" ];
+      wantedBy = [ "default.target" ];
+      serviceConfig = {
+        ExecStart = "${pkgs.pueue}/bin/pueued";
+        Restart = "always";
+      };
+    };
+
     # Work services
     virtualisation.docker.enable = lib.mkIf cfg.includeWork true;
 

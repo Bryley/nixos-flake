@@ -27,6 +27,7 @@ let
     nushell # Modern shell
     carapace # Command line autocompletion
     zellij # Modern terminal multiplexer
+    pueue # Background task management
     distrobox # Basic docker wrapper for quick FHS system
   ];
 

@@ -87,12 +87,18 @@ M.cmp_config = function()
         },
         sources = cmp.config.sources({
             { name = "nvim_lua" },
-            { name = "nvim_lsp" },
+            {
+                name = "nvim_lsp",
+                entry_filter = function(entry)
+                    -- Hide snippets from within the lsp server, Luasnip should handle them
+                    return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
+                end,
+            },
             { name = "path" },
             { name = "luasnip" },
-            { name = "buffer", keyword_length = 3 },
+            { name = "buffer",               keyword_length = 3 },
             { name = "crates" },
-            { name = "vim-dadbod-completion" }
+            { name = "vim-dadbod-completion" },
         }),
         formatting = {
             format = lspkind.cmp_format({

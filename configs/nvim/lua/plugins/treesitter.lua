@@ -4,6 +4,8 @@ return {
         "nvim-treesitter/nvim-treesitter",
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
+            -- NOTE: additional parser
+            { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
         },
         build = ":TSUpdate",
         lazy = false,

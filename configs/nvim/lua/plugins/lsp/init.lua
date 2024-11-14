@@ -28,6 +28,7 @@ local LSP_SERVERS = {
     -- "vtsls", -- Typescript
     "ts_ls", -- Typescript
     "ltex", -- Latex and markdown
+    "gopls", -- Golang lsp
 }
 
 -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md
@@ -239,14 +240,5 @@ return {
         cond = enabled,
         version = "^4", -- Recommended
         ft = { "rust" },
-    },
-    {
-        -- Plugin for nushell lsp features
-        "LhKipp/nvim-nu",
-        cond = enabled,
-        build = ":TSInstall nu",
-        config = function()
-            require("nu").setup({})
-        end,
     },
 }

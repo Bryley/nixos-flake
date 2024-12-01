@@ -67,11 +67,15 @@ ls.add_snippets("nix", {
                   (self: super: {{ rust-toolchain = self.rust-bin.stable; }})
                 ];
               }};
+              # Define the Rust toolchain with rust-src included
+              rust = pkgs.rust-bin.stable.latest.default.override {{
+                extensions = [ "rust-src" ];
+              }};
             in
             rec {{
               devShells.default = pkgs.mkShell {{
                 buildInputs = with pkgs; [
-                  rust-bin.stable.latest.default
+                  rust
                   pkg-config
                   openssl_3
                 ];

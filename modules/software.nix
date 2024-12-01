@@ -38,6 +38,7 @@ let
     dbeaver-bin # Database GUI
     obsidian # Note taking
     ngrok # Quick servers
+    opam # Ocaml package manager
 
     kubectl # Kubernetes CLI
     minikube # Kubernetes testing

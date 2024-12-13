@@ -102,7 +102,9 @@ in
     services.openssh.enable = true;
 
     fonts.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Hack" "Ubuntu" "CascadiaCode" ]; })
+      nerd-fonts.hack
+      nerd-fonts.ubuntu
+      nerd-fonts.caskaydia-mono
     ];
 
     # Enable the pueue task manager

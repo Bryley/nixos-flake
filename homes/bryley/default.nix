@@ -53,6 +53,9 @@
       extraPackages = with pkgs; [
         # Compiling for Treesitter
         gcc
+        curl
+        openssl
+        pkg-config
         # LSPs
         elmPackages.elm-language-server
         helm-ls

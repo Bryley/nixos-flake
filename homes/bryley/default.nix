@@ -54,7 +54,6 @@
         # Compiling for Treesitter
         gcc
         curl
-        openssl
         pkg-config
         # LSPs
         elmPackages.elm-language-server
@@ -78,7 +77,6 @@
         elmPackages.elm-format
         mdformat
         nixpkgs-fmt
-        nodePackages.prettier
         nodePackages.prettier
         statix
         stylua

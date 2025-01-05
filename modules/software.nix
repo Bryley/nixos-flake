@@ -40,6 +40,7 @@ let
     ngrok # Quick servers
 
     kubectl # Kubernetes CLI
+    kubectx # Kubernetes Context Switch
     minikube # Kubernetes testing
     kubernetes-helm # Kubernetes package manager
 

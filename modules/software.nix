@@ -43,6 +43,7 @@ let
     kubectx # Kubernetes Context Switch
     minikube # Kubernetes testing
     kubernetes-helm # Kubernetes package manager
+    doctl   # Digital Ocean CLI
 
     postgresql # Postgres client
   ];

@@ -43,7 +43,7 @@ let
     kubectx # Kubernetes Context Switch
     minikube # Kubernetes testing
     kubernetes-helm # Kubernetes package manager
-    doctl   # Digital Ocean CLI
+    doctl # Digital Ocean CLI
 
     postgresql # Postgres client
   ];
@@ -125,9 +125,21 @@ in
     # Work services
     virtualisation.docker.enable = lib.mkIf cfg.includeWork true;
 
+    services = {
+
+      ollama = {
+        enable = lib.mkIf cfg.includeWork true;
+        # Optional: load models on startup
+        loadModels = [ "llama3.2:3b" ];
+        # TODO might need to create an option for `rocm` for AMD
+        acceleration = "cuda";
+      };
+      upower.enable = lib.mkIf cfg.includeHyprland true; # Needed for AGS
+    };
+
+
     # Hyprland
     programs.hyprland.enable = lib.mkIf cfg.includeHyprland true;
-    services.upower.enable = lib.mkIf cfg.includeHyprland true; # Needed for AGS
 
     # Personal
     programs.steam.enable = lib.mkIf cfg.includePersonal true;

@@ -55,8 +55,9 @@ let
     swww # Wallpaper daemon
     wofi # App launcher
     lxqt.lxqt-policykit # Polkit Authentication Agent
-    inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # Cursor theme
-    inputs.zen-browser.packages."${system}".specific # Web browser # TODO update when in nixpkgs
+    # This cursor has stopped working for some reason, had to comment it out for now
+    # inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # Cursor theme
+    inputs.zen-browser.packages."${system}".default # Web browser # TODO update when in nixpkgs
   ];
 
   personalPkgs = with pkgs; [

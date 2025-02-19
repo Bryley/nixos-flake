@@ -19,8 +19,9 @@ return {
             whichkey.add({
                 -- AI
                 { "<leader>a", group = "AI" },
-                { "<leader>aa", "<cmd>NeoAI<cr>", desc = "Open NeoAI" },
-                { "<leader>ag", "<cmd>NeoAIShortcut<cr>", desc = "Git Commit Message" },
+                { "<leader>aa", "<cmd>LLMSessionToggle<cr>", desc = "Open LLM Menu" },
+                { "<leader>ad", "<cmd>LLMAppHandler DocString<cr>", desc = "Generate docstring for given function" },
+                { "<leader>ao", "<cmd>LLMAppHandler OptimizeCode<cr>", desc = "Optimize Code using AI" },
                 -- Telescope (Find)
                 { "<leader>f", group = "Find" },
                 { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files" },

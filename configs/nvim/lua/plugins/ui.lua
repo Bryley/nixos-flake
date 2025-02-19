@@ -230,4 +230,67 @@ return {
             vim.g.db_ui_use_nerd_fonts = 1
         end,
     },
+    {
+        -- Advanced Color highlighter and picker
+        "uga-rosa/ccc.nvim",
+        lazy = false,
+        config = function()
+            vim.opt.termguicolors = true
+
+            local ccc = require("ccc")
+
+            ccc.setup({
+                -- Your preferred settings
+                -- Example: enable highlighter
+                highlighter = {
+                    auto_enable = true,
+                    lsp = true,
+                },
+                inputs = {
+                    ccc.input.rgb,
+                    ccc.input.hsl,
+                    ccc.input.oklch,
+                },
+                outputs = {
+                    ccc.output.hex,
+                    ccc.output.hex_short,
+                    ccc.output.css_rgb,
+                    ccc.output.css_hsl,
+                    ccc.output.css_oklch,
+                },
+                convert = {
+                    { ccc.picker.hex, ccc.output.css_rgb },
+                    { ccc.picker.css_rgb, ccc.output.css_oklch },
+                    { ccc.picker.css_oklch, ccc.output.hex },
+                }
+            })
+        end,
+    },
+    {
+        -- Simple LLM program
+        "Kurama622/llm.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+        cmd = { "LLMSessionToggle", "LLMSelectedTextHandler", "LLMAppHandler" },
+        config = function()
+            local tools = require("llm.common.tools")
+            require("llm").setup({
+                url = "http://localhost:11434/api/chat",
+                model = "deepseek-coder-v2:latest",
+                api_type = "ollama",
+                style = "right",
+                keys = {
+                    ["Input:Submit"] = { mode = "n", key = "<cr>" },
+                    ["Output:Ask"] = { mode = "n", key = "i" },
+                },
+                fetch_key = function()
+                    return "NONE"
+                end,
+                app_handler = {
+                    OptimizeCode = {
+                        handler = tools.side_by_side_handler,
+                    },
+                },
+            })
+        end,
+    },
 }

@@ -38,12 +38,13 @@ let
     dbeaver-bin # Database GUI
     obsidian # Note taking
     ngrok # Quick servers
+    surrealist # GUI for connecting to SurrealDB databases
 
     kubectl # Kubernetes CLI
     kubectx # Kubernetes Context Switch
     minikube # Kubernetes testing
     kubernetes-helm # Kubernetes package manager
-    doctl   # Digital Ocean CLI
+    doctl # Digital Ocean CLI
 
     postgresql # Postgres client
   ];
@@ -55,8 +56,9 @@ let
     swww # Wallpaper daemon
     wofi # App launcher
     lxqt.lxqt-policykit # Polkit Authentication Agent
-    inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # Cursor theme
-    inputs.zen-browser.packages."${system}".specific # Web browser # TODO update when in nixpkgs
+    # This cursor has stopped working for some reason, had to comment it out for now
+    # inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # Cursor theme
+    inputs.zen-browser.packages."${system}".default # Web browser # TODO update when in nixpkgs
   ];
 
   personalPkgs = with pkgs; [
@@ -124,9 +126,21 @@ in
     # Work services
     virtualisation.docker.enable = lib.mkIf cfg.includeWork true;
 
+    services = {
+
+      ollama = {
+        enable = lib.mkIf cfg.includeWork true;
+        # Optional: load models on startup
+        loadModels = [ "llama3.2:3b" ];
+        # TODO might need to create an option for `rocm` for AMD
+        acceleration = "cuda";
+      };
+      upower.enable = lib.mkIf cfg.includeHyprland true; # Needed for AGS
+    };
+
+
     # Hyprland
     programs.hyprland.enable = lib.mkIf cfg.includeHyprland true;
-    services.upower.enable = lib.mkIf cfg.includeHyprland true; # Needed for AGS
 
     # Personal
     programs.steam.enable = lib.mkIf cfg.includePersonal true;

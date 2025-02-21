@@ -40,6 +40,11 @@ return {
                 { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
                 { "<leader>ln", "<cmd>lua require('nvim-navbuddy').open()<cr>", desc = "Navbuddy" },
                 { "<leader>ld", "<cmd>lua vim.diagnostic.setqflist()<cr>", desc = "Diagnostics" },
+                -- Colors (CCC)
+                { "<leader>c", group = "Colors" },
+                { "<leader>cp", "<cmd>CccPick<cr>", desc = "Color Picker" },
+                { "<leader>cc", "<cmd>CccConvert<cr>", desc = "Convert Color" },
+                { "<leader>ct", "<cmd>CccHighlighterToggle<cr>", desc = "Toggle Color Highlight" },
                 -- Table mode
                 { "<leader>t", group = "Table" },
                 { "<leader>tm", "<cmd>call tablemode#Toggle()<cr>", desc = "Toggle" },

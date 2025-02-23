@@ -22,11 +22,12 @@ local LSP_SERVERS = {
     "yamlls", -- YAML
     "helm_ls", -- Helm
     "elmls", -- ELM
+    "denols", -- Deno
     "tailwindcss", -- Tailwind
     "nushell", -- Nushell
     "nil_ls", -- Nix
     -- "vtsls", -- Typescript
-    "ts_ls", -- Typescript
+    -- "ts_ls", -- Typescript
     "ltex", -- Latex and markdown
     "gopls", -- Golang lsp
 }

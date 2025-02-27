@@ -63,7 +63,7 @@
         lua-language-server
         nil
         vscode-langservers-extracted
-        pyright
+        basedpyright
         rust-analyzer
         tailwindcss-language-server
         yaml-language-server

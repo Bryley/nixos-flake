@@ -16,7 +16,7 @@ local LSP_SERVERS = {
         }
     end,
     "lua_ls", -- Lua
-    "pyright", -- Python
+    "basedpyright", -- Python
     "htmx", -- HTMX
     "jsonls", -- JSON
     "yamlls", -- YAML

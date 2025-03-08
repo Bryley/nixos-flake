@@ -28,6 +28,7 @@ let
     carapace # Command line autocompletion
     zellij # Modern terminal multiplexer
     pueue # Background task management
+    neomutt # Email Client TUI
     distrobox # Basic docker wrapper for quick FHS system
   ];
 

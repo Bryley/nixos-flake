@@ -10,6 +10,7 @@ let
     unzip # unzipping software
     wget # Curl alternative
     file # Information about a file
+    pass # Password storer
     ripgrep # Grep alternative
     fd # Better find command
     bat # Better cat command

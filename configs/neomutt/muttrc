@@ -1,0 +1,15 @@
+
+set realname = "Bryley Hayter"
+
+set imap_user = "bryleyhayter@gmail.com"
+set folder = "imaps://imap.gmail.com:993/"
+
+set smtp_user = "bryleyhayter@gmail.com"
+set smtp_url = "smtps://smtp.gmail.com:465/"
+
+set imap_pass="`nu ~/.config/mutt/getpass.nu password`"
+set smtp_pass="`nu ~/.config/mutt/getpass.nu password`"
+
+set ssl_force_tls = yes
+
+set spoolfile = "+INBOX"

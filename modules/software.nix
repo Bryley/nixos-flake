@@ -24,6 +24,7 @@ let
     virtualgl # Some GPU commands `glxinfo` for instance
     (python310.withPackages (ps: with ps; [ rich virtualenv pyyaml ])) # Python 3.10
     bitwarden-cli # Password manager cli
+    isync # Mail server syncing
 
     neovim # Text Editor
     nushell # Modern shell

@@ -3,7 +3,7 @@ Host imap.gmail.com
 Port 993
 User bryleyhayter@gmail.com
 PassCmd "nu ~/.config/mutt/getpass.nu password"
-SSLType IMAPS
+TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 MaildirStore bryleyhayter@gmail.com-local
@@ -12,8 +12,8 @@ Inbox ~/Mail/bryleyhayter@gmail.com/INBOX
 Subfolders Verbatim
 
 Channel bryleyhayter@gmail.com
-Master :bryleyhayter@gmail.com-remote:
-Slave :bryleyhayter@gmail.com-local:
+Far :bryleyhayter@gmail.com-remote:
+Near :bryleyhayter@gmail.com-local:
 Create Both
 Expunge Both
 Patterns * !"[Gmail]/All Mail"

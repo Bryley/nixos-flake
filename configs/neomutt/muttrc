@@ -2,14 +2,38 @@
 set realname = "Bryley Hayter"
 
 set imap_user = "bryleyhayter@gmail.com"
-set folder = "imaps://imap.gmail.com:993/"
+set folder = "~/Mail/bryleyhayter@gmail.com/"
 
 set smtp_user = "bryleyhayter@gmail.com"
 set smtp_url = "smtps://smtp.gmail.com:465/"
 
-set imap_pass="`nu ~/.config/mutt/getpass.nu password`"
+# set imap_pass="`nu ~/.config/mutt/getpass.nu password`"
 set smtp_pass="`nu ~/.config/mutt/getpass.nu password`"
 
 set ssl_force_tls = yes
 
 set spoolfile = "+INBOX"
+set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Drafts"
+set trash = "+[Gmail]/Trash"
+
+mailboxes =INBOX ="[Gmail]/Sent Mail" ="[Gmail]/Drafts" ="[Gmail]/Spam" ="[Gmail]/Trash" ="[Gmail]/Starred"
+
+# macro index A "<save-message> +Archive<enter>" "Archive current message"
+
+set sidebar_visible = yes
+set sidebar_short_path = yes
+
+set meta_key = yes
+
+bind index,pager <F2> sidebar-toggle-visible
+bind index <M-j> sidebar-prev
+bind index <M-k> sidebar-next
+
+set sort = reverse-date
+
+bind index g noop
+macro index gg "<last-entry>" "Jump to oldest email"
+macro index G "<first-entry>" "Jump to newest email"
+
+source color.muttrc

@@ -28,6 +28,7 @@ let
     aerc  # Modern email client TUI
 
     neovim # Text Editor
+    sc-im # Vim-like spreadsheet editor
     nushell # Modern shell
     carapace # Command line autocompletion
     zellij # Modern terminal multiplexer

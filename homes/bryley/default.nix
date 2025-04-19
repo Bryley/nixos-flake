@@ -62,9 +62,10 @@
         htmx-lsp
         ltex-ls
         lua-language-server
-        nil
+        # nil
+        nixd
         vscode-langservers-extracted
-        pyright
+        basedpyright
         rust-analyzer
         tailwindcss-language-server
         yaml-language-server

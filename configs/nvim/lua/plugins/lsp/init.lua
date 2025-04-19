@@ -16,17 +16,18 @@ local LSP_SERVERS = {
         }
     end,
     "lua_ls", -- Lua
-    "pyright", -- Python
+    "basedpyright", -- Python
     "htmx", -- HTMX
     "jsonls", -- JSON
     "yamlls", -- YAML
     "helm_ls", -- Helm
     "elmls", -- ELM
+    "denols", -- Deno
     "tailwindcss", -- Tailwind
     "nushell", -- Nushell
     "nil_ls", -- Nix
     -- "vtsls", -- Typescript
-    "ts_ls", -- Typescript
+    -- "ts_ls", -- Typescript
     "ltex", -- Latex and markdown
     "gopls", -- Golang lsp
 }

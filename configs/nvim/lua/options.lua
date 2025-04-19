@@ -58,5 +58,11 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+vim.api.nvim_create_user_command("LspDebug", function()
+    for _, client in ipairs(vim.lsp.get_active_clients()) do
+        print(vim.inspect(client.config))
+    end
+end, {})
+
 -- Change the default theme to "habamax"
 vim.cmd("colorscheme habamax")

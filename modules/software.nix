@@ -10,6 +10,7 @@ let
     unzip # unzipping software
     wget # Curl alternative
     file # Information about a file
+    pass # Password storer
     ripgrep # Grep alternative
     fd # Better find command
     bat # Better cat command
@@ -22,12 +23,17 @@ let
     brightnessctl # Control screen brightness
     virtualgl # Some GPU commands `glxinfo` for instance
     (python310.withPackages (ps: with ps; [ rich virtualenv pyyaml ])) # Python 3.10
+    bitwarden-cli # Password manager cli
+    isync # Mail server syncing
+    aerc  # Modern email client TUI
 
     neovim # Text Editor
+    sc-im # Vim-like spreadsheet editor
     nushell # Modern shell
     carapace # Command line autocompletion
     zellij # Modern terminal multiplexer
     pueue # Background task management
+    neomutt # Email Client TUI
     distrobox # Basic docker wrapper for quick FHS system
   ];
 
@@ -38,10 +44,13 @@ let
     dbeaver-bin # Database GUI
     obsidian # Note taking
     ngrok # Quick servers
+    surrealist # GUI for connecting to SurrealDB databases
 
     kubectl # Kubernetes CLI
+    kubectx # Kubernetes Context Switch
     minikube # Kubernetes testing
     kubernetes-helm # Kubernetes package manager
+    doctl # Digital Ocean CLI
 
     postgresql # Postgres client
   ];
@@ -53,8 +62,9 @@ let
     swww # Wallpaper daemon
     wofi # App launcher
     lxqt.lxqt-policykit # Polkit Authentication Agent
-    inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # Cursor theme
-    inputs.zen-browser.packages."${system}".specific # Web browser # TODO update when in nixpkgs
+    # This cursor has stopped working for some reason, had to comment it out for now
+    # inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # Cursor theme
+    inputs.zen-browser.packages."${system}".default # Web browser # TODO update when in nixpkgs
   ];
 
   personalPkgs = with pkgs; [
@@ -98,6 +108,8 @@ in
       ++ lib.optionals cfg.includeHyprland hyprlandPkgs
       ++ lib.optionals cfg.includePersonal personalPkgs;
 
+    nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
     # Required Services
     services.openssh.enable = true;
 
@@ -122,9 +134,21 @@ in
     # Work services
     virtualisation.docker.enable = lib.mkIf cfg.includeWork true;
 
+    services = {
+
+      ollama = {
+        enable = lib.mkIf cfg.includeWork true;
+        # Optional: load models on startup
+        loadModels = [ "llama3.2:3b" ];
+        # TODO might need to create an option for `rocm` for AMD
+        acceleration = "cuda";
+      };
+      upower.enable = lib.mkIf cfg.includeHyprland true; # Needed for AGS
+    };
+
+
     # Hyprland
     programs.hyprland.enable = lib.mkIf cfg.includeHyprland true;
-    services.upower.enable = lib.mkIf cfg.includeHyprland true; # Needed for AGS
 
     # Personal
     programs.steam.enable = lib.mkIf cfg.includePersonal true;

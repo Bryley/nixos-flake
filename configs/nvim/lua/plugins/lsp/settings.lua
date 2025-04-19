@@ -124,6 +124,16 @@ M.settings = function()
             },
             validate = true,
         },
+        basedpyright = {
+            analysis = {
+                -- Enable auto-import suggestions
+                autoImportCompletions = true,
+                autoSearchPaths = true,
+                diagnosticMode = 'workspace',
+            },
+            -- If needed, add extra paths (adjust the Python version as appropriate)
+            -- extraPaths = { ".venv/lib/python3.11/site-packages" },
+        },
     }
 end
 

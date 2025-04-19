@@ -27,5 +27,13 @@ in
       source = dir + "/kitty";
       recursive = true;
     };
+    ".config/mutt" = {
+      source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/nixos-flake/configs/neomutt";
+    };
+    ".mbsyncrc" = {
+      source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/nixos-flake/configs/neomutt/mbsyncrc";
+    };
   };
 }

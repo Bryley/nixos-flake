@@ -78,7 +78,8 @@
         black
         elmPackages.elm-format
         mdformat
-        nixpkgs-fmt
+        # nixpkgs-fmt
+        nixfmt-rfc-style
         nodePackages.prettier
         statix
         stylua

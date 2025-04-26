@@ -13,7 +13,7 @@ in {
       settings.experimental-features = [ "nix-command" "flakes" ];
       # Pin flake registry to use nixpkgs
       registry.nixpkgs.flake = inputs.nixpkgs; # For flake commands
-      nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # For legacy commands
+      nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # For legacy commands and nixd lsp
       settings.flake-registry = "${inputs.flake-registry}/flake-registry.json";
     };
 

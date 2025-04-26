@@ -24,6 +24,22 @@ M.settings = function()
                 },
             },
         },
+        nixd = {
+            nixpkgs = {
+                expr = "import <nixpkgs> {  }",
+            },
+            formatting = {
+                command = { "nixfmt" },
+            },
+            options = {
+                nixos = {
+                    expr = "(builtins.getFlake \"/home/bryley/nixos-flake\").nixosConfigurations.laptop.options",
+                },
+                home_manager = {
+                    expr = "(builtins.getFlake \"/home/bryley/nixos-flake\").homeConfigurations.laptop.options",
+                },
+            },
+        },
         ["rust-analyzer"] = {
             cargo = {
                 features = "all",

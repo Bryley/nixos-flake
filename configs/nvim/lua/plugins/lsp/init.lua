@@ -25,7 +25,8 @@ local LSP_SERVERS = {
     "denols", -- Deno
     "tailwindcss", -- Tailwind
     "nushell", -- Nushell
-    "nil_ls", -- Nix
+    "nixd", -- Nix
+    -- "nil_ls", -- Nix
     -- "vtsls", -- Typescript
     -- "ts_ls", -- Typescript
     "ltex", -- Latex and markdown
@@ -44,7 +45,8 @@ local LINTERS = {
         "statix", -- Nix
     },
     formatting = {
-        "nixpkgs_fmt", -- Nix
+        -- "nixpkgs_fmt", -- Nix
+        "nixfmt", -- Nix
         "biome", -- Javascript and Typescript
         "black", -- Python
         "elm_format", -- Elm

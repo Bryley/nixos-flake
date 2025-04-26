@@ -108,8 +108,6 @@ in
       ++ lib.optionals cfg.includeHyprland hyprlandPkgs
       ++ lib.optionals cfg.includePersonal personalPkgs;
 
-    nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
     # Required Services
     services.openssh.enable = true;
 

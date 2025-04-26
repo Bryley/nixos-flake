@@ -230,42 +230,42 @@ return {
             vim.g.db_ui_use_nerd_fonts = 1
         end,
     },
-    {
-        -- Advanced Color highlighter and picker
-        "uga-rosa/ccc.nvim",
-        lazy = false,
-        config = function()
-            vim.opt.termguicolors = true
-
-            local ccc = require("ccc")
-
-            ccc.setup({
-                -- Your preferred settings
-                -- Example: enable highlighter
-                highlighter = {
-                    auto_enable = true,
-                    lsp = true,
-                },
-                inputs = {
-                    ccc.input.rgb,
-                    ccc.input.hsl,
-                    ccc.input.oklch,
-                },
-                outputs = {
-                    ccc.output.hex,
-                    ccc.output.hex_short,
-                    ccc.output.css_rgb,
-                    ccc.output.css_hsl,
-                    ccc.output.css_oklch,
-                },
-                convert = {
-                    { ccc.picker.hex, ccc.output.css_rgb },
-                    { ccc.picker.css_rgb, ccc.output.css_oklch },
-                    { ccc.picker.css_oklch, ccc.output.hex },
-                }
-            })
-        end,
-    },
+    -- {
+    --     -- Advanced Color highlighter and picker
+    --     "uga-rosa/ccc.nvim",
+    --     lazy = false,
+    --     config = function()
+    --         vim.opt.termguicolors = true
+    --
+    --         local ccc = require("ccc")
+    --
+    --         ccc.setup({
+    --             -- Your preferred settings
+    --             -- Example: enable highlighter
+    --             highlighter = {
+    --                 auto_enable = true,
+    --                 lsp = true,
+    --             },
+    --             inputs = {
+    --                 ccc.input.rgb,
+    --                 ccc.input.hsl,
+    --                 ccc.input.oklch,
+    --             },
+    --             outputs = {
+    --                 ccc.output.hex,
+    --                 ccc.output.hex_short,
+    --                 ccc.output.css_rgb,
+    --                 ccc.output.css_hsl,
+    --                 ccc.output.css_oklch,
+    --             },
+    --             convert = {
+    --                 { ccc.picker.hex, ccc.output.css_rgb },
+    --                 { ccc.picker.css_rgb, ccc.output.css_oklch },
+    --                 { ccc.picker.css_oklch, ccc.output.hex },
+    --             }
+    --         })
+    --     end,
+    -- },
     {
         -- Simple LLM program
         "Kurama622/llm.nvim",

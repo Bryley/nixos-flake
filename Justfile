@@ -41,4 +41,6 @@ switch:
 
 home user='bryley':
 	-git add .
-	nh home switch . --configuration {{user}}-{{system}}
+	# TODO this is broken for some reason, seems to ignore the --configuration, maybe try a few versions later
+	# nh home switch . --configuration {{user}}-{{system}}
+	home-manager switch --flake .#{{user}}-{{system}}

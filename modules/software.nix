@@ -1,4 +1,10 @@
-{ inputs, lib, config, pkgs, ... }:
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   requiredPkgs = with pkgs; [
     git # Version Control
@@ -22,10 +28,16 @@ let
     pavucontrol # Sound GUI application
     brightnessctl # Control screen brightness
     virtualgl # Some GPU commands `glxinfo` for instance
-    (python310.withPackages (ps: with ps; [ rich virtualenv pyyaml ])) # Python 3.10
+    (python310.withPackages (
+      ps: with ps; [
+        rich
+        virtualenv
+        pyyaml
+      ]
+    )) # Python 3.10
     bitwarden-cli # Password manager cli
     isync # Mail server syncing
-    aerc  # Modern email client TUI
+    aerc # Modern email client TUI
 
     neovim # Text Editor
     sc-im # Vim-like spreadsheet editor
@@ -62,6 +74,7 @@ let
     swww # Wallpaper daemon
     wofi # App launcher
     lxqt.lxqt-policykit # Polkit Authentication Agent
+    hyprlandPlugins.hyprsplit # Plugin for better workspace management
     # This cursor has stopped working for some reason, had to comment it out for now
     # inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # Cursor theme
     inputs.zen-browser.packages."${system}".default # Web browser # TODO update when in nixpkgs
@@ -103,7 +116,8 @@ in
     # Needed for obsidian
     nixpkgs.config.allowUnfree = true;
 
-    environment.systemPackages = requiredPkgs
+    environment.systemPackages =
+      requiredPkgs
       ++ lib.optionals cfg.includeWork workPkgs
       ++ lib.optionals cfg.includeHyprland hyprlandPkgs
       ++ lib.optionals cfg.includePersonal personalPkgs;
@@ -133,7 +147,6 @@ in
     virtualisation.docker.enable = lib.mkIf cfg.includeWork true;
 
     services = {
-
       ollama = {
         enable = lib.mkIf cfg.includeWork true;
         # Optional: load models on startup
@@ -142,11 +155,23 @@ in
         acceleration = "cuda";
       };
       upower.enable = lib.mkIf cfg.includeHyprland true; # Needed for AGS
-    };
 
+      # Needed for disabling laptop monitor when closed
+      logind = lib.mkIf cfg.includeHyprland {
+        lidSwitch = "ignore"; # HandleLidSwitch=ignore
+        lidSwitchDocked = "ignore"; # HandleLidSwitchDocked=ignore :contentReference[oaicite:3]{index=3}
+        # If you want to be extra sure:
+        extraConfig = ''
+          HandleLidSwitchExternalPower=ignore
+        '';
+      };
+    };
 
     # Hyprland
     programs.hyprland.enable = lib.mkIf cfg.includeHyprland true;
+    environment.variables = lib.mkIf cfg.includeHyprland {
+      HYPRLAND_PLUGINS = "${pkgs.hyprlandPlugins.hyprsplit}/lib/hyprland/plugins";
+    };
 
     # Personal
     programs.steam.enable = lib.mkIf cfg.includePersonal true;

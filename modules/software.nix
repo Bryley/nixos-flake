@@ -74,8 +74,8 @@ let
     swww # Wallpaper daemon
     wofi # App launcher
     lxqt.lxqt-policykit # Polkit Authentication Agent
-    hyprlandPlugins.hyprsplit # Plugin for better workspace management
-    # This cursor has stopped working for some reason, had to comment it out for now
+    # TODO get this plugin system working
+    # hyprlandPlugins.hyprsplit # Plugin for better workspace management
     # inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # Cursor theme
     inputs.zen-browser.packages."${system}".default # Web browser # TODO update when in nixpkgs
   ];
@@ -165,13 +165,15 @@ in
           HandleLidSwitchExternalPower=ignore
         '';
       };
+
+      displayManager.ly.enable = true;
     };
 
     # Hyprland
     programs.hyprland.enable = lib.mkIf cfg.includeHyprland true;
-    environment.variables = lib.mkIf cfg.includeHyprland {
-      HYPRLAND_PLUGINS = "${pkgs.hyprlandPlugins.hyprsplit}/lib/hyprland/plugins";
-    };
+    # environment.sessionVariables = lib.mkIf cfg.includeHyprland {
+    #   HYPRLAND_PLUGINS = "${pkgs.hyprlandPlugins.hyprsplit}/lib/hyprland/plugins";
+    # };
 
     # Personal
     programs.steam.enable = lib.mkIf cfg.includePersonal true;

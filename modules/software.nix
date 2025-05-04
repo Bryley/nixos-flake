@@ -73,6 +73,7 @@ let
     kitty # Modern terminal emulator
     swww # Wallpaper daemon
     wofi # App launcher
+    rose-pine-hyprcursor # Cursor theme
     lxqt.lxqt-policykit # Polkit Authentication Agent
     # TODO get this plugin system working
     # hyprlandPlugins.hyprsplit # Plugin for better workspace management
@@ -166,7 +167,17 @@ in
         '';
       };
 
-      displayManager.ly.enable = true;
+      displayManager.ly = {
+        enable = true;
+        settings = {
+          animate = true;
+          animation = "cmatrix";
+          hide_borders = true;
+          clock = "%c";
+          bigclock = true;
+        };
+      };
+
     };
 
     # Hyprland

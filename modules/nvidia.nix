@@ -26,44 +26,49 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    assertions = [{
-      assertion = !cfg.prime.enable || (cfg.prime.enable && cfg.prime.intelPci != "" && cfg.prime.nvidiaPci != "");
-      message = "intelPci and nvidiaPci must be set when prime offloading is enabled.";
-    }];
+    assertions = [
+      {
+        assertion =
+          !cfg.prime.enable || (cfg.prime.enable && cfg.prime.intelPci != "" && cfg.prime.nvidiaPci != "");
+        message = "intelPci and nvidiaPci must be set when prime offloading is enabled.";
+      }
+    ];
 
-    # Enable OpenGL
-    hardware.graphics = {
-      enable = true;
-      enable32Bit = true;
+    hardware = {
+      # Enable OpenGL
+      graphics = {
+        enable = true;
+        enable32Bit = true;
+      };
+      nvidia = {
+        # Use open source drivers (from Nvidia)
+        open = true;
+        # Often required for smooth rendering and reducing flickers.
+        modesetting.enable = true;
+
+        # Better power management
+        powerManagement.enable = true;
+        # powerManagement.finegrained = false;
+
+        # Ensures tear-free experience, useful but can be turned off if no screen tearing.
+        forceFullCompositionPipeline = true;
+
+        powerManagement.finegrained = lib.mkIf cfg.prime.enable true;
+
+        # Enables offloading for better power management for laptops
+        prime = {
+          offload.enable = lib.mkIf cfg.prime.enable true;
+          intelBusId = "PCI:${cfg.prime.intelPci}";
+          nvidiaBusId = "PCI:${cfg.prime.nvidiaPci}";
+        };
+
+        nvidiaSettings = true;
+      };
+      nvidia-container-toolkit.enable = true;
     };
 
     # Tells wayland (and Xorg) to use nvidia drivers
     services.xserver.videoDrivers = [ "nvidia" ];
-
-    hardware.nvidia = {
-      # Use open source drivers (from Nvidia)
-      open = true;
-      # Often required for smooth rendering and reducing flickers.
-      modesetting.enable = true;
-
-      # Better power management
-      powerManagement.enable = true;
-      # powerManagement.finegrained = false;
-
-      # Ensures tear-free experience, useful but can be turned off if no screen tearing.
-      forceFullCompositionPipeline = true;
-
-      powerManagement.finegrained = lib.mkIf cfg.prime.enable true;
-
-      # Enables offloading for better power management for laptops
-      prime = {
-        offload.enable = lib.mkIf cfg.prime.enable true;
-        intelBusId = "PCI:${cfg.prime.intelPci}";
-        nvidiaBusId = "PCI:${cfg.prime.nvidiaPci}";
-      };
-
-      nvidiaSettings = true;
-    };
 
     systemd.services.hyprland = lib.mkIf cfg.prime.enable {
       environment = {

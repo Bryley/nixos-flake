@@ -146,6 +146,7 @@ in
 
     # Work services
     virtualisation.docker.enable = lib.mkIf cfg.includeWork true;
+    virtualisation.docker.daemon.settings.features.cdi = lib.mkIf cfg.includeWork true;
 
     services = {
       ollama = {

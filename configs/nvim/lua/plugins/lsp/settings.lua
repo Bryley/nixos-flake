@@ -33,10 +33,10 @@ M.settings = function()
             },
             options = {
                 nixos = {
-                    expr = "(builtins.getFlake \"/home/bryley/nixos-flake\").nixosConfigurations.laptop.options",
+                    expr = '(builtins.getFlake "/home/bryley/nixos-flake").nixosConfigurations.laptop.options',
                 },
                 home_manager = {
-                    expr = "(builtins.getFlake \"/home/bryley/nixos-flake\").homeConfigurations.laptop.options",
+                    expr = '(builtins.getFlake "/home/bryley/nixos-flake").homeConfigurations.laptop.options',
                 },
             },
         },
@@ -112,12 +112,16 @@ M.settings = function()
         tailwindCSS = {
             includeLanguages = {
                 elm = "html",
+                rust = "html",
                 html = "html",
             },
             classAttributes = { "class", "className", "classList", "ngClass" },
             experimental = {
                 -- Include regex for ELM
                 classRegex = {
+                    -- For Rust
+                    'class: "(.*)"',
+                    -- For ELM:
                     -- TODO try and get multiline strings working
                     '\\bclass[\\s(<|]+"([^"]*)"',
                     '\\bclass[\\s(]+"[^"]*"[\\s+]+"([^"]*)"',
@@ -128,6 +132,7 @@ M.settings = function()
                     '\\bclassList[\\s\\[\\(]+"[^"]*",\\s[^\\)]+\\)[\\s\\[\\(,]+"([^"]*)"',
                     '\\bclassList[\\s\\[\\(]+"[^"]*",\\s[^\\)]+\\)[\\s\\[\\(,]+"[^"]*",\\s[^\\)]+\\)[\\s\\[\\(,]+"([^"]*)"',
                 },
+                configFile = 'src/tailwind.css',
             },
             lint = {
                 cssConflict = "warning",
@@ -145,7 +150,7 @@ M.settings = function()
                 -- Enable auto-import suggestions
                 autoImportCompletions = true,
                 autoSearchPaths = true,
-                diagnosticMode = 'workspace',
+                diagnosticMode = "workspace",
             },
             -- If needed, add extra paths (adjust the Python version as appropriate)
             -- extraPaths = { ".venv/lib/python3.11/site-packages" },
@@ -154,7 +159,7 @@ M.settings = function()
 end
 
 M.filetypes = {
-    tailwindcss = { "html", "elm", "jsx", "tsx" },
+    tailwindcss = { "html", "elm", "jsx", "tsx", "rust" },
     htmx = { "html", "htmldjango" },
 }
 
@@ -162,6 +167,7 @@ M.init_options = {
     tailwindcss = {
         userLanguages = {
             elm = "html",
+            rust = "html",
             html = "html",
         },
     },

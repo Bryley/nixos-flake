@@ -16,12 +16,80 @@ return {
             local quickfix_toggle_cmd =
                 "<cmd>if empty(filter(getwininfo(), 'v:val.quickfix')) | botright copen | else | cclose | endif<CR>"
 
+            local harpoon = require("harpoon")
+
             whichkey.add({
+                -- Harpoon
+                { "<leader>h", group = "Harpoon" },
+                {
+                    "<leader>ha",
+                    function()
+                        harpoon:list():add()
+                    end,
+                    desc = "Add file",
+                },
+                {
+                    "<leader>hh",
+                    function()
+                        harpoon.ui:toggle_quick_menu(harpoon:list())
+                    end,
+                    desc = "Toggle menu",
+                },
+                {
+                    "<leader>1",
+                    function()
+                        harpoon:list():select(1)
+                    end,
+                    desc = "Swap to Harpoon 1",
+                },
+                {
+                    "<leader>2",
+                    function()
+                        harpoon:list():select(2)
+                    end,
+                    desc = "Swap to Harpoon 2",
+                },
+                {
+                    "<leader>3",
+                    function()
+                        harpoon:list():select(3)
+                    end,
+                    desc = "Swap to Harpoon 3",
+                },
+                {
+                    "<leader>4",
+                    function()
+                        harpoon:list():select(4)
+                    end,
+                    desc = "Swap to Harpoon 4",
+                },
+                {
+                    "<leader>hp",
+                    function()
+                        harpoon:list():prev()
+                    end,
+                    desc = "Swap to previous harpoon",
+                },
+                {
+                    "<leader>hn",
+                    function()
+                        harpoon:list():next()
+                    end,
+                    desc = "Swap to next harpoon",
+                },
                 -- AI
                 { "<leader>a", group = "AI" },
                 { "<leader>aa", "<cmd>LLMSessionToggle<cr>", desc = "Open LLM Menu" },
-                { "<leader>ad", "<cmd>LLMAppHandler DocString<cr>", desc = "Generate docstring for given function" },
-                { "<leader>ao", "<cmd>LLMAppHandler OptimizeCode<cr>", desc = "Optimize Code using AI" },
+                {
+                    "<leader>ad",
+                    "<cmd>LLMAppHandler DocString<cr>",
+                    desc = "Generate docstring for given function",
+                },
+                {
+                    "<leader>ao",
+                    "<cmd>LLMAppHandler OptimizeCode<cr>",
+                    desc = "Optimize Code using AI",
+                },
                 -- Telescope (Find)
                 { "<leader>f", group = "Find" },
                 { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files" },
@@ -44,7 +112,11 @@ return {
                 { "<leader>c", group = "Colors" },
                 { "<leader>cp", "<cmd>CccPick<cr>", desc = "Color Picker" },
                 { "<leader>cc", "<cmd>CccConvert<cr>", desc = "Convert Color" },
-                { "<leader>ct", "<cmd>CccHighlighterToggle<cr>", desc = "Toggle Color Highlight" },
+                {
+                    "<leader>ct",
+                    "<cmd>CccHighlighterToggle<cr>",
+                    desc = "Toggle Color Highlight",
+                },
                 -- Table mode
                 { "<leader>t", group = "Table" },
                 { "<leader>tm", "<cmd>call tablemode#Toggle()<cr>", desc = "Toggle" },

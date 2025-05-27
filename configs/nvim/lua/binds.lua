@@ -32,6 +32,13 @@ keymap("n", "<A-L>", "<cmd>tabnext<cr>", opts)
 keymap("n", "<A-N>", "<cmd>tabnew<cr>", opts)
 keymap("n", "<A-C>", "<cmd>tabclose<cr>", opts)
 
+-- Toggle fold using enter key
+vim.keymap.set('n', '<CR>', 'za', {
+  noremap = true,
+  silent  = true,
+  desc    = "Toggle fold at cursor",
+})
+
 -- Close the window and current buffer
 vim.api.nvim_create_user_command('Q', 'execute "BufDel" | close', {})
 

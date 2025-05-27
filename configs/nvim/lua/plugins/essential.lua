@@ -127,5 +127,47 @@ return {
             require("textcase").setup({})
         end,
     },
+    {
+        -- Plugin for better file navigation
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        lazy = false,
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            local harpoon = require("harpoon")
+
+            harpoon:setup()
+
+            -- All these are setup in the whichkey configuration
+
+            -- vim.keymap.set("n", "<leader>ha", function()
+            --     harpoon:list():add()
+            -- end)
+            -- vim.keymap.set("n", "<leader>hh", function()
+            --     harpoon.ui:toggle_quick_menu(harpoon:list())
+            -- end)
+            --
+            -- vim.keymap.set("n", "<leader>1", function()
+            --     harpoon:list():select(1)
+            -- end)
+            -- vim.keymap.set("n", "<leader>2", function()
+            --     harpoon:list():select(2)
+            -- end)
+            -- vim.keymap.set("n", "<leader>3", function()
+            --     harpoon:list():select(3)
+            -- end)
+            -- vim.keymap.set("n", "<leader>4", function()
+            --     harpoon:list():select(4)
+            -- end)
+
+            -- Toggle previous & next buffers stored within Harpoon list
+            vim.keymap.set("n", "<A-h>", function()
+                harpoon:list():prev()
+            end)
+            vim.keymap.set("n", "<A-l>", function()
+                harpoon:list():next()
+            end)
+        end,
+    },
     -- TODO Terminal and Tmux integration
 }

@@ -46,19 +46,64 @@ return {
         },
     },
     {
+        -- Uses "yazi" file manager within neovim
+        "mikavilpas/yazi.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "folke/snacks.nvim",
+        },
+        keys = {
+            {
+                "<leader>-",
+                mode = { "n", "v" },
+                "<cmd>Yazi<cr>",
+                desc = "Open yazi at the current file",
+            },
+            {
+                -- Open in the current working directory
+                "<leader>cw",
+                "<cmd>Yazi cwd<cr>",
+                desc = "Open the file manager in nvim's working directory",
+            },
+        },
+        opts = {
+            -- if you want to open yazi instead of netrw, see below for more info
+            open_for_directories = false,
+            keymaps = {
+                show_help = "<f1>",
+            },
+        },
+    },
+    {
+        -- Integration between harpoon and bufferline
+        "BourbonBidet/Barpoon",
+        dependencies = {
+            {
+                "ThePrimeagen/harpoon",
+                branch = "harpoon2",
+            },
+
+            -- NOTE: Pick one
+            { "akinsho/bufferline.nvim" },
+        },
+        opts = {
+            key_labels = "1234",
+        }, -- Config here
+    },
+    {
         -- Shows buffers at the top of the screen
         "akinsho/bufferline.nvim",
         lazy = false,
         version = "*",
         dependencies = "nvim-tree/nvim-web-devicons",
-        keys = {
-            { "<A-h>", "<cmd>bprev<cr>",  mode = "n", desc = "Prev Buffer" },
-            { "<A-l>", "<cmd>bnext<cr>",  mode = "n", desc = "Next Buffer" },
-            { "<A-c>", "<cmd>BufDel<cr>", mode = "n", desc = "Close Buffer" },
-            { "<A-h>", "<cmd>bprev<cr>",  mode = "i", desc = "Prev Buffer" },
-            { "<A-l>", "<cmd>bnext<cr>",  mode = "i", desc = "Next Buffer" },
-            { "<A-c>", "<cmd>BufDel<cr>", mode = "i", desc = "Close Buffer" },
-        },
+        -- keys = {
+        --     { "<A-h>", "<cmd>bprev<cr>",  mode = "n", desc = "Prev Buffer" },
+        --     { "<A-l>", "<cmd>bnext<cr>",  mode = "n", desc = "Next Buffer" },
+        --     { "<A-c>", "<cmd>BufDel<cr>", mode = "n", desc = "Close Buffer" },
+        --     { "<A-h>", "<cmd>bprev<cr>",  mode = "i", desc = "Prev Buffer" },
+        --     { "<A-l>", "<cmd>bnext<cr>",  mode = "i", desc = "Next Buffer" },
+        --     { "<A-c>", "<cmd>BufDel<cr>", mode = "i", desc = "Close Buffer" },
+        -- },
         opts = {
             options = {
                 close_command = "BufDel! %d",
@@ -216,7 +261,7 @@ return {
     {
         "kristijanhusak/vim-dadbod-ui",
         dependencies = {
-            { "tpope/vim-dadbod",                     lazy = true },
+            { "tpope/vim-dadbod", lazy = true },
             { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
         },
         cmd = {

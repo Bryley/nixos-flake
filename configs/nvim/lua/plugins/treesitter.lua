@@ -10,6 +10,14 @@ return {
         build = ":TSUpdate",
         lazy = false,
         config = function()
+            -- Setup treesitter to setup folds
+            vim.opt.foldmethod = "expr"
+            vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            vim.opt.foldlevelstart = 99
+            vim.opt.foldnestmax = 1
+
+            vim.opt.foldtext = 'getline(v:foldstart) . " … " . (v:foldend - v:foldstart + 1) . " lines"'
+
             ---@diagnostic disable: missing-fields
             require("nvim-treesitter.configs").setup({
                 ensure_installed = "all",
@@ -17,6 +25,9 @@ return {
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = true,
+                },
+                indent = {
+                    enable = true,
                 },
                 textobjects = {
                     select = {

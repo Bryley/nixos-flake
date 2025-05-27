@@ -101,6 +101,7 @@ return {
                 { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
                 { "<leader>fC", "<cmd>Telescope commands<cr>", desc = "Commands" },
                 { "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "Jumplist" },
+                { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
                 -- LSP
                 { "<leader>l", group = "LSP" },
                 { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },

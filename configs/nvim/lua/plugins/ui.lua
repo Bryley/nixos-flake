@@ -57,13 +57,12 @@ return {
                 "<leader>-",
                 mode = { "n", "v" },
                 "<cmd>Yazi<cr>",
-                desc = "Open yazi at the current file",
+                desc = "Yazi file manager on file",
             },
             {
-                -- Open in the current working directory
-                "<leader>cw",
+                "<leader>=",
                 "<cmd>Yazi cwd<cr>",
-                desc = "Open the file manager in nvim's working directory",
+                desc = "Yazi file manager on project",
             },
         },
         opts = {

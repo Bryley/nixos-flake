@@ -40,6 +40,7 @@ let
     aerc # Modern email client TUI
 
     neovim # Text Editor
+    yazi # File selector TUI (used within neovim)
     sc-im # Vim-like spreadsheet editor
     nushell # Modern shell
     carapace # Command line autocompletion

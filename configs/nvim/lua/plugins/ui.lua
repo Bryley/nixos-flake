@@ -4,47 +4,47 @@ return {
         "stevearc/dressing.nvim",
         config = true,
     },
-    {
-        -- File tree plugin
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-            {
-                "s1n7ax/nvim-window-picker",
-                opts = {
-                    selection_chars = "ABCDEFGHIJKLMNOP",
-                    filter_rules = {
-                        -- filter using buffer options
-                        bo = {
-                            -- if the file type is one of following, the window will be ignored
-                            filetype = { "neo-tree", "neo-tree-popup", "notify" },
-                            -- if the buffer type is one of following, the window will be ignored
-                            buftype = { "terminal", "quickfix" },
-                        },
-                    },
-                },
-            },
-        },
-        keys = {
-            { "<F2>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
-        },
-        opts = {
-            close_if_last_window = true,
-            window = {
-                mappings = {
-                    ["<space>"] = function() end,
-                    ["<cr>"] = "open_with_window_picker",
-                    ["o"] = "open_with_window_picker",
-                    ["S"] = "split_with_window_picker",
-                    ["s"] = "vsplit_with_window_picker",
-                },
-            },
-        },
-    },
+    -- {
+    --     -- File tree plugin
+    --     "nvim-neo-tree/neo-tree.nvim",
+    --     branch = "v3.x",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    --         "MunifTanjim/nui.nvim",
+    --         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    --         {
+    --             "s1n7ax/nvim-window-picker",
+    --             opts = {
+    --                 selection_chars = "ABCDEFGHIJKLMNOP",
+    --                 filter_rules = {
+    --                     -- filter using buffer options
+    --                     bo = {
+    --                         -- if the file type is one of following, the window will be ignored
+    --                         filetype = { "neo-tree", "neo-tree-popup", "notify" },
+    --                         -- if the buffer type is one of following, the window will be ignored
+    --                         buftype = { "terminal", "quickfix" },
+    --                     },
+    --                 },
+    --             },
+    --         },
+    --     },
+    --     keys = {
+    --         { "<F2>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
+    --     },
+    --     opts = {
+    --         close_if_last_window = true,
+    --         window = {
+    --             mappings = {
+    --                 ["<space>"] = function() end,
+    --                 ["<cr>"] = "open_with_window_picker",
+    --                 ["o"] = "open_with_window_picker",
+    --                 ["S"] = "split_with_window_picker",
+    --                 ["s"] = "vsplit_with_window_picker",
+    --             },
+    --         },
+    --     },
+    -- },
     {
         -- Uses "yazi" file manager within neovim
         "mikavilpas/yazi.nvim",
@@ -229,7 +229,7 @@ return {
 
             dashboard.section.buttons.val = {
                 dashboard.button("<F1>", "Last Session"),
-                dashboard.button("<F2>", "Open File Explorer"),
+                dashboard.button("SPC =", "Open File Explorer"),
                 dashboard.button("e", "New file", "<cmd>ene <CR>"),
                 dashboard.button("SPC f f", "Find file"),
                 dashboard.button("SPC f g", "Grep search"),

@@ -57,6 +57,7 @@ let
     dbeaver-bin # Database GUI
     obsidian # Note taking
     ngrok # Quick servers
+    surrealdb # SurrealDB cli tool
     surrealist # GUI for connecting to SurrealDB databases
 
     kubectl # Kubernetes CLI

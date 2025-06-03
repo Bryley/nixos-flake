@@ -35,5 +35,9 @@ in
       source = config.lib.file.mkOutOfStoreSymlink
         "${config.home.homeDirectory}/nixos-flake/configs/neomutt/mbsyncrc";
     };
+    ".config/qutebrowser" = {
+      source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/nixos-flake/configs/qutebrowser";
+    };
   };
 }

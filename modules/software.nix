@@ -80,6 +80,7 @@ let
     # TODO get this plugin system working
     # hyprlandPlugins.hyprsplit # Plugin for better workspace management
     # inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # Cursor theme
+    qutebrowser # Vim-like declarative browser
     inputs.zen-browser.packages."${system}".default # Web browser # TODO update when in nixpkgs
   ];
 

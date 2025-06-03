@@ -101,12 +101,12 @@ c.content.pdfjs = True
 ## Type: String
 # c.downloads.open_dispatcher = None
 
-## Where to show the downloaded files.
-## Type: VerticalPosition
-## Valid values:
-##   - top
-##   - bottom
-# c.downloads.position = 'top'
+# Where to show the downloaded files.
+# Type: VerticalPosition
+# Valid values:
+#   - top
+#   - bottom
+c.downloads.position = 'bottom'
 
 ## Automatically abort insecure (HTTP) downloads originating from secure
 ## (HTTPS) pages. For per-domain settings, the relevant URL is the URL

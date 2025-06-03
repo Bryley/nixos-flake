@@ -28,11 +28,12 @@ let
     pavucontrol # Sound GUI application
     brightnessctl # Control screen brightness
     virtualgl # Some GPU commands `glxinfo` for instance
-    (python310.withPackages (
+    (python313.withPackages (
       ps: with ps; [
         rich
         virtualenv
         pyyaml
+        adblock
       ]
     )) # Python 3.10
     bitwarden-cli # Password manager cli

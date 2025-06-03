@@ -36,6 +36,7 @@ let
         adblock
       ]
     )) # Python 3.10
+    bitwarden-desktop # Password manager desktop application
     bitwarden-cli # Password manager cli
     isync # Mail server syncing
     aerc # Modern email client TUI

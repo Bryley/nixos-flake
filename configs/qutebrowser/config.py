@@ -85,6 +85,30 @@ c.colors.webpage.bg = '#212121'
 ##   - dark: Force a dark theme.
 # c.colors.webpage.preferred_color_scheme = 'dark'
 
+c.content.autoplay = False
+
+c.content.blocking.method = 'adblock'
+c.content.blocking.adblock.lists = [
+        "https://easylist.to/easylist/easylist.txt",
+        "https://easylist.to/easylist/easyprivacy.txt",
+        "https://easylist.to/easylist/fanboy-social.txt",
+        "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
+        "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt",
+        #"https://gitlab.com/curben/urlhaus-filter/-/raw/master/urlhaus-filter.txt",
+        "https://pgl.yoyo.org/adservers/serverlist.php?showintro=0;hostformat=hosts",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
+        "https://www.i-dont-care-about-cookies.eu/abp/",
+        "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
+
 c.completion.quick = False
 
 ## Display PDF files via PDF.js in the browser without showing a download
@@ -918,9 +942,7 @@ c.fonts.default_size = '15pt'
 ##   - last: At the end.
 # c.tabs.new_position.unrelated = 'last'
 
-## Padding (in pixels) around text for tabs.
-## Type: Padding
-# c.tabs.padding = {'top': 0, 'bottom': 0, 'left': 5, 'right': 5}
+c.tabs.padding = {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}
 
 ## Force pinned tabs to stay at fixed URL.
 ## Type: Bool
@@ -930,14 +952,7 @@ c.fonts.default_size = '15pt'
 ## Type: Bool
 # c.tabs.pinned.shrink = True
 
-## Position of the tab bar.
-## Type: Position
-## Valid values:
-##   - top
-##   - bottom
-##   - left
-##   - right
-# c.tabs.position = 'top'
+c.tabs.position = 'left'
 
 ## Which tab to select when the focused tab is removed.
 ## Type: SelectOnRemove
@@ -996,7 +1011,7 @@ c.fonts.default_size = '15pt'
 ## web page. * `{protocol}`: Protocol (http/https/...) of the current web
 ## page. * `{audio}`: Indicator for audio/mute status.
 ## Type: FormatString
-# c.tabs.title.format = '{audio}{index}: {current_title}'
+c.tabs.title.format = ''
 
 ## Format to use for the tab title for pinned tabs. The same placeholders
 ## like for `tabs.title.format` are defined.
@@ -1013,10 +1028,7 @@ c.fonts.default_size = '15pt'
 ## Type: Int
 # c.tabs.undo_stack_size = 100
 
-## Width (in pixels or as percentage of the window) of the tab bar if
-## it's vertical.
-## Type: PercOrInt
-# c.tabs.width = '15%'
+c.tabs.width = 40
 
 ## Wrap when changing tabs.
 ## Type: Bool

@@ -158,3 +158,8 @@ $env.EDITOR = "nvim"
 $env.PATH = ($env.PATH | split row (char esep) | prepend '~/.config/hypr/wallpapers/')
 
 $env.PATH = ($env.PATH | prepend '/opt/homebrew/opt/mysql/bin')
+
+
+if ('~/nixos-flake/configs/nushell/secret.nu' | path exists) {
+    source ~/nixos-flake/configs/nushell/secret.nu
+}

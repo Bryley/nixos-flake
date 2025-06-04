@@ -10,7 +10,8 @@
 ##   qute://help/configuring.html
 ##   qute://help/settings.html
 
-from typing import Any
+
+import platform
 
 
 c = c
@@ -23,6 +24,10 @@ config.load_autoconfig(False)
 config.bind('<Ctrl-R>', 'config-source')
 
 c.auto_save.session = True
+
+############
+## STYLES ##
+############
 
 c.colors.completion.category.bg = '#555555'
 c.colors.completion.category.border.bottom = '#22222250'
@@ -61,6 +66,8 @@ c.colors.tabs.selected.odd.bg = '#373737'
 
 c.colors.webpage.bg = '#212121'
 
+
+
 # config.bind('<Space>d', 'config-cycle colors.webpage.darkmode.enabled')
 
 ## Render all web contents using a dark theme. On QtWebEngine < 6.7, this
@@ -89,27 +96,37 @@ c.content.autoplay = False
 
 c.content.blocking.method = 'adblock'
 c.content.blocking.adblock.lists = [
-        "https://easylist.to/easylist/easylist.txt",
-        "https://easylist.to/easylist/easyprivacy.txt",
-        "https://easylist.to/easylist/fanboy-social.txt",
-        "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
-        "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt",
-        #"https://gitlab.com/curben/urlhaus-filter/-/raw/master/urlhaus-filter.txt",
-        "https://pgl.yoyo.org/adservers/serverlist.php?showintro=0;hostformat=hosts",
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
-        "https://www.i-dont-care-about-cookies.eu/abp/",
-        "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
+    "https://easylist.to/easylist/easylist.txt",
+    "https://easylist.to/easylist/easyprivacy.txt",
+    "https://easylist.to/easylist/fanboy-social.txt",
+    "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
+    "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt",
+    "https://pgl.yoyo.org/adservers/serverlist.php?showintro=0;hostformat=hosts",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
+    "https://www.i-dont-care-about-cookies.eu/abp/",
+    "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"
+]
 
 c.completion.quick = False
+
+# TODO create own password extension
+# Load password managers
+if platform.system() == 'Darwin':
+    # Work uses 1password
+    config.bind('<Space>p', 'spawn --userscript 1pass')
+else:
+    # Bitwarden for personal
+    config.bind('<Space>p', 'spawn --userscript bitwarden')
+
 
 ## Display PDF files via PDF.js in the browser without showing a download
 ## prompt. Note that the files can still be downloaded by clicking the
@@ -119,17 +136,6 @@ c.completion.quick = False
 ## Type: Bool
 c.content.pdfjs = True
 
-## Default program used to open downloads. If null, the default internal
-## handler is used. Any `{}` in the string will be expanded to the
-## filename, else the filename will be appended.
-## Type: String
-# c.downloads.open_dispatcher = None
-
-# Where to show the downloaded files.
-# Type: VerticalPosition
-# Valid values:
-#   - top
-#   - bottom
 c.downloads.position = 'bottom'
 
 ## Automatically abort insecure (HTTP) downloads originating from secure

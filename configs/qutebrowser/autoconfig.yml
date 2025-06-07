@@ -6,23 +6,5 @@
 
 config_version: 2
 settings:
-  tabs.indicator.padding:
-    global:
-      bottom: 2
-      left: 0
-      right: 4
-      top: 2
-  tabs.padding:
-    global:
-      bottom: 5
-      left: 5
-      right: 5
-      top: 5
-  tabs.position:
-    global: left
-  tabs.title.elide:
-    global: right
-  tabs.title.format:
-    global: null
-  tabs.width:
-    global: 40
+  content.notifications.enabled:
+    https://www.youtube.com: false

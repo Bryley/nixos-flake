@@ -183,7 +183,6 @@ in
           bigclock = true;
         };
       };
-
     };
 
     # Hyprland
@@ -191,6 +190,33 @@ in
     # environment.sessionVariables = lib.mkIf cfg.includeHyprland {
     #   HYPRLAND_PLUGINS = "${pkgs.hyprlandPlugins.hyprsplit}/lib/hyprland/plugins";
     # };
+
+    xdg.portal = {
+      enable = lib.mkIf cfg.includeHyprland true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk # portal that reads your dconf dark-mode setting
+      ];
+    };
+
+    programs.dconf = {
+      enable = lib.mkIf cfg.includeHyprland true;
+
+      # 2. Add a “user” profile that writes our override
+      profiles.user.databases = [
+        {
+          # lockAll = true prevents any other tool from overriding
+          lockAll = true;
+
+          # these are the GSettings paths → values
+          settings = {
+            "org/gnome/desktop/interface" = {
+              # possible values: "default" | "prefer-light" | "prefer-dark"
+              color-scheme = "prefer-dark";
+            };
+          };
+        }
+      ];
+    };
 
     # Personal
     programs.steam.enable = lib.mkIf cfg.includePersonal true;

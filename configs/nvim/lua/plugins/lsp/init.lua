@@ -26,6 +26,7 @@ local LSP_SERVERS = {
     "tailwindcss", -- Tailwind
     "nushell", -- Nushell
     "nixd", -- Nix
+    "qmlls", -- QML language
     -- "nil_ls", -- Nix
     -- "vtsls", -- Typescript
     -- "ts_ls", -- Typescript
@@ -95,6 +96,7 @@ return {
                         settings = settings.settings(),
                         filetypes = settings.filetypes[value],
                         init_options = settings.init_options[value],
+                        cmd = settings.cmds[value],
                     })
                 else
                     value()

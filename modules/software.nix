@@ -79,6 +79,7 @@ let
     wofi # App launcher
     rose-pine-hyprcursor # Cursor theme
     lxqt.lxqt-policykit # Polkit Authentication Agent
+    inputs.quickshell.packages."${system}".default
     # TODO get this plugin system working
     # hyprlandPlugins.hyprsplit # Plugin for better workspace management
     # inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # Cursor theme

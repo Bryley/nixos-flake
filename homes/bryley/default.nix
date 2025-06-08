@@ -1,7 +1,6 @@
 { inputs, pkgs, username, fullName, email, ... }:
 {
   imports = [
-    inputs.ags.homeManagerModules.default
     ./files.nix
   ];
 
@@ -35,11 +34,6 @@
 
     hyprlock.enable = true;
 
-    ags = {
-      enable = true;
-      configDir = ../../configs/ags;
-    };
-
     direnv = {
       enable = true;
       enableNushellIntegration = true;
@@ -69,6 +63,7 @@
         rust-analyzer
         tailwindcss-language-server
         yaml-language-server
+        kdePackages.qtdeclarative # For qmlls
         # TODO add `vtsls` for typescript LSP (Add when https://github.com/NixOS/nixpkgs/pull/319501 request is done)
         typescript
         typescript-language-server

@@ -173,4 +173,11 @@ M.init_options = {
     },
 }
 
+M.cmds = {
+    qmlls = {
+        "qmlls",
+        "-E",
+    }
+}
+
 return M

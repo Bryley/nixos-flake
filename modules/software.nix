@@ -119,7 +119,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
     # Needed for obsidian
     nixpkgs.config.allowUnfree = true;
 
@@ -198,6 +197,8 @@ in
         xdg-desktop-portal-gtk # portal that reads your dconf dark-mode setting
       ];
     };
+
+    qt.enable = lib.mkIf cfg.includeHyprland true;
 
     programs.dconf = {
       enable = lib.mkIf cfg.includeHyprland true;

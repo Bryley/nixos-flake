@@ -39,5 +39,9 @@ in
       source = config.lib.file.mkOutOfStoreSymlink
         "${config.home.homeDirectory}/nixos-flake/configs/qutebrowser";
     };
+    ".config/quickshell" = {
+      source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/nixos-flake/configs/quickshell";
+    };
   };
 }

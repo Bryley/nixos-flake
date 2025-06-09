@@ -132,7 +132,7 @@ M.settings = function()
                     '\\bclassList[\\s\\[\\(]+"[^"]*",\\s[^\\)]+\\)[\\s\\[\\(,]+"([^"]*)"',
                     '\\bclassList[\\s\\[\\(]+"[^"]*",\\s[^\\)]+\\)[\\s\\[\\(,]+"[^"]*",\\s[^\\)]+\\)[\\s\\[\\(,]+"([^"]*)"',
                 },
-                configFile = 'src/tailwind.css',
+                configFile = "src/tailwind.css",
             },
             lint = {
                 cssConflict = "warning",
@@ -159,25 +159,25 @@ M.settings = function()
 end
 
 M.filetypes = {
-    tailwindcss = { "html", "elm", "jsx", "tsx", "rust" },
+    tailwindcss = { "html", "rust", "elm", "jsx", "tsx", "css" },
     htmx = { "html", "htmldjango" },
 }
 
 M.init_options = {
-    tailwindcss = {
-        userLanguages = {
-            elm = "html",
-            rust = "html",
-            html = "html",
-        },
-    },
+    -- tailwindcss = {
+    --     userLanguages = {
+    --         elm = "html",
+    --         rust = "html",
+    --         html = "html",
+    --     },
+    -- },
 }
 
 M.cmds = {
     qmlls = {
         "qmlls",
         "-E",
-    }
+    },
 }
 
 return M

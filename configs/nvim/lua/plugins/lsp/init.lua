@@ -27,9 +27,7 @@ local LSP_SERVERS = {
     "nushell", -- Nushell
     "nixd", -- Nix
     "qmlls", -- QML language
-    -- "nil_ls", -- Nix
     -- "vtsls", -- Typescript
-    -- "ts_ls", -- Typescript
     "ltex", -- Latex and markdown
     "gopls", -- Golang lsp
 }
@@ -55,6 +53,7 @@ local LINTERS = {
         "mdformat", -- Markdown
         "prettier", -- HTML, JS and more
         "stylua", -- Lua
+        "dxfmt", -- Dioxus formatting for rsx macros
     },
     hover = {
         "printenv", -- Prints env under cursor

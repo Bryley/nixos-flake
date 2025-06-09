@@ -49,7 +49,9 @@
         gcc
         curl
         pkg-config
-        openssl_3
+        # openssl_3
+        openssl
+
         # LSPs
         elmPackages.elm-language-server
         helm-ls

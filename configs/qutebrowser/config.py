@@ -21,7 +21,7 @@ config = config
 ## Remove it to not load settings done via the GUI.
 config.load_autoconfig(False)
 
-config.bind('<Ctrl-R>', 'config-source')
+config.bind("<Ctrl-R>", "config-source")
 
 c.auto_save.session = True
 
@@ -29,43 +29,42 @@ c.auto_save.session = True
 ## STYLES ##
 ############
 
-c.colors.completion.category.bg = '#555555'
-c.colors.completion.category.border.bottom = '#22222250'
-c.colors.completion.category.border.top = '#22222250'
+c.colors.completion.category.bg = "#555555"
+c.colors.completion.category.border.bottom = "#22222250"
+c.colors.completion.category.border.top = "#22222250"
 
-c.colors.completion.item.selected.bg = '#3498DB'
-c.colors.completion.item.selected.border.bottom = '#00000000'
-c.colors.completion.item.selected.border.top = '#00000000'
+c.colors.completion.item.selected.bg = "#3498DB"
+c.colors.completion.item.selected.border.bottom = "#00000000"
+c.colors.completion.item.selected.border.top = "#00000000"
 
-c.colors.completion.item.selected.fg = 'white'
+c.colors.completion.item.selected.fg = "white"
 
 # TODO downloads bar styling
 
-c.colors.messages.error.bg = '#f8d7da50'
-c.colors.messages.error.border = '#f5c6cb'
-c.colors.messages.error.fg = '#721c24'
+c.colors.messages.error.bg = "#f8d7da50"
+c.colors.messages.error.border = "#f5c6cb"
+c.colors.messages.error.fg = "#721c24"
 
-c.colors.messages.info.bg = '#cce5ff50'
-c.colors.messages.info.border = '#b8daff'
-c.colors.messages.info.fg = '#004085'
+c.colors.messages.info.bg = "#cce5ff50"
+c.colors.messages.info.border = "#b8daff"
+c.colors.messages.info.fg = "#004085"
 
-c.colors.messages.warning.bg = '#fff3cd50'
-c.colors.messages.warning.border = '#ffeeba'
-c.colors.messages.warning.fg = '#856404'
+c.colors.messages.warning.bg = "#fff3cd50"
+c.colors.messages.warning.border = "#ffeeba"
+c.colors.messages.warning.fg = "#856404"
 
-c.colors.statusbar.command.bg = '#444444'
+c.colors.statusbar.command.bg = "#444444"
 
-c.colors.statusbar.normal.bg = '#1C1C1C'
+c.colors.statusbar.normal.bg = "#1C1C1C"
 
-c.colors.tabs.bar.bg = '#1C1C1C'
-c.colors.tabs.even.bg = '#1C1C1C'
-c.colors.tabs.odd.bg = '#1C1C1C'
+c.colors.tabs.bar.bg = "#1C1C1C"
+c.colors.tabs.even.bg = "#1C1C1C"
+c.colors.tabs.odd.bg = "#1C1C1C"
 
-c.colors.tabs.selected.even.bg = '#373737'
-c.colors.tabs.selected.odd.bg = '#373737'
+c.colors.tabs.selected.even.bg = "#373737"
+c.colors.tabs.selected.odd.bg = "#373737"
 
-c.colors.webpage.bg = '#212121'
-
+# c.colors.webpage.bg = '#212121'
 
 
 # config.bind('<Space>d', 'config-cycle colors.webpage.darkmode.enabled')
@@ -94,7 +93,7 @@ c.colors.webpage.bg = '#212121'
 
 c.content.autoplay = False
 
-c.content.blocking.method = 'adblock'
+c.content.blocking.method = "adblock"
 c.content.blocking.adblock.lists = [
     "https://easylist.to/easylist/easylist.txt",
     "https://easylist.to/easylist/easyprivacy.txt",
@@ -113,19 +112,19 @@ c.content.blocking.adblock.lists = [
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
     "https://www.i-dont-care-about-cookies.eu/abp/",
     "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
-    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt",
 ]
 
 c.completion.quick = False
 
 # TODO create own password extension
 # Load password managers
-if platform.system() == 'Darwin':
+if platform.system() == "Darwin":
     # Work uses 1password
-    config.bind('<Space>p', 'spawn --userscript 1pass')
+    config.bind("<Space>p", "spawn --userscript 1pass")
 else:
     # Bitwarden for personal
-    config.bind('<Space>p', 'spawn --userscript bitwarden')
+    config.bind("<Space>p", "spawn --userscript bitwarden")
 
 
 ## Display PDF files via PDF.js in the browser without showing a download
@@ -136,7 +135,7 @@ else:
 ## Type: Bool
 c.content.pdfjs = True
 
-c.downloads.position = 'bottom'
+c.downloads.position = "bottom"
 
 ## Automatically abort insecure (HTTP) downloads originating from secure
 ## (HTTPS) pages. For per-domain settings, the relevant URL is the URL
@@ -231,7 +230,7 @@ c.downloads.position = 'bottom'
 ## either a float value with a "pt" suffix, or an integer value with a
 ## "px" suffix.
 ## Type: String
-c.fonts.default_size = '15pt'
+c.fonts.default_size = "15pt"
 
 ## Font used for the downloadbar.
 ## Type: Font
@@ -948,7 +947,7 @@ c.fonts.default_size = '15pt'
 ##   - last: At the end.
 # c.tabs.new_position.unrelated = 'last'
 
-c.tabs.padding = {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}
+c.tabs.padding = {"top": 5, "bottom": 5, "left": 5, "right": 5}
 
 ## Force pinned tabs to stay at fixed URL.
 ## Type: Bool
@@ -958,7 +957,7 @@ c.tabs.padding = {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}
 ## Type: Bool
 # c.tabs.pinned.shrink = True
 
-c.tabs.position = 'left'
+c.tabs.position = "left"
 
 ## Which tab to select when the focused tab is removed.
 ## Type: SelectOnRemove
@@ -1017,7 +1016,7 @@ c.tabs.position = 'left'
 ## web page. * `{protocol}`: Protocol (http/https/...) of the current web
 ## page. * `{audio}`: Indicator for audio/mute status.
 ## Type: FormatString
-c.tabs.title.format = ''
+c.tabs.title.format = ""
 
 ## Format to use for the tab title for pinned tabs. The same placeholders
 ## like for `tabs.title.format` are defined.
@@ -1052,7 +1051,7 @@ c.tabs.width = 40
 ## Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 ## for a blank page.
 ## Type: FuzzyUrl
-c.url.default_page = 'https://search.brave.com/'
+c.url.default_page = "https://www.google.com"
 
 ## URL segments where `:navigate increment/decrement` will search for a
 ## number.
@@ -1090,16 +1089,17 @@ c.url.default_page = 'https://search.brave.com/'
 ## qutebrowser`.
 ## Type: Dict
 c.url.searchengines = {
-    'DEFAULT': 'https://search.brave.com/search?q={}',
-    '!gh': 'https://github.com/search?o=desc&q={}&s=stars',
-    '!nix': 'https://search.nixos.org/packages?channel=unstable&query={}',
-    '!dr': 'https://docs.rs/releases/search?query={}',
-    '!crates': 'https://crates.io/search?q={}',
+    "DEFAULT": "https://www.google.com/search?q={}",
+    "!brave": "https://search.brave.com/search?q={}",
+    "!gh": "https://github.com/search?o=desc&q={}&s=stars",
+    "!nix": "https://search.nixos.org/packages?channel=unstable&query={}",
+    "!dr": "https://docs.rs/releases/search?query={}",
+    "!crates": "https://crates.io/search?q={}",
 }
 
 ## Page(s) to open at the start.
 ## Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = ['https://search.brave.com']
+c.url.start_pages = ["https://www.google.com"]
 
 ## URL parameters to strip when yanking a URL.
 ## Type: List of String
@@ -1397,10 +1397,10 @@ c.window.hide_decoration = True
 # config.bind('<Up>', 'completion-item-focus --history prev', mode='command')
 
 # Bind Ctrl-N to “move to next item” in any completion command popup
-config.bind('<ctrl-n>', 'completion-item-focus next', mode='command')
+config.bind("<ctrl-n>", "completion-item-focus next", mode="command")
 
 # Bind Ctrl-P to “move to previous item” in any completion command popup
-config.bind('<ctrl-p>', 'completion-item-focus prev', mode='command')
+config.bind("<ctrl-p>", "completion-item-focus prev", mode="command")
 
 ## Bindings for hint mode
 # config.bind('<Ctrl-B>', 'hint all tab-bg', mode='hint')

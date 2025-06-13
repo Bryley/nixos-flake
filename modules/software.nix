@@ -91,6 +91,12 @@ let
     prismlauncher
   ];
 
+  virtualMachinePkgs = with pkgs; [
+    qemu_kvm
+    libvirt
+    virt-manager
+  ];
+
   cfg = config.modules.software;
 in
 {
@@ -116,6 +122,12 @@ in
       default = true;
       description = "Adds personal packages like steam";
     };
+
+    includeVirtualMachine = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Inlcude KVM virtual machine support";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -126,7 +138,8 @@ in
       requiredPkgs
       ++ lib.optionals cfg.includeWork workPkgs
       ++ lib.optionals cfg.includeHyprland hyprlandPkgs
-      ++ lib.optionals cfg.includePersonal personalPkgs;
+      ++ lib.optionals cfg.includePersonal personalPkgs
+      ++ lib.optionals cfg.includeVirtualMachine virtualMachinePkgs;
 
     # Required Services
     services.openssh.enable = true;
@@ -183,6 +196,12 @@ in
           bigclock = true;
         };
       };
+    };
+
+    virtualisation.libvirtd.enable = lib.mkIf cfg.includeVirtualMachine true;
+
+    users.groups.libvirtd = lib.mkIf cfg.includeVirtualMachine {
+      members = [ "bryley" ];
     };
 
     # Hyprland

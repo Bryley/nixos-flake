@@ -31,6 +31,8 @@
     };
   };
 
+  modules.software.includeVirtualMachine = true;
+
   # # TODO get working: Setup login screen
   # services.displayManager = {
   #   enable = true;

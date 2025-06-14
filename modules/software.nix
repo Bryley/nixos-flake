@@ -144,6 +144,15 @@ in
     # Required Services
     services.openssh.enable = true;
 
+    programs.ssh = {
+      startAgent = true;
+      extraConfig = ''
+        AddKeysToAgent yes
+        IdentitiesOnly yes
+      '';
+    };
+
+
     fonts.packages = with pkgs; [
       nerd-fonts.hack
       nerd-fonts.ubuntu

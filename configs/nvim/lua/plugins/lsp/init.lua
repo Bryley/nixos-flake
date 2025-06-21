@@ -30,7 +30,7 @@ local LSP_SERVERS = {
     -- "vtsls", -- Typescript
     "ltex", -- Latex and markdown
     "gopls", -- Golang lsp
-    "emmet-ls", -- HTML expanding things like 'ul>li.item$*5'
+    "emmet_ls", -- HTML expanding things like 'ul>li.item$*5'
 }
 
 -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md

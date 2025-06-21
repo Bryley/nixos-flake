@@ -24,6 +24,7 @@ let
     jq # JSON parser for command line
     usbutils # USB tools like `lsusb`
     evince # PDF viewer
+    nmap # Network port scanner
     xournalpp # PDF editor
     pavucontrol # Sound GUI application
     brightnessctl # Control screen brightness
@@ -142,7 +143,9 @@ in
       ++ lib.optionals cfg.includeVirtualMachine virtualMachinePkgs;
 
     # Required Services
-    services.openssh.enable = true;
+    services.openssh = {
+      enable = true;
+    };
 
     programs.ssh = {
       startAgent = true;
@@ -151,7 +154,6 @@ in
         IdentitiesOnly yes
       '';
     };
-
 
     fonts.packages = with pkgs; [
       nerd-fonts.hack

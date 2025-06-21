@@ -30,6 +30,7 @@ local LSP_SERVERS = {
     -- "vtsls", -- Typescript
     "ltex", -- Latex and markdown
     "gopls", -- Golang lsp
+    "emmet-ls", -- HTML expanding things like 'ul>li.item$*5'
 }
 
 -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md
@@ -42,6 +43,7 @@ local LINTERS = {
     },
     diagnostics = {
         "statix", -- Nix
+        "djlint", -- HTML templates
     },
     formatting = {
         -- "nixpkgs_fmt", -- Nix
@@ -54,6 +56,7 @@ local LINTERS = {
         "prettier", -- HTML, JS and more
         "stylua", -- Lua
         "dxfmt", -- Dioxus formatting for rsx macros
+        "djlint", -- HTML templates
     },
     hover = {
         "printenv", -- Prints env under cursor

@@ -69,6 +69,7 @@
         # TODO add `vtsls` for typescript LSP (Add when https://github.com/NixOS/nixpkgs/pull/319501 request is done)
         typescript
         typescript-language-server
+        emmet-ls
 
         # Formatters/Linters
         biome
@@ -80,6 +81,7 @@
         nodePackages.prettier
         statix
         stylua
+        djlint
       ];
     };
   };

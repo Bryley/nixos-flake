@@ -119,6 +119,7 @@ M.settings = function()
             experimental = {
                 -- Include regex for ELM
                 classRegex = {
+                    'class="(.*)"', -- HTML
                     -- For Rust
                     'class: "(.*)"',
                     -- For ELM:
@@ -161,6 +162,7 @@ end
 M.filetypes = {
     tailwindcss = { "html", "rust", "elm", "jsx", "tsx", "css" },
     htmx = { "html", "htmldjango" },
+    ltex = { "markdown", "txt" }
 }
 
 M.init_options = {

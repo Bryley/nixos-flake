@@ -1,6 +1,7 @@
 {
   description = "Bryley's 2024 NixOS Configuration";
 
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {

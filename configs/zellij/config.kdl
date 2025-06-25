@@ -26,6 +26,9 @@ keybinds clear-defaults=true {
         bind "Up" { MovePane "Up"; }
         bind "Right" { MovePane "Right"; }
 
+        bind "=" "+" { Resize "Increase"; }
+        bind "-" { Resize "Decrease"; }
+
         // Tabs
         bind "t" { NewTab {
             cwd "~"

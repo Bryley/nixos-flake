@@ -258,6 +258,7 @@ return {
         end,
     },
     {
+        -- UI for vim dadbod which is a SQL TUI in Neovim
         "kristijanhusak/vim-dadbod-ui",
         dependencies = {
             { "tpope/vim-dadbod", lazy = true },
@@ -270,8 +271,12 @@ return {
             "DBUIFindBuffer",
         },
         init = function()
-            -- Your DBUI configuration
             vim.g.db_ui_use_nerd_fonts = 1
+            vim.g.db_ui_table_helpers = {
+               mysql = {
+                 List = 'SELECT * FROM `{dbname}`.`{table}` LIMIT 200;';
+               };
+             };
         end,
     },
     {

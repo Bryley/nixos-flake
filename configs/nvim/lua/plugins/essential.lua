@@ -169,5 +169,11 @@ return {
             end)
         end,
     },
+    {
+        "m4xshen/hardtime.nvim",
+        lazy = false,
+        dependencies = { "MunifTanjim/nui.nvim" },
+        opts = {},
+    },
     -- TODO Terminal and Tmux integration
 }

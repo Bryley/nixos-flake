@@ -19,7 +19,7 @@
 
     # Needed for best performance with wifi card
     kernelModules = [ "iwlwifi" ];
-    kernelParams = [ "iwlwifi.11n_disable=1" "iwlwifi.swcrypto=1" ];
+    kernelParams = [ "iwlwifi.11n_disable=1" "iwlwifi.swcrypto=1" "kvm-intel" ];
   };
 
   modules.nvidia = {
@@ -30,6 +30,8 @@
       nvidiaPci = "1:0:0";
     };
   };
+
+  modules.software.includeVirtualMachine = true;
 
   # # TODO get working: Setup login screen
   # services.displayManager = {

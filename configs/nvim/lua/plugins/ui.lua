@@ -273,10 +273,10 @@ return {
         init = function()
             vim.g.db_ui_use_nerd_fonts = 1
             vim.g.db_ui_table_helpers = {
-               mysql = {
-                 List = 'SELECT * FROM `{dbname}`.`{table}` LIMIT 200;';
-               };
-             };
+                mysql = {
+                    List = "SELECT * FROM `{dbname}`.`{table}` LIMIT 200;",
+                },
+            }
         end,
     },
     {
@@ -311,7 +311,7 @@ return {
                     { ccc.picker.hex, ccc.output.css_rgb },
                     { ccc.picker.css_rgb, ccc.output.css_oklch },
                     { ccc.picker.css_oklch, ccc.output.hex },
-                }
+                },
             })
         end,
     },
@@ -341,5 +341,12 @@ return {
                 },
             })
         end,
+    },
+    {
+        -- Basic speed typing inside neovim
+        "nvzone/typr",
+        dependencies = "nvzone/volt",
+        opts = {},
+        cmd = { "Typr", "TyprStats" },
     },
 }

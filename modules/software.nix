@@ -197,6 +197,8 @@ in
         '';
       };
 
+      surrealdb.enable = lib.mkIf cfg.includeWork true;
+
       displayManager.ly = {
         enable = true;
         settings = {

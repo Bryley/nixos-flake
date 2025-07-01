@@ -248,4 +248,15 @@ return {
         version = "^4", -- Recommended
         ft = { "rust" },
     },
+    {
+        -- Special formatter for maud Rust templates
+        "eboody/maud-fmt.nvim",
+        config = function()
+            require("maud-fmt").setup({
+                indent_size = 4,
+                keymaps = {},
+            })
+        end,
+        ft = "rust",
+    },
 }

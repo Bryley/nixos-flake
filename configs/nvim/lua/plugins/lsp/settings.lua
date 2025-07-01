@@ -114,6 +114,7 @@ M.settings = function()
                 elm = "html",
                 rust = "html",
                 html = "html",
+                htmldjango = "html",
             },
             classAttributes = { "class", "className", "classList", "ngClass" },
             experimental = {
@@ -122,6 +123,7 @@ M.settings = function()
                     'class="(.*)"', -- HTML
                     -- For Rust
                     'class: "(.*)"',
+                    "\\w+((?:\\.\\s*\\S+\\s*)*)", "\\.\"?([^.\"]+)\"?", -- Maud
                     -- For ELM:
                     -- TODO try and get multiline strings working
                     '\\bclass[\\s(<|]+"([^"]*)"',
@@ -160,7 +162,7 @@ M.settings = function()
 end
 
 M.filetypes = {
-    tailwindcss = { "html", "rust", "elm", "jsx", "tsx", "css" },
+    tailwindcss = { "html", "htmldjango", "rust", "elm", "jsx", "tsx", "css" },
     htmx = { "html", "htmldjango" },
     ltex = { "markdown", "txt" }
 }

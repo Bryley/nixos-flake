@@ -1,5 +1,5 @@
 {
-  description = "Bryley's 2024 NixOS Configuration";
+  description = "Bryley's 2025 NixOS Configuration";
 
 
   inputs = {

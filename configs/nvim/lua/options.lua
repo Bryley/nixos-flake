@@ -50,7 +50,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "yaml", "nix" },
+    pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "yaml", "nix", "html" },
     callback = function()
         vim.opt_local.tabstop = 2 -- '\t' char = 2 spaces
         vim.opt_local.shiftwidth = 2 -- 1 level of indentation is 2 spaces

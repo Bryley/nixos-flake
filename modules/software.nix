@@ -197,7 +197,10 @@ in
         '';
       };
 
-      surrealdb.enable = lib.mkIf cfg.includeWork true;
+      surrealdb = {
+        enable = lib.mkIf cfg.includeWork true;
+        dbPath = "surrealkv:///opt/surrealdb";
+      };
 
       displayManager.ly = {
         enable = true;

@@ -199,7 +199,7 @@ in
 
       surrealdb = {
         enable = lib.mkIf cfg.includeWork true;
-        dbPath = "surrealkv:///opt/surrealdb";
+        dbPath = "surrealkv:///var/lib/surrealdb";
       };
 
       displayManager.ly = {

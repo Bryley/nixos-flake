@@ -200,6 +200,13 @@ in
       surrealdb = {
         enable = lib.mkIf cfg.includeWork true;
         dbPath = "surrealkv:///var/lib/surrealdb";
+        extraFlags = [
+          "--allow-all"
+          "--user"
+          "root"
+          "--pass"
+          "root"
+        ];
       };
 
       displayManager.ly = {

@@ -38,6 +38,8 @@ opt.shiftwidth = 4 -- 1 level of indentation is 4 spaces
 opt.softtabstop = 4 -- Tab is 4 spaces for inserting and deleting
 opt.expandtab = true -- Tabs should always be spaces instead
 opt.autoindent = true -- Automatically indent lines as you type
+opt.winborder = "rounded" -- set the default border style for *all* floating windows
+
 
 -- Set textwidth for markdown and norg files
 -- vim.cmd([[autocmd FileType markdown,norg,txt setlocal textwidth=80]])

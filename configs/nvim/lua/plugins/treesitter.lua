@@ -4,8 +4,8 @@ return {
         "nvim-treesitter/nvim-treesitter",
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
-            -- NOTE: additional parser
-            { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
+            -- -- NOTE: additional parser
+            -- { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
         },
         build = ":TSUpdate",
         lazy = false,
@@ -35,6 +35,8 @@ return {
                         keymaps = {
                             ["ia"] = "@parameter.inner",
                             ["aa"] = "@parameter.outer",
+                            ["af"] = "@function.outer",
+                            ["if"] = "@function.inner",
                         },
                     },
                 },

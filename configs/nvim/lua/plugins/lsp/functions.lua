@@ -36,13 +36,6 @@ function M.setup_diagnostics()
             border = "rounded",
         },
     })
-    -- Add rounded border to hover and signatureHelp
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = "rounded",
-    })
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = "rounded",
-    })
 end
 
 M.default_on_attach = function(client, bufnr)
@@ -86,6 +79,7 @@ M.cmp_config = function()
             end,
         },
         sources = cmp.config.sources({
+            { name = "render-markdown" }, -- From render-markdown.nvim plugin
             { name = "nvim_lua" },
             {
                 name = "nvim_lsp",

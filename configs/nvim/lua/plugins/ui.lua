@@ -261,7 +261,7 @@ return {
         -- UI for vim dadbod which is a SQL TUI in Neovim
         "kristijanhusak/vim-dadbod-ui",
         dependencies = {
-            { "tpope/vim-dadbod", lazy = true },
+            { "tpope/vim-dadbod",                     lazy = true },
             { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
         },
         cmd = {
@@ -308,8 +308,8 @@ return {
                     ccc.output.css_oklch,
                 },
                 convert = {
-                    { ccc.picker.hex, ccc.output.css_rgb },
-                    { ccc.picker.css_rgb, ccc.output.css_oklch },
+                    { ccc.picker.hex,       ccc.output.css_rgb },
+                    { ccc.picker.css_rgb,   ccc.output.css_oklch },
                     { ccc.picker.css_oklch, ccc.output.hex },
                 },
             })
@@ -348,5 +348,13 @@ return {
         dependencies = "nvzone/volt",
         opts = {},
         cmd = { "Typr", "TyprStats" },
+    },
+    {
+        -- Render markdown while editing 
+        "MeanderingProgrammer/render-markdown.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {},
     },
 }

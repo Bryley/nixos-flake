@@ -26,6 +26,11 @@ keybinds clear-defaults=true {
         bind "Up" { MovePane "Up"; }
         bind "Right" { MovePane "Right"; }
 
+        // Resizing
+        bind "J" "Down" { Resize "Increase Down"; }
+        bind "L" "Right" { Resize "Increase Right"; }
+        bind "K" { Resize "Decrease Down"; }
+        bind "H" { Resize "Decrease Right"; }
         bind "=" "+" { Resize "Increase"; }
         bind "-" { Resize "Decrease"; }
 

@@ -69,6 +69,9 @@ let
     kubernetes-helm # Kubernetes package manager
     doctl # Digital Ocean CLI
 
+    aseprite # Pixel art editor
+    ldtk     # Tile map editor
+
     postgresql # Postgres client
   ];
 

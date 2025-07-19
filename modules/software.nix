@@ -51,6 +51,7 @@ let
     pueue # Background task management
     neomutt # Email Client TUI
     distrobox # Basic docker wrapper for quick FHS system
+    typst # Modern LaTeX alternative for writing documents
   ];
 
   workPkgs = with pkgs; [

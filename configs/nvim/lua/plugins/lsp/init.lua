@@ -31,6 +31,8 @@ local LSP_SERVERS = {
     "ltex", -- Latex and markdown
     "gopls", -- Golang lsp
     "emmet_ls", -- HTML expanding things like 'ul>li.item$*5'
+    "harper_ls", -- Language checking
+    "tinymist", -- Typst LSP
 }
 
 -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md

@@ -123,7 +123,8 @@ M.settings = function()
                     'class="(.*)"', -- HTML
                     -- For Rust
                     'class: "(.*)"',
-                    "\\w+((?:\\.\\s*\\S+\\s*)*)", "\\.\"?([^.\"]+)\"?", -- Maud
+                    "\\w+((?:\\.\\s*\\S+\\s*)*)",
+                    '\\."?([^."]+)"?', -- Maud
                     -- For ELM:
                     -- TODO try and get multiline strings working
                     '\\bclass[\\s(<|]+"([^"]*)"',
@@ -158,13 +159,16 @@ M.settings = function()
             -- If needed, add extra paths (adjust the Python version as appropriate)
             -- extraPaths = { ".venv/lib/python3.11/site-packages" },
         },
+        ["harper-ls"] = {
+            userDictPath = "~/dict.txt",
+        },
     }
 end
 
 M.filetypes = {
     tailwindcss = { "html", "htmldjango", "rust", "elm", "jsx", "tsx", "css" },
     htmx = { "html", "htmldjango" },
-    ltex = { "markdown", "txt" }
+    ltex = { "markdown", "txt" },
 }
 
 M.init_options = {

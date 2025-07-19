@@ -56,6 +56,7 @@
         elmPackages.elm-language-server
         helm-ls
         htmx-lsp
+        # TODO possibly remove this in replace for harper (if harper is good)
         ltex-ls
         lua-language-server
         # nil
@@ -70,6 +71,8 @@
         typescript
         typescript-language-server
         emmet-ls
+        harper # Language checking for developers
+        tinymist # Typst
 
         # Formatters/Linters
         biome

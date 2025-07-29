@@ -71,7 +71,8 @@ let
     doctl # Digital Ocean CLI
 
     aseprite # Pixel art editor
-    ldtk     # Tile map editor
+    ldtk # Tile map editor
+    goxel # Voxel editor
 
     postgresql # Postgres client
   ];

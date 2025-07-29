@@ -21,9 +21,6 @@ return {
             "nvim-lua/plenary.nvim",
         },
         lazy = false,
-        keys = {
-            { "<F1>", "<cmd>SessionManager load_current_dir_session<cr>", desc = "Load last session" },
-        },
         config = function()
             require("session_manager").setup({
                 autoload_mode = require("session_manager.config").AutoloadMode.Disabled,

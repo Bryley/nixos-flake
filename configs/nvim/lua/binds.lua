@@ -33,14 +33,22 @@ keymap("n", "<A-N>", "<cmd>tabnew<cr>", opts)
 keymap("n", "<A-C>", "<cmd>tabclose<cr>", opts)
 
 -- Toggle fold using enter key
-vim.keymap.set('n', '<CR>', 'za', {
-  noremap = true,
-  silent  = true,
-  desc    = "Toggle fold at cursor",
+vim.keymap.set("n", "<CR>", "za", {
+    noremap = true,
+    silent = true,
+    desc = "Toggle fold at cursor",
 })
 
 -- Close the window and current buffer
-vim.api.nvim_create_user_command('Q', 'execute "BufDel" | close', {})
+vim.api.nvim_create_user_command("Q", 'execute "BufDel" | close', {})
 
 -- Write the file first, then close the window and current buffer
-vim.api.nvim_create_user_command('WQ', 'write | execute "BufDel" | close', {})
+vim.api.nvim_create_user_command("WQ", 'write | execute "BufDel" | close', {})
+
+keymap("n", "<F1>", "<cmd>LoadLastSession<cr>", opts)
+
+-- Extra command for getting session managing to work with harpoon
+vim.api.nvim_create_user_command("LoadLastSession", function()
+    require("session_manager").load_current_dir_session()
+    require("harpoon").setup({})
+end, {})

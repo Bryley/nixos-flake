@@ -225,6 +225,8 @@ in
         };
       };
     };
+    # Required fix for surrealdb to work (For now)
+    systemd.services.surrealdb.serviceConfig.ProcSubset = lib.mkForce "all";
 
     virtualisation.libvirtd.enable = lib.mkIf cfg.includeVirtualMachine true;
 

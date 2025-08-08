@@ -35,8 +35,8 @@ return {
                         keymaps = {
                             ["ia"] = "@parameter.inner",
                             ["aa"] = "@parameter.outer",
-                            ["af"] = "@function.outer",
                             ["if"] = "@function.inner",
+                            ["af"] = "@function.outer",
                         },
                     },
                 },

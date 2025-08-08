@@ -170,7 +170,19 @@ return {
         "m4xshen/hardtime.nvim",
         lazy = false,
         dependencies = { "MunifTanjim/nui.nvim" },
-        opts = {},
+        opts = {
+            disabled_keys = {
+                -- Enabling as they have been bind to resizing the window
+                ["<Up>"] = false,
+                ["<Down>"] = false,
+                ["<Left>"] = false,
+                ["<Right>"] = false,
+            },
+            resetting_keys = {
+                ["<C-N>"] = {"n"},
+                ["<C-P>"] = {"n"},
+            },
+        },
     },
     -- TODO Terminal and Tmux integration
 }

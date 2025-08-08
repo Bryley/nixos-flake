@@ -64,6 +64,34 @@ return {
                     desc = "Swap to Harpoon 4",
                 },
                 {
+                    "<leader>5",
+                    function()
+                        harpoon:list():select(5)
+                    end,
+                    desc = "Swap to Harpoon 5",
+                },
+                {
+                    "<leader>6",
+                    function()
+                        harpoon:list():select(6)
+                    end,
+                    desc = "Swap to Harpoon 6",
+                },
+                {
+                    "<leader>7",
+                    function()
+                        harpoon:list():select(7)
+                    end,
+                    desc = "Swap to Harpoon 7",
+                },
+                {
+                    "<leader>8",
+                    function()
+                        harpoon:list():select(8)
+                    end,
+                    desc = "Swap to Harpoon 8",
+                },
+                {
                     "<leader>hp",
                     function()
                         harpoon:list():prev()
@@ -119,9 +147,12 @@ return {
                     "<cmd>CccHighlighterToggle<cr>",
                     desc = "Toggle Color Highlight",
                 },
+                -- Git
+                { "<leader>g", group = "Git" },
+                { "<leader>gd", "<cmd>Gitdiff<CR>", desc = "git diff" },
                 -- Table mode
                 { "<leader>t", group = "Table" },
-                { "<leader>tm", "<cmd>call tablemode#Toggle()<cr>", desc = "Toggle" },
+                { "<leader>tm", "<cmd>call tablemode#Toggle()<CR>", desc = "Toggle" },
                 { "<leader>tt", "<cmd>Tableize<cr>", desc = "Tableize" },
                 -- Debugging
                 { "<leader>d", group = "Debug" },

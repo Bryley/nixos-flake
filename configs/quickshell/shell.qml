@@ -1,64 +1,100 @@
 import Quickshell // for ShellRoot and PanelWindow
 import QtQuick // for Text
+import QtQuick.Layouts
+import Quickshell.Hyprland
+import Quickshell.Services.UPower
 
-ShellRoot {
-    PanelWindow {
-        anchors {
-            top: true
-            left: true
-            right: true
+PanelWindow {
+    anchors {
+        top: true
+        left: true
+        right: true
+    }
+
+    implicitHeight: 30
+
+    // Hyprland Workspaces
+    RowLayout {
+        anchors.fill: parent
+        spacing: 0
+
+        Rectangle {
+            color: '#2b2b2b'
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            RowLayout {
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: parent.left
+                anchors.leftMargin: 10
+                Repeater {
+                    model: 10
+
+                    // TODO add 'fullscreen' check and different color for that
+                    delegate: Rectangle {
+                        function wsById(id) {
+                            for (var i = 0; i < Hyprland.workspaces.values.length; ++i) {
+                                var w = Hyprland.workspaces.values[i];
+                                if (w.id === id)
+                                    return w;
+                            }
+                            return null;
+                        }
+                        readonly property HyprlandWorkspace workspace: wsById(index + 1)
+                        readonly property bool focused: workspace !== null ? workspace.focused : false
+
+                        color: focused ? 'teal' : (workspace != null ? '#4d4d4d' : '#353535')
+                        implicitHeight: 12
+                        implicitWidth: 12
+                        radius: 999
+                    }
+                }
+            }
         }
 
-        color: "transparent"
+        // Middle section with time
+        Rectangle {
+            id: clock
+            color: '#2b2b2b'
+            Layout.fillWidth: true
+            Layout.fillHeight: true
 
-        implicitHeight: 30
+            property date now: new Date()
 
-        // Rectangle {
-        //     anchors.fill: parent
-        //
-        //     color: "#222222"
-        //
-        //     Text {
-        //         // center the bar in its parent component (the window)
-        //         anchors.centerIn: parent
-        //
-        //         text: "hello world"
-        //     }
-        // }
-
-        Canvas {
-            anchors.fill: parent
-
-            onPaint: {
-                const ctx = getContext("2d");
-                const w = width, h = height;
-                const r = h / 2;            // corner radius = half bar height
-
-                // start with a fully opaque mask
-                ctx.clearRect(0, 0, w, h);
-                ctx.fillStyle = "#222222";
-                ctx.fillRect(0, 0, w, h);
-
-                // carve out the inner rect‑fg shape
-                ctx.globalCompositeOperation = "destination-out";
-                ctx.beginPath();
-                // left edge
-                ctx.moveTo(0, h);
-                ctx.lineTo(0, r);
-                // top‑left rounded corner
-                ctx.arcTo(0, 0, r, 0, r);
-                // top edge
-                ctx.lineTo(w - r, 0);
-                // top‑right rounded corner
-                ctx.arcTo(w, 0, w, r, r);
-                // right edge
-                ctx.lineTo(w, h);
-                ctx.closePath();
-                ctx.fill();
-                ctx.globalCompositeOperation = "source-over";
+            Timer {
+                id: tick
+                interval: 60000
+                running: true
+                repeat: true
+                onTriggered: clock.now = new Date()
             }
-            onWidthChanged: requestPaint()
-            onHeightChanged: requestPaint()
+
+            Text {
+                anchors.centerIn: parent
+                Layout.fillWidth: true
+                color: '#c6c6c6'
+                font.pixelSize: 14
+                text: Qt.formatDateTime(clock.now, "h:mm ap")
+            }
+        }
+
+        // Final right section with battery and wifi
+        Rectangle {
+            color: '#2b2b2b'
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            Text {
+                readonly property var dev: UPower.displayDevice
+                color: '#c6c6c6'
+                font.pixelSize: 14
+
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                anchors.rightMargin: 10
+                Layout.fillWidth: true
+                text: (dev.percentage * 100) + "%" + (dev.status == UPowerDeviceState.Charging ? '+' : '')
+            }
         }
     }
 }

@@ -1,56 +1,15 @@
 return {
     {
-        -- Better UI for neovim lua functions like vim.ui.input()
+        -- Better UI for Neovim lua functions like vim.ui.input()
         "stevearc/dressing.nvim",
         config = true,
     },
-    -- {
-    --     -- File tree plugin
-    --     "nvim-neo-tree/neo-tree.nvim",
-    --     branch = "v3.x",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    --         "MunifTanjim/nui.nvim",
-    --         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-    --         {
-    --             "s1n7ax/nvim-window-picker",
-    --             opts = {
-    --                 selection_chars = "ABCDEFGHIJKLMNOP",
-    --                 filter_rules = {
-    --                     -- filter using buffer options
-    --                     bo = {
-    --                         -- if the file type is one of following, the window will be ignored
-    --                         filetype = { "neo-tree", "neo-tree-popup", "notify" },
-    --                         -- if the buffer type is one of following, the window will be ignored
-    --                         buftype = { "terminal", "quickfix" },
-    --                     },
-    --                 },
-    --             },
-    --         },
-    --     },
-    --     keys = {
-    --         { "<F2>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
-    --     },
-    --     opts = {
-    --         close_if_last_window = true,
-    --         window = {
-    --             mappings = {
-    --                 ["<space>"] = function() end,
-    --                 ["<cr>"] = "open_with_window_picker",
-    --                 ["o"] = "open_with_window_picker",
-    --                 ["S"] = "split_with_window_picker",
-    --                 ["s"] = "vsplit_with_window_picker",
-    --             },
-    --         },
-    --     },
-    -- },
     {
-        -- Uses "yazi" file manager within neovim
+        -- Uses "yazi" file manager within Neovim
         "mikavilpas/yazi.nvim",
         event = "VeryLazy",
         dependencies = {
-            "folke/snacks.nvim",
+            { "nvim-lua/plenary.nvim", lazy = true },
         },
         keys = {
             {
@@ -67,7 +26,7 @@ return {
         },
         opts = {
             -- if you want to open yazi instead of netrw, see below for more info
-            open_for_directories = false,
+            open_for_directories = true,
             keymaps = {
                 show_help = "<f1>",
             },
@@ -131,7 +90,7 @@ return {
         },
     },
     {
-        -- Statusline plugin
+        -- Status line plugin
         "nvim-lualine/lualine.nvim",
         dependencies = {
             "nvim-tree/nvim-web-devicons",
@@ -261,7 +220,7 @@ return {
         -- UI for vim dadbod which is a SQL TUI in Neovim
         "kristijanhusak/vim-dadbod-ui",
         dependencies = {
-            { "tpope/vim-dadbod",                     lazy = true },
+            { "tpope/vim-dadbod", lazy = true },
             { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
         },
         cmd = {
@@ -308,49 +267,63 @@ return {
                     ccc.output.css_oklch,
                 },
                 convert = {
-                    { ccc.picker.hex,       ccc.output.css_rgb },
-                    { ccc.picker.css_rgb,   ccc.output.css_oklch },
+                    { ccc.picker.hex, ccc.output.css_rgb },
+                    { ccc.picker.css_rgb, ccc.output.css_oklch },
                     { ccc.picker.css_oklch, ccc.output.hex },
                 },
             })
         end,
     },
     {
-        -- Simple LLM program
-        "Kurama622/llm.nvim",
-        dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
-        cmd = { "LLMSessionToggle", "LLMSelectedTextHandler", "LLMAppHandler" },
+        dir = "~/Documents/personal/neovim-plugins/neoai",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+        cmd = {
+            "NeoAI",
+            "NeoAIOpen",
+            "NeoAIClose",
+            "NeoAIToggle",
+            "NeoAIContext",
+            "NeoAIContextOpen",
+            "NeoAIContextClose",
+            "NeoAIInject",
+            "NeoAIInjectCode",
+            "NeoAIInjectContext",
+            "NeoAIInjectContextCode",
+        },
+        keys = {
+            { "<leader>as", desc = "summarize text" },
+            { "<leader>ag", desc = "generate git message" },
+        },
         config = function()
-            local tools = require("llm.common.tools")
-            require("llm").setup({
-                url = "http://localhost:11434/api/chat",
-                model = "deepseek-coder-v2:latest",
-                api_type = "ollama",
-                style = "right",
-                keys = {
-                    ["Input:Submit"] = { mode = "n", key = "<cr>" },
-                    ["Output:Ask"] = { mode = "n", key = "i" },
-                },
-                fetch_key = function()
-                    return "NONE"
-                end,
-                app_handler = {
-                    OptimizeCode = {
-                        handler = tools.side_by_side_handler,
-                    },
-                },
+            require("neoai").setup({
+                -- Options go here
             })
         end,
     },
     {
-        -- Basic speed typing inside neovim
+        "mozanunal/sllm.nvim",
+        dependencies = {
+            "echasnovski/mini.notify",
+            "echasnovski/mini.pick",
+        },
+        config = function()
+            require("sllm").setup({
+                llm_cmd = "llm -t default",
+                default_model = "default",
+            })
+        end,
+    },
+    {
+        -- Basic speed typing inside Neovim
         "nvzone/typr",
         dependencies = "nvzone/volt",
         opts = {},
         cmd = { "Typr", "TyprStats" },
     },
     {
-        -- Render markdown while editing 
+        -- Render markdown while editing
         "MeanderingProgrammer/render-markdown.nvim",
         dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
         ---@module 'render-markdown'

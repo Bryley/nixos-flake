@@ -52,3 +52,18 @@ vim.api.nvim_create_user_command("LoadLastSession", function()
     require("session_manager").load_current_dir_session()
     require("harpoon").setup({})
 end, {})
+
+-- Git diff
+vim.api.nvim_create_user_command("Gitdiff", function()
+    local line = vim.fn.line(".")
+
+    vim.cmd("split")
+
+    local height = vim.api.nvim_win_get_height(0)
+    local target = math.max(line - math.floor(height / 2), 1)
+
+    vim.cmd("terminal git diff HEAD -- %")
+
+    vim.fn.chansend(vim.b.terminal_job_id, tostring(target) .. 'G')
+    vim.cmd("startinsert")
+end, {})

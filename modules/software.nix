@@ -8,6 +8,7 @@
 let
   requiredPkgs = with pkgs; [
     git # Version Control
+    jujutsu # New version control
     nh # NixOS helper commands
     home-manager # CLI tool for updating dotfiles
     just # Command runner
@@ -52,6 +53,7 @@ let
     neomutt # Email Client TUI
     distrobox # Basic docker wrapper for quick FHS system
     typst # Modern LaTeX alternative for writing documents
+    llm # Large language models via command line
   ];
 
   workPkgs = with pkgs; [

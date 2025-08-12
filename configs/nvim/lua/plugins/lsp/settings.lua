@@ -90,6 +90,11 @@ M.settings = function()
                 },
             },
         },
+        elmLS = {
+            onlyUpdateDiagnosticsOnSave = true,
+            elmReviewDiagnostics = "off",
+            -- disableElmLSDiagnostics = true,
+        },
         json = {
             schemas = require("schemastore").json.schemas({
                 extra = {},

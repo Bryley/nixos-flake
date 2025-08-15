@@ -51,7 +51,11 @@ def get_jj_info [] {
         return ""
     }
 
-    let label = (jj log -r @ -n 1 --no-graph -T 'if(bookmarks, bookmarks.map(|bm| bm.name()).join(", "), change_id.shortest())')
+    let label = (jj log -r @ -n 1 --no-graph -T 'coalesce(
+        local_bookmarks.map(|b| b.name()).join(", "),
+        parents.map(|p| p.local_bookmarks().map(|b| b.name()).join(", ")).join(", "),
+        change_id.shortest()
+    )')
     let wc_changes = (jj diff | complete | get stdout | str trim | is-not-empty)
 
     let wc_label = if ($wc_changes) { $"(ansi yellow)*(ansi green)" } else { "" }

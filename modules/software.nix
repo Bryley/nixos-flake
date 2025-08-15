@@ -23,6 +23,7 @@ let
     bat # Better cat command
     fzf # Fuzzy finder cli
     jq # JSON parser for command line
+    openssl # Used for crypto algorithms 
     usbutils # USB tools like `lsusb`
     evince # PDF viewer
     nmap # Network port scanner

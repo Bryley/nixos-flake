@@ -40,7 +40,7 @@ in {
 
     i18n.defaultLocale = "en_AU.UTF-8";
 
-    # Limit the number of generations to keep
+    # Limit the number of generations
     boot.loader.systemd-boot.configurationLimit = 10;
     nix.settings.auto-optimise-store = true;
 
@@ -53,14 +53,6 @@ in {
       pulse.enable = true;
       jack.enable = true;
     };
-
-    # TODO add applications for controling the sound with basic cli/gui tools
-    # pavucontrol: controls the volume (per-sink and per-app basis), the default outputs/inputs, the different profiles (for HDMI outputs/bluetooth devices), routes each application to a different input/output, etc.
-    # plasma-pa: a Plasma applet to change volume directly from the systray. Also deals with volume keys.
-    # qjackctl: with JACK emulation, provides a patchbay (to connect applications together). Note that JACK does not provide any way to change the volume of a single application; use Pulseaudio tools for that purpose.
-    # carla: with JACK emulation, provides a patchbay (make sure to go to "Patchbay" tab and check "Canvas > Show External").
-    # catia/patchage: similar to qjackctl and carla.
-    # Helvum: GTK-based patchbay for PipeWire (uses the PipeWire protocol). Volume control is planned for later.
 
     hardware = {
       # Bluetooth (see: https://wiki.nixos.org/wiki/Bluetooth)

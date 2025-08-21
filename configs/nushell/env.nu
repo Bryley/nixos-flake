@@ -56,7 +56,9 @@ def get_jj_info [] {
         parents.map(|p| p.local_bookmarks().map(|b| b.name()).join(", ")).join(", "),
         change_id.shortest()
     )')
-    let wc_changes = (jj diff | complete | get stdout | str trim | is-not-empty)
+    # Turn into binary before attempting to decode as sometimes `jj diff` will
+    # print special chars and nushell thinks it is binary
+    let wc_changes = do --ignore-errors {(jj diff | complete | get stdout | into binary | decode | str trim | is-not-empty) }
 
     let wc_label = if ($wc_changes) { $"(ansi yellow)*(ansi green)" } else { "" }
 

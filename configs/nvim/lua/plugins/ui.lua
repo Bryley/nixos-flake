@@ -302,4 +302,10 @@ return {
         ---@type render.md.UserConfig
         opts = {},
     },
+    {
+        -- Measures typing speed quietly in the background
+        'JakobSachs/typing-metrics.nvim',
+        lazy = false,
+        opts = {},
+    }
 }

@@ -224,7 +224,7 @@ in
         settings.shared_preload_libraries = "vectors.so";
         initialScript = pkgs.writeText "init-sql-script" ''
           CREATE EXTENSION IF NOT EXISTS vectors;
-          ALTER ROLE postgres WITH PASSWORD 'postgres';
+          CREATE ROLE root WITH LOGIN SUPERUSER PASSWORD 'root';
         '';
       };
 

@@ -24,7 +24,7 @@ let
     bat # Better cat command
     fzf # Fuzzy finder cli
     jq # JSON parser for command line
-    openssl # Used for crypto algorithms 
+    openssl # Used for crypto algorithms
     usbutils # USB tools like `lsusb`
     evince # PDF viewer
     nmap # Network port scanner
@@ -42,6 +42,7 @@ let
     )) # Python 3.10
     bitwarden-desktop # Password manager desktop application
     bitwarden-cli # Password manager cli
+    pinentry-curses # Ability to ask for passphrase vias terminal
     gopass # Modern pass alternative for managing project passwords
     isync # Mail server syncing
     aerc # Modern email client TUI
@@ -155,6 +156,12 @@ in
     # Required Services
     services.openssh = {
       enable = true;
+    };
+
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = false;
+      pinentryPackage = pkgs.pinentry-curses; # or pkgs.pinentry-qt on a desktop
     };
 
     programs.ssh = {

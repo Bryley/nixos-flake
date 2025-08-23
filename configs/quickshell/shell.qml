@@ -93,7 +93,7 @@ PanelWindow {
                 anchors.right: parent.right
                 anchors.rightMargin: 10
                 Layout.fillWidth: true
-                text: (dev.percentage * 100) + "%" + (dev.state === UPowerDeviceState.Charging ? '+' : '')
+                text: (Math.round(dev.percentage * 100)) + "%" + (dev.state === UPowerDeviceState.Charging ? '+' : '')
             }
         }
     }

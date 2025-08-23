@@ -226,7 +226,7 @@ in
             name = "bryley";
           }
         ];
-        settings.shared_preload_libraries = "vectors";
+        settings.shared_preload_libraries = "vectors.so";
         initialScript = pkgs.writeText "init-sql-script" ''
           CREATE EXTENSION IF NOT EXISTS vectors;
           ALTER ROLE bryley WITH LOGIN SUPERUSER;

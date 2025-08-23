@@ -9,6 +9,7 @@ let
   requiredPkgs = with pkgs; [
     git # Version Control
     jujutsu # New version control
+    gnupg # GPG passwords, encryption and private key stuff
     nh # NixOS helper commands
     home-manager # CLI tool for updating dotfiles
     just # Command runner
@@ -41,6 +42,7 @@ let
     )) # Python 3.10
     bitwarden-desktop # Password manager desktop application
     bitwarden-cli # Password manager cli
+    gopass # Modern pass alternative for managing project passwords
     isync # Mail server syncing
     aerc # Modern email client TUI
 

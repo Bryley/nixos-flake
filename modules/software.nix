@@ -217,6 +217,7 @@ in
 
       postgresql = {
         enable = lib.mkIf cfg.includeWork true;
+        enableTCPIP = true;
         package = pkgs.postgresql_16;
         extensions = with pkgs.postgresql_16.pkgs; [
           pgvecto-rs # provides the "vectors" extension

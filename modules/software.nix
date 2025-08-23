@@ -221,15 +221,9 @@ in
         extensions = with pkgs.postgresql_16.pkgs; [
           pgvecto-rs # provides the "vectors" extension
         ];
-        ensureUsers = [
-          {
-            name = "bryley";
-          }
-        ];
         settings.shared_preload_libraries = "vectors.so";
         initialScript = pkgs.writeText "init-sql-script" ''
           CREATE EXTENSION IF NOT EXISTS vectors;
-          ALTER ROLE bryley WITH LOGIN SUPERUSER;
         '';
       };
 

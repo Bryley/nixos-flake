@@ -81,7 +81,7 @@ let
     ldtk # Tile map editor
     goxel # Voxel editor
 
-    postgresql # Postgres client
+    # postgresql # Postgres client
   ];
 
   hyprlandPkgs = with pkgs; [
@@ -224,6 +224,7 @@ in
         settings.shared_preload_libraries = "vectors.so";
         initialScript = pkgs.writeText "init-sql-script" ''
           CREATE EXTENSION IF NOT EXISTS vectors;
+          ALTER ROLE postgres WITH PASSWORD 'postgres';
         '';
       };
 

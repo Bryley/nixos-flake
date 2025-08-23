@@ -75,6 +75,7 @@ let
     minikube # Kubernetes testing
     kubernetes-helm # Kubernetes package manager
     doctl # Digital Ocean CLI
+    postgresql_16 # Postgres `psql` CLI
 
     aseprite # Pixel art editor
     ldtk # Tile map editor
@@ -211,6 +212,18 @@ in
         # If you want to be extra sure:
         extraConfig = ''
           HandleLidSwitchExternalPower=ignore
+        '';
+      };
+
+      postgresql = {
+        enable = lib.mkIf cfg.includeWork true;
+        package = pkgs.postgresql_16;
+        extensions = with pkgs.postgresql_16.pkgs; [
+          pgvecto-rs # provides the "vectors" extension
+        ];
+        initialScript = pkgs.writeText "init-sql-script" ''
+          DROP EXTENSION IF EXISTS vectors;
+          CREATE EXTENSION vectors;
         '';
       };
 

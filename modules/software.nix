@@ -221,9 +221,9 @@ in
         extensions = with pkgs.postgresql_16.pkgs; [
           pgvecto-rs # provides the "vectors" extension
         ];
+        settings.shared_preload_libraries = "vectors";
         initialScript = pkgs.writeText "init-sql-script" ''
-          DROP EXTENSION IF EXISTS vectors;
-          CREATE EXTENSION vectors;
+          CREATE EXTENSION IF NOT EXISTS vectors;
         '';
       };
 

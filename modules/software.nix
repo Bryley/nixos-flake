@@ -220,6 +220,7 @@ in
         enableTCPIP = true;
         authentication = ''
           local   all   all                 peer
+          local   all   all                 scram-sha-256
           host    all   all   127.0.0.1/32  scram-sha-256
           host    all   all   ::1/128       scram-sha-256
         '';

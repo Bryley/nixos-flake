@@ -218,6 +218,11 @@ in
       postgresql = {
         enable = lib.mkIf cfg.includeWork true;
         enableTCPIP = true;
+        authentication = ''
+          local   all   all                 peer
+          host    all   all   127.0.0.1/32  scram-sha-256
+          host    all   all   ::1/128       scram-sha-256
+        '';
         package = pkgs.postgresql_16;
         extensions = with pkgs.postgresql_16.pkgs; [
           pgvecto-rs # provides the "vectors" extension

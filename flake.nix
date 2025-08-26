@@ -1,7 +1,6 @@
 {
   description = "Bryley's 2025 NixOS Configuration";
 
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
@@ -32,14 +31,25 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     let
       users = [
-        { name = "bryley"; fullName = "Bryley Hayter"; email = "bryleyhayter@gmail.com"; }
+        {
+          name = "bryley";
+          fullName = "Bryley Hayter";
+          email = "bryleyhayter@gmail.com";
+        }
       ];
       hosts = [
-        { hostname = "laptop"; system = "x86_64-linux"; }
-        { hostname = "desktop"; system = "x86_64-linux"; }
+        {
+          hostname = "laptop";
+          system = "x86_64-linux";
+        }
+        {
+          hostname = "desktop";
+          system = "x86_64-linux";
+        }
       ];
       nixosConfigurations = import ./utilities/mkNixosConfigurations.nix { inherit inputs hosts users; };
       homeConfigurations = import ./utilities/mkHomeConfigurations.nix { inherit inputs users; };

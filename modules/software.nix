@@ -217,13 +217,9 @@ in
 
       postgresql = {
         enable = lib.mkIf cfg.includeWork true;
-        enableTCPIP = true;
         authentication = ''
+          # Allow everyone on (dev only)
           local   all   all                 trust
-          # local   all   all                 peer
-          # local   all   all                 scram-sha-256
-          # host    all   all   127.0.0.1/32  scram-sha-256
-          # host    all   all   ::1/128       scram-sha-256
         '';
         package = pkgs.postgresql_16;
         extensions = with pkgs.postgresql_16.pkgs; [
@@ -232,7 +228,6 @@ in
         settings.shared_preload_libraries = "vectors.so";
         initialScript = pkgs.writeText "init-sql-script" ''
           CREATE EXTENSION IF NOT EXISTS vectors;
-          CREATE ROLE root WITH LOGIN SUPERUSER PASSWORD 'root';
         '';
       };
 

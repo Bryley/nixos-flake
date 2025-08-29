@@ -44,6 +44,10 @@ let
     bitwarden-cli # Password manager cli
     pinentry-curses # Ability to ask for passphrase vias terminal
     gopass # Modern pass alternative for managing project passwords
+
+    age # Modern cryptography cli for encryption and decryption of secrets
+    sops # Store and managed secrets in a centralised way for each project
+
     isync # Mail server syncing
     aerc # Modern email client TUI
 

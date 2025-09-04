@@ -9,6 +9,7 @@ let
   requiredPkgs = with pkgs; [
     git # Version Control
     jujutsu # New version control
+    gnupg # GPG passwords, encryption and private key stuff
     nh # NixOS helper commands
     home-manager # CLI tool for updating dotfiles
     just # Command runner
@@ -23,7 +24,7 @@ let
     bat # Better cat command
     fzf # Fuzzy finder cli
     jq # JSON parser for command line
-    openssl # Used for crypto algorithms 
+    openssl # Used for crypto algorithms
     usbutils # USB tools like `lsusb`
     evince # PDF viewer
     nmap # Network port scanner
@@ -41,6 +42,12 @@ let
     )) # Python 3.10
     bitwarden-desktop # Password manager desktop application
     bitwarden-cli # Password manager cli
+    pinentry-curses # Ability to ask for passphrase vias terminal
+    gopass # Modern pass alternative for managing project passwords
+
+    age # Modern cryptography cli for encryption and decryption of secrets
+    sops # Store and managed secrets in a centralised way for each project
+
     isync # Mail server syncing
     aerc # Modern email client TUI
 
@@ -72,12 +79,13 @@ let
     minikube # Kubernetes testing
     kubernetes-helm # Kubernetes package manager
     doctl # Digital Ocean CLI
+    postgresql_16 # Postgres `psql` CLI
 
     aseprite # Pixel art editor
     ldtk # Tile map editor
     goxel # Voxel editor
 
-    postgresql # Postgres client
+    # postgresql # Postgres client
   ];
 
   hyprlandPkgs = with pkgs; [
@@ -155,6 +163,12 @@ in
       enable = true;
     };
 
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = false;
+      pinentryPackage = pkgs.pinentry-curses; # or pkgs.pinentry-qt on a desktop
+    };
+
     programs.ssh = {
       startAgent = true;
       extraConfig = ''
@@ -202,6 +216,22 @@ in
         # If you want to be extra sure:
         extraConfig = ''
           HandleLidSwitchExternalPower=ignore
+        '';
+      };
+
+      postgresql = {
+        enable = lib.mkIf cfg.includeWork true;
+        authentication = ''
+          # Allow everyone on (dev only)
+          local   all   all                 trust
+        '';
+        package = pkgs.postgresql_16;
+        extensions = with pkgs.postgresql_16.pkgs; [
+          pgvecto-rs # provides the "vectors" extension
+        ];
+        settings.shared_preload_libraries = "vectors.so";
+        initialScript = pkgs.writeText "init-sql-script" ''
+          CREATE EXTENSION IF NOT EXISTS vectors;
         '';
       };
 

@@ -21,6 +21,7 @@
   "lazyflex.nvim": { "branch": "main", "commit": "941b3f9daf3f31c400ddae5db316bc87bcee798b" },
   "lspkind.nvim": { "branch": "master", "commit": "d79a1c3299ad0ef94e255d045bed9fa26025dab6" },
   "lualine.nvim": { "branch": "master", "commit": "b8c23159c0161f4b89196f74ee3a6d02cdc3a955" },
+  "marks.nvim": { "branch": "master", "commit": "f353e8c08c50f39e99a9ed474172df7eddd89b72" },
   "maud-fmt.nvim": { "branch": "main", "commit": "b52e447a49843b631bd7b46cd9f9c4c194af2650" },
   "mini.notify": { "branch": "main", "commit": "e18f9fc783c7a26fab9c8a094d97dc768e56f558" },
   "mini.pick": { "branch": "main", "commit": "82ec629ca108c7b96b8b9bb733d235b39e137690" },

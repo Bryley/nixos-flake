@@ -131,6 +131,7 @@ return {
                 { "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "Jumplist" },
                 { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
                 { "<leader>fl", "<cmd>Telescope lsp_document_symbols<cr>", desc = "LSP Doc Symbols" },
+                { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
                 -- LSP
                 { "<leader>l", group = "LSP" },
                 { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },

@@ -304,8 +304,14 @@ return {
     },
     {
         -- Measures typing speed quietly in the background
-        'JakobSachs/typing-metrics.nvim',
+        "JakobSachs/typing-metrics.nvim",
         lazy = false,
         opts = {},
-    }
+    },
+    {
+        -- Shows marks in the gutter for easier marks
+        "chentoast/marks.nvim",
+        event = "VeryLazy",
+        opts = {},
+    },
 }

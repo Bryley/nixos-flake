@@ -70,10 +70,12 @@ def get_jj_info [] {
     # Turn into binary before attempting to decode as sometimes `jj diff` will
     # print special chars and nushell thinks it is binary
     let wc_changes = do --ignore-errors {(jj diff | complete | get stdout | into binary | decode | str trim | is-not-empty) }
+    let conflict = do --ignore-errors { jj log -r @ --no-graph -n 1 -T 'conflict' | each {|x| $x == 'true'} | get 0 }
 
     let wc_label = if ($wc_changes) { $"(ansi yellow)*(ansi green)" } else { "" }
+    let conflict_label = if ($conflict) { $"(ansi red_bold)*(ansi green)" } else { "" }
 
-    $" (ansi green) ($wc_label)($label)(ansi reset)"
+    $" (ansi green) ($conflict_label)($wc_label)($label)(ansi reset)"
 
 }
 

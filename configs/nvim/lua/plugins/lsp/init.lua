@@ -23,7 +23,7 @@ local LSP_SERVERS = {
     "helm_ls", -- Helm
     "elmls", -- ELM
     "denols", -- Deno
-    "tailwindcss", -- Tailwind
+    -- "tailwindcss", -- Tailwind
     "nushell", -- Nushell
     "nixd", -- Nix
     "qmlls", -- QML language

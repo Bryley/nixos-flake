@@ -129,7 +129,7 @@ M.settings = function()
                     -- For Rust
                     'class: "(.*)"',
                     "\\w+((?:\\.\\s*\\S+\\s*)*)",
-                    '\\."?([^."]+)"?', -- Maud
+                    '\\."([^."]+)"', -- Maud
                     -- For ELM:
                     -- TODO try and get multiline strings working
                     '\\bclass[\\s(<|]+"([^"]*)"',

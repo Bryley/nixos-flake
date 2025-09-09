@@ -117,21 +117,18 @@ M.settings = function()
         tailwindCSS = {
             includeLanguages = {
                 elm = "html",
-                rust = "html",
+                -- rust = "html",
                 html = "html",
                 htmldjango = "html",
             },
-            classAttributes = { "class", "className", "classList", "ngClass" },
+            -- classAttributes = { "class", "className", "classList", "ngClass" },
             experimental = {
                 -- Include regex for ELM
                 classRegex = {
-                    'class="(.*)"', -- HTML
-                    -- For Rust
-                    'class: "(.*)"',
-                    "\\w+((?:\\.\\s*\\S+\\s*)*)",
-                    '\\."?([^."]+)"?', -- Maud
+                    -- Maud (Rust)
+                    '\\."([^"]+)"',
+                    '\\bclass\\s*=\\s*"([^"]+)"',
                     -- For ELM:
-                    -- TODO try and get multiline strings working
                     '\\bclass[\\s(<|]+"([^"]*)"',
                     '\\bclass[\\s(]+"[^"]*"[\\s+]+"([^"]*)"',
                     '\\bclass[\\s<|]+"[^"]*"\\s*\\+{2}\\s*" ([^"]*)"',
@@ -143,16 +140,16 @@ M.settings = function()
                 },
                 configFile = "src/tailwind.css",
             },
-            lint = {
-                cssConflict = "warning",
-                invalidApply = "error",
-                invalidConfigPath = "error",
-                invalidScreen = "error",
-                invalidTailwindDirective = "error",
-                invalidVariant = "error",
-                recommendedVariantOrder = "warning",
-            },
-            validate = true,
+            -- lint = {
+            --     cssConflict = "warning",
+            --     invalidApply = "error",
+            --     invalidConfigPath = "error",
+            --     invalidScreen = "error",
+            --     invalidTailwindDirective = "error",
+            --     invalidVariant = "error",
+            --     recommendedVariantOrder = "warning",
+            -- },
+            -- validate = true,
         },
         basedpyright = {
             analysis = {

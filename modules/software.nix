@@ -156,12 +156,20 @@ in
       ++ lib.optionals cfg.includeWork workPkgs
       ++ lib.optionals cfg.includeHyprland hyprlandPkgs
       ++ lib.optionals cfg.includePersonal personalPkgs
-      ++ lib.optionals cfg.includeVirtualMachine virtualMachinePkgs;
+      ++ lib.optionals cfg.includeVirtualMachine virtualMachinePkgs
+      # For Testing
+      ++ [
+        pkgs.xwayland-satellite
+        pkgs.alacritty
+      ];
 
     # Required Services
     services.openssh = {
       enable = true;
     };
+
+    # For testing
+    programs.niri.enable = true;
 
     programs.gnupg.agent = {
       enable = true;
@@ -170,7 +178,8 @@ in
     };
 
     programs.ssh = {
-      startAgent = true;
+      # TODO for testing
+      # startAgent = true;
       extraConfig = ''
         AddKeysToAgent yes
         IdentitiesOnly yes

@@ -19,10 +19,7 @@ gen-new-host host-name:
         echo "Running on an installed system"
         nixos-generate-config --dir ./hosts/{{host-name}}
     fi
-    echo -e "\nFinished generating, in order to use this host please add the following line inside of the \`hosts\` variable inside of 'flake.nix':\n"
-    echo -e "    { hostname = \"{{host-name}}\"; system = \"{{system}}\"; }\n"
-    # echo -e "\nFinished generating, in order to use this host please add the following line inside of \`nixosConfigurations\` inside of 'flake.nix':\n"
-    # echo -e "    {{host-name}} = mkSystem { hostname=\"{{host-name}}\"; system=\"{{system}}\"; };\n"
+    echo -e "\nFinished generating, in order to use this host please add it inside of flake.nix:\n"
 
 
 # Garbage collection

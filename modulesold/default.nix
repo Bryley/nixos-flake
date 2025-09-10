@@ -1,5 +1,4 @@
-{ lib }:
-{
+{ lib, config, options, pkgs, inputs, hostname, ... }: {
 
   imports = [
     ./essential.nix
@@ -12,4 +11,4 @@
     software.enable = lib.mkDefault true;
     nvidia.enable = lib.mkDefault false;
   };
-}
+} 

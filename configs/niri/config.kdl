@@ -1,0 +1,93 @@
+input {
+    keyboard {
+        xkb {
+            options "ctrl:nocaps"
+        }
+    }
+}
+
+layout {
+    gaps 16
+    focus-ring {
+        width 3
+        active-color "#0076dcaa"
+    }
+    shadow {
+        on
+    }
+}
+
+window-rule {
+    draw-border-with-background false
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// TODO change wallpapers location
+spawn-at-startup "quickshell"
+spawn-at-startup "sh" "-c" "swww-daemon && if [ -L ~/wallpaper ] && [ -e ~/wallpaper ]; then swww img ~/wallpaper; else swww img ~/.config/hypr/wallpapers/oled-mountains.jpg; fi"
+
+screenshot-path "~/Pictures/screenshots/screenshot-%Y-%m-%dT%H-%M-%S.png"
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Shift+E { quit; }
+    Mod+Q { close-window; }
+    Mod+O repeat=false { toggle-overview; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+L     { move-column-right; }
+
+    Mod+Ctrl+H     { focus-monitor-left; }
+    Mod+Ctrl+J     { focus-monitor-down; }
+    Mod+Ctrl+K     { focus-monitor-up; }
+    Mod+Ctrl+L     { focus-monitor-right; }
+
+    Mod+P              { focus-workspace-up; }
+    Mod+N              { focus-workspace-down; }
+    Mod+Shift+P         { move-workspace-down; }
+    Mod+Shift+N         { move-workspace-up; }
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    // Consume one window from the right to the bottom of the focused column.
+    Mod+Comma  { consume-window-into-column; }
+    // Expel the bottom window from the focused column to the right.
+    Mod+Period { expel-window-from-column; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    Mod+C { center-column; }
+    Mod+M { maximize-column; }
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+W { toggle-column-tabbed-display; }
+
+    Mod+S { screenshot; }
+
+    Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Mod+Shift+Return { spawn "sh" "-c" "niri msg action spawn -- kitty ; sleep 0.2 ; niri msg action consume-or-expel-window-left"; }
+    Mod+B hotkey-overlay-title="Open a Browser: Zen" { spawn "zen"; }
+    Mod+Space hotkey-overlay-title="Open Applications" { spawn "wofi" "--show" "drun"; }
+}

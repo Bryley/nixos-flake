@@ -201,6 +201,22 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend '~/.config/hypr/wallpap
 $env.PATH = ($env.PATH | prepend '/opt/homebrew/opt/mysql/bin')
 
 
+# Direnv integration
+$env.config = {
+  hooks: {
+    pre_prompt: [{ ||
+      if (which direnv | is-empty) {
+        return
+      }
+
+      direnv export json | from json | default {} | load-env
+      if 'ENV_CONVERSIONS' in $env and 'PATH' in $env.ENV_CONVERSIONS {
+        $env.PATH = do $env.ENV_CONVERSIONS.PATH.from_string $env.PATH
+      }
+    }]
+  }
+}
+
 if ('~/nixos-flake/configs/nushell/secret.nu' | path exists) {
     source ~/nixos-flake/configs/nushell/secret.nu
 }

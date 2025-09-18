@@ -5,17 +5,10 @@
 { ... }:
 
 {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
+  imports = [ ];
 
   boot = {
-    # Use the systemd-boot EFI boot loader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-
-    # Needed for best performance with wifi card
+    # Needed for best performance with Wi-Fi card
     kernelModules = [ "iwlwifi" ];
     kernelParams = [
       "iwlwifi.11n_disable=1"
@@ -33,18 +26,7 @@
     };
   };
 
-  modules.software.includeVirtualMachine = true;
-
-  # # TODO get working: Setup login screen
-  # services.displayManager = {
-  #   enable = true;
-  #   sddm = {
-  #     enable = true;
-  #     wayland.enable = true;
-  #     theme = "astronaut";
-  #   };
-  # };
+  # modules.software.includeVirtualMachine = true;
 
   system.stateVersion = "24.11";
-
 }

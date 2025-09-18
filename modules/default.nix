@@ -1,15 +1,16 @@
-{ lib }:
+{ lib, ... }:
 {
 
   imports = [
+    ./disko.nix
     ./essential.nix
+    ./users.nix
     ./software.nix
     ./nvidia.nix
   ];
 
   modules = {
-    essential.enable = lib.mkDefault true;
-    software.enable = lib.mkDefault true;
+    essential.headless = lib.mkDefault false;
     nvidia.enable = lib.mkDefault false;
   };
 }

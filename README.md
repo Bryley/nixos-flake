@@ -4,6 +4,32 @@ configurations.
 
 
 ## Installation Guide
+
+### Local
+
+This is for when you are physically inside of a NixOS installer image and want
+to install from the physical device.
+
+Here are the steps:
+
+1. Make sure the device has a connection to the internet
+2. Set the root users password by typing `sudo passwd root`.
+3. TODO...
+
+
+### Remote
+
+This flake also supports remote installation via SSH and nixos-anywhere.
+Here are the steps to follow:
+
+1. Make sure you have this repo cloned on your host system.
+2. Add the machine (if it is not already added to `meta.toml`) using `just add <ip address>`.
+3. Next install the distro by running `just install <name> <ip>`. This will run
+   nixos-anywhere. Note that you may need to run it twice if it gets stuck.
+4. 
+
+
+## Installation Guide
 (This is work in progress, has never been testing and should be treaded
 carefully)
 

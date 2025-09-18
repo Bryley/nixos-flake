@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   disk,
   ...
@@ -8,9 +9,9 @@
     inputs.disko.nixosModules.disko
   ];
 
+  # disko.enableConfig = true;
   disko.devices = {
     disk.disk1 = {
-      # device = lib.mkDefault (throw "Need to set disk name, use `lsblk` to find it and set in flake.nix");
       device = "/dev/" + disk;
       type = "disk";
       content = {

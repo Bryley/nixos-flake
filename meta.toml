@@ -1,0 +1,20 @@
+location = "/Users/bryley/nixos-flake"
+publicKeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPANRYprsXkHoTidipqDKIQfhnTkGiPpLwiEKlfSq5Y bryley@Bryleys-MacBook-Pro.local"]
+
+[[users]]
+name = "bryley"
+fullName = "Bryley Hayter"
+email = "bryleyhayter@gmail.com"
+admin = true
+
+[[hosts]]
+name = "laptop"
+disk = "nvme01"
+system = "x86_64-linux"
+headless = false
+
+[[hosts]]
+name = "work-vm"
+disk = "vda"
+system = "aarch64-linux"
+headless = true

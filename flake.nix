@@ -2,6 +2,10 @@
   description = "Bryley's 2025 NixOS Configuration";
 
   inputs = {
+    # meta = {
+    #   url = "path:./meta.toml";
+    #   flake = false;
+    # };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-registry = {
       url = "github:nixos/flake-registry";
@@ -24,16 +28,22 @@
   outputs =
     { nixpkgs, ... }@inputs:
     let
-      inherit ((import ./lib.nix { inherit nixpkgs; })) buildSystem;
+      # meta = builtins.fromTOML (builtins.readFile inputs.meta);
+      meta = builtins.fromTOML (builtins.readFile ./meta.toml);
 
-      hosts = builtins.listToAttrs [
-        buildSystem
-        {
-          name = "laptop";
-          system = "x86_64-linux";
-          disk = "nvme0n1";
-        }
-      ];
+      inherit ((import ./lib.nix { inherit inputs; inherit meta; })) buildSystem;
+
+      hosts = builtins.listToAttrs (builtins.map buildSystem meta.hosts);
+
+      # hosts = builtins.listToAttrs [
+      #   buildSystem
+      #   {
+      #     name = "laptop";
+      #     system = "x86_64-linux";
+      #     disk = "nvme0n1";
+      #   }
+      # ];
+
     in
     {
       nixosConfigurations = hosts;

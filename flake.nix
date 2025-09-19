@@ -6,7 +6,8 @@
     #   url = "path:./meta.toml";
     #   flake = false;
     # };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     flake-registry = {
       url = "github:nixos/flake-registry";
       flake = false;

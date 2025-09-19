@@ -1,2 +1,3 @@
 .DS_Store
 history.txt
+./generated-hardware-configuration.nix

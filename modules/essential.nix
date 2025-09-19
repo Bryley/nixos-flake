@@ -25,14 +25,28 @@ in
       };
 
       nix = {
-        settings.experimental-features = [
-          "nix-command"
-          "flakes"
-        ];
+        settings = {
+          experimental-features = [
+            "nix-command"
+            "flakes"
+          ];
+          flake-registry = "${inputs.flake-registry}/flake-registry.json";
+          # Caching
+          substituters = [
+            "https://cache.nixos.org"
+            "https://nix-community.cachix.org"
+            # add more here, e.g. your own Cachix cache
+          ];
+          trusted-public-keys = [
+            # default cache key is implicit, but it’s fine to be explicit:
+            "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+            # nix-community (useful for lots of community packages/builds)
+            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+          ];
+        };
         # Pin flake registry to use `nixpkgs`
         registry.nixpkgs.flake = inputs.nixpkgs; # For flake commands
         nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # For legacy commands and `nixd` LSP
-        settings.flake-registry = "${inputs.flake-registry}/flake-registry.json";
       };
 
       networking = {
@@ -52,8 +66,14 @@ in
 
         # Allow these ports for local server testing
         allowedTCPPortRanges = [
-          { from = 3000; to = 3010; }
-          { from = 5000; to = 5010; }
+          {
+            from = 3000;
+            to = 3010;
+          }
+          {
+            from = 5000;
+            to = 5010;
+          }
         ];
 
         allowedTCPPorts = [ 22 ]; # For SSH

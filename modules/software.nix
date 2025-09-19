@@ -5,8 +5,9 @@
   system,
   pkgs,
   ...
-}: {
-  imports = [];
+}:
+{
+  imports = [ ];
 
   config = lib.mkMerge [
     {
@@ -79,6 +80,26 @@
         };
       };
 
+      # TODO maybe have `production` meta host attribute to setup firewall and
+      # postgres for dev vs non-dev
+      services = {
+        postgresql = {
+          enable = true;
+          authentication = ''
+            # Allow everyone on (dev only)
+            local   all   all                 trust
+          '';
+          package = pkgs.postgresql_16;
+          extensions = with pkgs.postgresql_16.pkgs; [
+            pgvecto-rs # provides the "vectors" extension
+          ];
+          settings.shared_preload_libraries = "vectors.so";
+          initialScript = pkgs.writeText "init-sql-script" ''
+            CREATE EXTENSION IF NOT EXISTS vectors;
+          '';
+        };
+      };
+
       virtualisation = {
         docker.enable = true;
         docker.daemon.settings.features.cdi = true;
@@ -104,7 +125,6 @@
         aseprite
         ldtk
         goxel
-
 
         # Wayland
         kitty

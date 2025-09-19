@@ -1,5 +1,8 @@
-location = "/Users/bryley/nixos-flake"
-publicKeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPANRYprsXkHoTidipqDKIQfhnTkGiPpLwiEKlfSq5Y bryley@Bryleys-MacBook-Pro.local"]
+location = "/home/bryley/nixos-flake"
+publicKeys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPANRYprsXkHoTidipqDKIQfhnTkGiPpLwiEKlfSq5Y bryley@Bryleys-MacBook-Pro.local",
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBHmralFbmz2VmU2Cv9beabaDWoTdTRITqrvipXqdGdC bryley@laptop",
+]
 
 [[users]]
 name = "bryley"
@@ -18,3 +21,15 @@ name = "work-vm"
 disk = "vda"
 system = "aarch64-linux"
 headless = true
+
+[[hosts]]
+name = "laptop-vm"
+disk = "vda"
+system = "x86_64-linux"
+headless = false
+
+[[hosts]]
+name = "test-vm"
+disk = "vda"
+system = "x86_64-linux"
+headless = false

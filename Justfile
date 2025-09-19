@@ -75,7 +75,17 @@ install name ip="local":
 		remote_install "{{ ip }}"
 	}
 
+switch:
+	#!/usr/bin/env nu
+	if (git status --porcelain | is-not-empty) {
+		print $"(ansi red_bold)Need to commit changes before switching, try `just quick-switch` if you need quick changes(ansi reset)"
+		exit 0
+	}
+	# nix-rebuild switch --flake . e>| nom
+	just quick-switch
 
+quick-switch:
+	nix-rebuild switch --flake . &| nom
 
 
 

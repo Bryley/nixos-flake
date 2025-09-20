@@ -80,7 +80,7 @@ install name ip="local":
 	}
 
 
-#[confirm]
+[confirm]
 setup-dotfiles:
 	#!/usr/bin/env nu
 	^mkdir -p ~/.config
@@ -97,7 +97,17 @@ setup-dotfiles:
 	for file in $files {
 		let src = $"./configs/($file)" | path expand
 		let dest = $"~/.config/($file)" | path expand
-		do --ignore-errors  { rm -r $dest }
+		print $"Setting symlink ($src) to ($dest)"
+		# Delete old symlinks or already generated directories
+		do --ignore-errors {
+			let file_type = (ls -la $dest | get type.0)
+			if ($file_type == 'symlink') {
+				rm $dest
+			}
+			if ($file_type == 'dir') {
+				rm -r $dest
+			}
+		}
 		ln -s $src $dest
 	}
 	print $"(ansi green)Successfully added symlinks(ansi reset)"

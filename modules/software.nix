@@ -17,7 +17,7 @@
         # Essential CLI tools
         git
         jujutsu
-        nh
+        nix-output-monitor
         just
         fastfetch
         zip
@@ -39,6 +39,7 @@
         pinentry-curses
         virtualgl
         gum
+        ncdu
 
         # Secrets/Encryption
         openssl
@@ -49,7 +50,6 @@
 
         # Essential TUI tools
         zellij
-        neovim
         yazi
         sc-im
 

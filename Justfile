@@ -4,6 +4,10 @@
 # generation := `sudo nix-env --list-generations -p /nix/var/nix/profiles/system | grep current | awk '{print "Generation", $1}'`
 # hostname := `sudo cat /etc/hostname`
 
+# ncdu
+# gum
+# nix-output-monitor
+
 
 default:
     @just --list --unsorted
@@ -75,6 +79,30 @@ install name ip="local":
 		remote_install "{{ ip }}"
 	}
 
+
+#[confirm]
+setup-dotfiles:
+	#!/usr/bin/env nu
+	^mkdir -p ~/.config
+	let files = [
+		"nvim",
+		"zellij",
+		"niri",
+		"nushell",
+		"kitty",
+		"qutebrowser",
+		"quickshell",
+	]
+
+	for file in $files {
+		let src = $"./configs/($file)" | path expand
+		let dest = $"~/.config/($file)" | path expand
+		do --ignore-errors  { rm -r $dest }
+		ln -s $src $dest
+	}
+	print $"(ansi green)Successfully added symlinks(ansi reset)"
+
+
 switch:
 	#!/usr/bin/env nu
 	if (git status --porcelain | is-not-empty) {
@@ -85,7 +113,9 @@ switch:
 	just quick-switch
 
 quick-switch:
-	nix-rebuild switch --flake . &| nom
+	#!/usr/bin/env bash
+	just _update-meta
+	sudo nixos-rebuild switch --flake . --log-format internal-json -v |& nom --json
 
 
 

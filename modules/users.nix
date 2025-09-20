@@ -1,6 +1,5 @@
 {
   lib,
-  inputs,
   pkgs,
   meta,
   ...
@@ -80,24 +79,25 @@ in
     }) meta.users
   );
 
-  # Setup dot files as symlinks
-  systemd.tmpfiles.rules = lib.optional (builtins.pathExists meta.location)
-    (
-      lib.flatten (builtins.map (userFull:
-      let
-        user = userFull.name;
-        configDir = "/home/${user}/.config";
-      in
-      [ "d ${configDir} 0755 ${user} ${user} - -" ]
-      ++ (
-        builtins.map (name:
-          "L+ ${configDir}/${name} - - - - ${meta.location}/configs/${name}"
-        ) dotfiles
-      )
-      ) meta.users)
-    );
+  # TODO NTS: Working on fixing this, looks like it is not working in the VM
+  # for some reason, maybe need to check logic of it
 
-  # TODO add Neovim LSP and formatters bundled into with Neovim e.g. custom Neovim package
+  # Setup dot files as symlinks
+  # systemd.tmpfiles.rules = lib.optionals (builtins.pathExists meta.location)
+  #   (
+  #     lib.flatten (builtins.map (userFull:
+  #     let
+  #       user = userFull.name;
+  #       configDir = "/home/${user}/.config";
+  #     in
+  #     [ "d ${configDir} 0755 ${user} ${user} - -" ]
+  #     ++ (
+  #       builtins.map (name:
+  #         "L+ ${configDir}/${name} - - - - ${meta.location}/configs/${name}"
+  #       ) dotfiles
+  #     )
+  #     ) meta.users)
+  #   );
 
   environment.sessionVariables = {  # set via PAM early in login
     EDITOR = "nvim";

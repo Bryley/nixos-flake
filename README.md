@@ -45,8 +45,10 @@ software.
 
 1. Clone this repo into a nice spot (I recommend `~/nixos-flake` for your
    main user). Make sure that it has the correct permissions for your main user.
+2. After doing that make sure you have generated at least 1 SSH key using
+   `ssh-keygen`.
 2. Next you probably want to load all of your configs, you can do this by
-   rebuilding your system once with `just switch`, and it should set up all the
+   rebuilding your system once with `just switch` or `just quick-switch`, and it should set up all the
    symlinks you need.
 
 

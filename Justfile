@@ -71,6 +71,7 @@ install name ip="local":
 [confirm]
 setup-dotfiles:
 	#!/usr/bin/env nu
+	just _update-meta
 	^mkdir -p ~/.config
 	let files = [
 		"nvim",
@@ -83,19 +84,10 @@ setup-dotfiles:
 	]
 
 	for file in $files {
-		let src = $"./configs/($file)" | path expand
-		let dest = $"~/.config/($file)" | path expand
-		print $"Setting symlink ($src) to ($dest)"
-		# Delete old symlinks or already generated directories
-		do --ignore-errors {
-			let file_type = (ls -la $dest | get type.0)
-			if ($file_type == 'symlink') {
-				rm $dest
-			}
-			if ($file_type == 'dir') {
-				rm -r $dest
-			}
-		}
+		let src = $"./configs/($file)" | path expand -n
+		let dest = $"~/.config/($file)" | path expand -n
+		print $"Setting symlink '(ansi blue)($src)(ansi reset)' to '(ansi blue)($dest)(ansi reset)'"
+		rm --force -r $dest
 		ln -s $src $dest
 	}
 	print $"(ansi green)Successfully added symlinks(ansi reset)"
@@ -113,7 +105,8 @@ switch:
 quick-switch:
 	#!/usr/bin/env bash
 	just _update-meta
-	sudo nixos-rebuild switch --flake . --log-format internal-json -v |& nom --json
+	sudo -v
+	sudo -n nixos-rebuild switch --flake . --log-format internal-json -v |& nom --json
 
 # Garbage collection
 gc:

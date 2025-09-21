@@ -12,7 +12,7 @@ admin = true
 
 [[hosts]]
 name = "laptop"
-disk = "nvme01"
+disk = "nvme0n1"
 system = "x86_64-linux"
 headless = false
 

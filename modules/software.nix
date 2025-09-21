@@ -115,6 +115,7 @@
         brightnessctl
 
         # GUI
+        xwayland-satellite # Required for XWayland applications in Niri
         bitwarden-desktop
         evince
         xournalpp

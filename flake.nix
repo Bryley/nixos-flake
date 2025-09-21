@@ -1,12 +1,12 @@
 {
   description = "Bryley's 2025 NixOS Configuration";
 
+  # TODO NTS: Just finished testing dotfile setups, now it is time to test the
+  # local installation on the VM from scratch to see how it goes and clean up
+  # the code a bit by removing old code and random comments. Then we can try to
+  # switch the installation on the current computer :/ hopefully that goes well
+
   inputs = {
-    # meta = {
-    #   url = "path:./meta.toml";
-    #   flake = false;
-    # };
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     flake-registry = {
       url = "github:nixos/flake-registry";
@@ -27,24 +27,21 @@
   };
 
   outputs =
-    { nixpkgs, ... }@inputs:
+    inputs:
     let
-      # meta = builtins.fromTOML (builtins.readFile inputs.meta);
       meta = builtins.fromTOML (builtins.readFile ./meta.toml);
 
-      inherit ((import ./lib.nix { inherit inputs; inherit meta; })) buildSystem;
+      inherit
+        (
+          (import ./lib.nix {
+            inherit inputs;
+            inherit meta;
+          })
+        )
+        buildSystem
+        ;
 
       hosts = builtins.listToAttrs (builtins.map buildSystem meta.hosts);
-
-      # hosts = builtins.listToAttrs [
-      #   buildSystem
-      #   {
-      #     name = "laptop";
-      #     system = "x86_64-linux";
-      #     disk = "nvme0n1";
-      #   }
-      # ];
-
     in
     {
       nixosConfigurations = hosts;

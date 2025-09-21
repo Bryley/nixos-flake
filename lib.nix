@@ -22,7 +22,13 @@ in
       value = lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit name disk system inputs meta;
+          inherit
+            name
+            disk
+            system
+            inputs
+            meta
+            ;
         };
         modules =
           (builtins.concatLists (builtins.map (path: lib.optional (builtins.pathExists path) path) paths))
@@ -32,15 +38,6 @@ in
               modules.essential.headless = headless;
             })
           ];
-
-        # modules = [
-        #   ./modules
-        #   (_: {
-        #     modules.essential.headless = headless;
-        #   })
-        # ]
-        #   ++ lib.optional (builtins.pathExists configPath) configPath
-        #   ++ lib.optional (builtins.pathExists hardwareConfigPath) hardwareConfigPath;
       };
     };
 }

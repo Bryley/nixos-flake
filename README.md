@@ -1,7 +1,5 @@
 # nixos-flake
-My official NixOS and Home Manager flake containing all my dotfiles and system
-configurations.
-
+My official NixOS flake containing all my dotfiles and system configurations.
 
 ## Installation Guide
 
@@ -45,11 +43,13 @@ software.
 
 1. Clone this repo into a nice spot (I recommend `~/nixos-flake` for your
    main user). Make sure that it has the correct permissions for your main user.
+2. You might have to make sure you have added your system to `meta.toml` if you
+   haven't already. Check the file to see if you see the system you setup, if
+   not then add it using `just add` and following the prompts.
 2. After doing that make sure you have generated at least 1 SSH key using
    `ssh-keygen`.
-2. Next you probably want to load all of your configs, you can do this by
-   rebuilding your system once with `just switch` or `just quick-switch`, and it should set up all the
-   symlinks you need.
+3. Finally to get all the dotfile configs setup make sure you run
+   `just setup-dotfiles`. This will create the symlinks in `~/.config`.
 
 
 ## Notes for VM testing
@@ -97,28 +97,4 @@ Manager with the following `ip` XML tag config (or something similar):
 > sudo virsh list --all        # find the domain name of your VM
 > sudo virsh domifaddr <domain-name>
 > ```
-
-
-## Installation Guide
-(This is work in progress, has never been testing and should be treaded
-carefully)
-
-This assumes you have internet connection and are inside the fresh live ISO
-image of NixOS.
-
-1. First find out the name of the disk that you want to use using `lsblk`.
-2. Next run the following command. This will use disko to partition, format and
-   mount the drives for use: (Make sure to replace the end part with the path of
-   the disk you found in the previous step like `/dev/nvme0n1`).
-
-```
-nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode zap_create_mount --flake github:Bryley/nixos-flake#diskconfig --argstr diskName <disk name>
-```
-
-3. Now you can install the configuration. You can do this using the following
-   command:
-
-```
-nixos-install --flake github:Bryley/nixos-flake#<host>
-```
 

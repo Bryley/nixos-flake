@@ -81,7 +81,7 @@
       };
 
       # TODO maybe have `production` meta host attribute to setup firewall and
-      # postgres for dev vs non-dev
+      # Postgres for dev vs non-dev
       services = {
         # Needed for battery utilities
         upower.enable = true;
@@ -106,6 +106,7 @@
       virtualisation = {
         docker.enable = true;
         docker.daemon.settings.features.cdi = true;
+        libvirtd.enable = true;
       };
     }
 

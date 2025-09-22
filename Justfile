@@ -90,6 +90,9 @@ setup-dotfiles:
 		rm --force -r $dest
 		ln -s $src $dest
 	}
+	print $"Setting symlink '(ansi blue)./configs/wallpaper.png(ansi reset)' to '(ansi blue)~/wallpaper(ansi reset)'"
+	rm --force -r ~/wallpaper
+	ln -s ("./configs/wallpaper.png" | path expand -n) ("~/wallpaper" | path expand -n)
 	print $"(ansi green)Successfully added symlinks(ansi reset)"
 
 

@@ -30,7 +30,7 @@ window-rule {
 
 // TODO change wallpapers location
 spawn-at-startup "quickshell"
-spawn-at-startup "sh" "-c" "swww-daemon && swww img ~/wallpaper.png"
+spawn-at-startup "sh" "-c" "swww-daemon && swww img ~/wallpaper"
 // spawn-at-startup "sh" "-c" "swww-daemon && if [ -L ~/wallpaper ] && [ -e ~/wallpaper ]; then swww img ~/wallpaper; else swww img ~/.config/hypr/wallpapers/oled-mountains.jpg; fi"
 
 screenshot-path "~/Pictures/screenshots/screenshot-%Y-%m-%dT%H-%M-%S.png"

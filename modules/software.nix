@@ -140,6 +140,7 @@
         lxqt.lxqt-policykit
         inputs.quickshell.packages."${system}".default
         inputs.zen-browser.packages."${system}".default
+        brave
 
         # VM
         qemu_kvm

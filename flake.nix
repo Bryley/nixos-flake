@@ -5,6 +5,7 @@
   # local installation on the VM from scratch to see how it goes and clean up
   # the code a bit by removing old code and random comments. Then we can try to
   # switch the installation on the current computer :/ hopefully that goes well
+  # ALso setup automatic wallpaper
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";

@@ -40,7 +40,7 @@ install name ip="local":
 
 	def local_install [] {
 		gum confirm "You will install the distro on the local machine, is this correct?"
-		just _generate-hardware-config
+		just _generate-hardware-config {{ name }}
 		(
 			sudo nix --experimental-features "nix-command flakes"
 				run github:nix-community/disko/latest --

@@ -22,7 +22,7 @@ local LSP_SERVERS = {
     "yamlls", -- YAML
     "helm_ls", -- Helm
     "elmls", -- ELM
-    "denols", -- Deno
+    -- "denols", -- Deno
     "tailwindcss", -- Tailwind
     "nushell", -- Nushell
     "nixd", -- Nix
@@ -33,6 +33,8 @@ local LSP_SERVERS = {
     "emmet_ls", -- HTML expanding things like 'ul>li.item$*5'
     "harper_ls", -- Language checking
     "tinymist", -- Typst LSP
+    "ts_ls", -- Typescript
+    "svelte", -- Svelte
 }
 
 -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md

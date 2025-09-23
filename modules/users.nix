@@ -43,6 +43,10 @@ let
         harper # Language checking for developers
         tinymist # Typst
 
+        svelte-language-server # Svelte
+        typescript
+        typescript-language-server
+
         # Formatters/Linters
         biome
         black

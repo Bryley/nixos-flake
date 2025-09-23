@@ -164,16 +164,31 @@ M.settings = function()
         ["harper-ls"] = {
             userDictPath = "~/dict.txt",
         },
+        svelte = {
+            compilerOptions = {
+                runes = true,
+            },
+        },
     }
 end
 
 M.filetypes = {
-    tailwindcss = { "html", "htmldjango", "rust", "elm", "jsx", "tsx", "css" },
+    tailwindcss = { "html", "htmldjango", "rust", "elm", "jsx", "tsx", "css", "svelte" },
     htmx = { "html", "htmldjango" },
     ltex = { "markdown", "txt" },
 }
 
 M.init_options = {
+    configuration = {
+      svelte = {
+        compilerOptions = {
+          runes = true,  -- force runes for LSP diagnostics
+          -- modern = true, -- optional; Svelte 5 “modern AST” (not required)
+        },
+        -- You can also promote specific warnings:
+        -- compilerWarnings = { binding_property_non_reactive = "error" },
+      },
+    },
     -- tailwindcss = {
     --     userLanguages = {
     --         elm = "html",

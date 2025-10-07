@@ -57,7 +57,7 @@ def get_jj_info [] {
         $closest_bookmark = "root()"
     }
 
-    let changes_ahead = (jj log -r $"($closest_bookmark)::@" --no-graph -T 'change_id ++ "\n"' | wc -l | into int) - 1
+    let changes_ahead = (jj log -r $"($closest_bookmark | split words | get 0)::@" --no-graph -T 'change_id ++ "\n"' | wc -l | into int) - 1
 
     let label = if ($changes_ahead != 0) { $"($closest_bookmark)+($changes_ahead)" } else { $closest_bookmark }
 

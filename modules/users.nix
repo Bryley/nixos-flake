@@ -15,11 +15,58 @@ let
     "quickshell"
   ];
 
+  # nvimWithLsp =
+  #   let
+  #     lspBins = with pkgs; [
+  #       # Compiling for Tree-sitter
+  #       gcc
+  #       curl
+  #       pkg-config
+  #       openssl
+  #
+  #       # LSPs
+  #       elmPackages.elm-language-server
+  #       helm-ls
+  #       htmx-lsp
+  #       lua-language-server
+  #       nixd
+  #       vscode-langservers-extracted
+  #       basedpyright
+  #       rust-analyzer
+  #       tailwindcss-language-server
+  #       yaml-language-server
+  #       kdePackages.qtdeclarative # For `qmlls`
+  #       typescript
+  #       typescript-language-server
+  #       emmet-ls
+  #       harper # Language checking for developers
+  #       tinymist # Typst
+  #
+  #       svelte-language-server # Svelte
+  #       typescript
+  #       typescript-language-server
+  #
+  #       # Formatters/Linters
+  #       biome
+  #       black
+  #       elmPackages.elm-format
+  #       mdformat
+  #       nixfmt-rfc-style
+  #       nodePackages.prettier
+  #       statix
+  #       stylua
+  #       djlint
+  #     ];
+  #   in
+  #   pkgs.writeShellScriptBin "nvim" ''
+  #     export PATH=${lib.makeBinPath lspBins}:$PATH
+  #     exec ${pkgs.neovim}/bin/nvim "$@"
+  #   '';
+
   # Custom `nvim` binary with access to LSP and formatters
-  nvimWithLsp =
-    let
-      lspBins = with pkgs; [
-        # Compiling for Tree-sitter
+  nvimWithLsp = pkgs.writeShellApplication {
+    name = "nvim";
+    runtimeInputs = with pkgs; [
         gcc
         curl
         pkg-config
@@ -57,15 +104,14 @@ let
         statix
         stylua
         djlint
-      ];
-    in
-    pkgs.writeShellScriptBin "nvim" ''
-    export PATH=${lib.makeBinPath lspBins}:$PATH
-    exec ${pkgs.neovim}/bin/nvim "$@"
-  '';
+
+        cowsay
+    ];
+    text = ''exec ${pkgs.neovim}/bin/nvim "$@"'';
+  };
 in
 {
-  imports = [];
+  imports = [ ];
 
   # Setup all new users (need to manually set password using root)
   users.users = builtins.listToAttrs (
@@ -78,7 +124,8 @@ in
         extraGroups = [
           "networkmanager"
           "docker"
-        ] ++ lib.optional user.admin "wheel";
+        ]
+        ++ lib.optional user.admin "wheel";
       };
     }) meta.users
   );
@@ -103,7 +150,8 @@ in
   #     ) meta.users)
   #   );
 
-  environment.sessionVariables = {  # set via PAM early in login
+  environment.sessionVariables = {
+    # set via PAM early in login
     EDITOR = "nvim";
     VISUAL = "nvim";
   };

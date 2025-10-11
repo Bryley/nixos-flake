@@ -30,6 +30,8 @@
         jq
         fd
         ripgrep
+        pandoc
+        tectonic
         nmap
         usbutils
         gopass
@@ -96,11 +98,16 @@
           extensions = with pkgs.postgresql_16.pkgs; [
             pgvecto-rs # provides the "vectors" extension
             postgis # Provides geo-spacial extension
+            pg_cron # Cronjobs inside of PG
           ];
-          settings.shared_preload_libraries = "vectors.so";
+          settings = {
+            shared_preload_libraries = "vectors,pg_cron";
+            "cron.database_name" = "fynd";
+          };
           initialScript = pkgs.writeText "init-sql-script" ''
             CREATE EXTENSION IF NOT EXISTS vectors;
             CREATE EXTENSION IF NOT EXISTS postgis;
+            CREATE EXTENSION IF NOT EXISTS pg_cron;
           '';
         };
       };
@@ -129,7 +136,7 @@
 
         postgresql_16
 
-        aseprite
+        # aseprite # TODO re-enable later due to it failing the build process
         ldtk
         goxel
 

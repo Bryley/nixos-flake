@@ -199,6 +199,7 @@ $env.EDITOR = "nvim"
 $env.PATH = ($env.PATH | split row (char esep) | prepend '~/.config/hypr/wallpapers/')
 
 $env.PATH = ($env.PATH | prepend '/opt/homebrew/opt/mysql/bin')
+$env.PATH = ($env.PATH | prepend '~/go/bin')
 
 
 # Direnv integration

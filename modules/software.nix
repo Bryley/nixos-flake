@@ -95,10 +95,12 @@
           package = pkgs.postgresql_16;
           extensions = with pkgs.postgresql_16.pkgs; [
             pgvecto-rs # provides the "vectors" extension
+            postgis # Provides geo-spacial extension
           ];
           settings.shared_preload_libraries = "vectors.so";
           initialScript = pkgs.writeText "init-sql-script" ''
             CREATE EXTENSION IF NOT EXISTS vectors;
+            CREATE EXTENSION IF NOT EXISTS postgis;
           '';
         };
       };

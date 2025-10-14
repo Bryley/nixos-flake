@@ -95,14 +95,15 @@ return {
             -- Setup LSP clients
             for _, value in pairs(LSP_SERVERS) do
                 if type(value) == "string" then
-                    vim.lsp.config[value] = {
+                    vim.lsp.config(value, {
                         on_attach = functions.default_on_attach,
                         capabilities = capabilities,
                         settings = settings.settings(),
                         filetypes = settings.filetypes[value],
                         init_options = settings.init_options[value],
                         cmd = settings.cmds[value],
-                    }
+                    })
+                    vim.lsp.enable(value)
                 else
                     value()
                 end

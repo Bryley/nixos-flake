@@ -95,12 +95,13 @@ M.settings = function()
             elmReviewDiagnostics = "off",
             -- disableElmLSDiagnostics = true,
         },
-        json = {
-            schemas = require("schemastore").json.schemas({
-                extra = {},
-            }),
-            validate = { enable = true },
-        },
+        -- TODO: Disabled for now due to spamming :LspInfo page
+        -- json = {
+        --     schemas = require("schemastore").json.schemas({
+        --         extra = {},
+        --     }),
+        --     validate = { enable = true },
+        -- },
         yaml = {
             schemas = {
                 kubernetes = "*.yaml",
@@ -163,6 +164,7 @@ M.settings = function()
         },
         ["harper-ls"] = {
             userDictPath = "~/dict.txt",
+            dialect = "Australian",
         },
         svelte = {
             compilerOptions = {

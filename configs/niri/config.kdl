@@ -28,6 +28,11 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    match app-id="^kitty$"
+    opacity 0.95
+}
+
 // TODO change wallpapers location
 spawn-at-startup "quickshell"
 spawn-at-startup "lxqt-policykit-agent"

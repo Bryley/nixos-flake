@@ -90,13 +90,12 @@ return {
         config = function()
             functions.setup_diagnostics()
 
-            local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             -- Setup LSP clients
             for _, value in pairs(LSP_SERVERS) do
                 if type(value) == "string" then
-                    lspconfig[value].setup({
+                    vim.lsp.config(value, {
                         on_attach = functions.default_on_attach,
                         capabilities = capabilities,
                         settings = settings.settings(),
@@ -104,6 +103,7 @@ return {
                         init_options = settings.init_options[value],
                         cmd = settings.cmds[value],
                     })
+                    vim.lsp.enable(value)
                 else
                     value()
                 end

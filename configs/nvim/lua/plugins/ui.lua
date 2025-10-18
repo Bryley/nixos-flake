@@ -220,9 +220,9 @@ return {
         -- UI for vim dadbod which is a SQL TUI in Neovim
         "kristijanhusak/vim-dadbod-ui",
         dependencies = {
-            { "tpope/vim-dadbod", lazy = true },
+            { "tpope/vim-dadbod",                     lazy = true },
             { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
-            { "pbogut/vim-dadbod-ssh" }, -- For ssh support
+            { "pbogut/vim-dadbod-ssh" },                                                               -- For ssh support
         },
         cmd = {
             "DBUI",
@@ -268,8 +268,8 @@ return {
                     ccc.output.css_oklch,
                 },
                 convert = {
-                    { ccc.picker.hex, ccc.output.css_rgb },
-                    { ccc.picker.css_rgb, ccc.output.css_oklch },
+                    { ccc.picker.hex,       ccc.output.css_rgb },
+                    { ccc.picker.css_rgb,   ccc.output.css_oklch },
                     { ccc.picker.css_oklch, ccc.output.hex },
                 },
             })
@@ -314,5 +314,19 @@ return {
         "chentoast/marks.nvim",
         event = "VeryLazy",
         opts = {},
+    },
+    {
+        "mistweaverco/kulala.nvim",
+        -- keys = {
+        --     { "<leader>Rs", desc = "Send request" },
+        --     { "<leader>Ra", desc = "Send all requests" },
+        --     { "<leader>Rb", desc = "Open scratchpad" },
+        -- },
+        ft = { "http", "rest" },
+        opts = {
+            global_keymaps = true,
+            global_keymaps_prefix = "<leader>R",
+            -- kulala_keymaps_prefix = "",
+        },
     },
 }

@@ -42,6 +42,7 @@
         virtualgl
         gum
         ncdu
+        ffmpeg
 
         # Secrets/Encryption
         openssl
@@ -133,6 +134,7 @@
         inkscape
         hurl
         obsidian
+        vlc
 
         postgresql_16
 

@@ -12,11 +12,13 @@ Here are the steps:
 
 1. Make sure the device has a connection to the internet
 2. Set the root users password by typing `sudo passwd root`.
-3. Next clone this repo
+3. Next clone this repo using `git clone https://github.com/Bryley/nixos-flake.git`
 4. Next open a shell with the required applications
    `nix-shell -p just nushell gum nix-output-monitor`
 5. Add a ssh key using `ssh-keygen` if required.
 6. Add the machine using `just add`
+7. Install the setup using `just install <name>`
+8. Set the root password then reboot into the main disk
 
 
 ### Remote

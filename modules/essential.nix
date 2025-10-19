@@ -2,7 +2,6 @@
   config,
   lib,
   inputs,
-  pkgs,
   name,
   meta,
   ...
@@ -35,12 +34,9 @@ in
           substituters = [
             "https://cache.nixos.org"
             "https://nix-community.cachix.org"
-            # add more here, e.g. your own Cachix cache
           ];
           trusted-public-keys = [
-            # default cache key is implicit, but it’s fine to be explicit:
             "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-            # nix-community (useful for lots of community packages/builds)
             "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
           ];
         };

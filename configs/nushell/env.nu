@@ -217,7 +217,3 @@ $env.config = {
     }]
   }
 }
-
-if ('~/nixos-flake/configs/nushell/secret.nu' | path exists) {
-    source ~/nixos-flake/configs/nushell/secret.nu
-}

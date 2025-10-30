@@ -45,7 +45,7 @@ return {
             { "akinsho/bufferline.nvim" },
         },
         opts = {
-            key_labels = "1234",
+            key_labels = "12345678",
         }, -- Config here
     },
     {
@@ -220,9 +220,9 @@ return {
         -- UI for vim dadbod which is a SQL TUI in Neovim
         "kristijanhusak/vim-dadbod-ui",
         dependencies = {
-            { "tpope/vim-dadbod",                     lazy = true },
+            { "tpope/vim-dadbod", lazy = true },
             { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
-            { "pbogut/vim-dadbod-ssh" },                                                               -- For ssh support
+            { "pbogut/vim-dadbod-ssh" }, -- For ssh support
         },
         cmd = {
             "DBUI",
@@ -268,8 +268,8 @@ return {
                     ccc.output.css_oklch,
                 },
                 convert = {
-                    { ccc.picker.hex,       ccc.output.css_rgb },
-                    { ccc.picker.css_rgb,   ccc.output.css_oklch },
+                    { ccc.picker.hex, ccc.output.css_rgb },
+                    { ccc.picker.css_rgb, ccc.output.css_oklch },
                     { ccc.picker.css_oklch, ccc.output.hex },
                 },
             })
@@ -328,5 +328,9 @@ return {
             global_keymaps_prefix = "<leader>R",
             -- kulala_keymaps_prefix = "",
         },
+    },
+    {
+        "bait.nvim",
+        dir = "~/Documents/coding/neovim-plugins/bait.nvim",
     },
 }

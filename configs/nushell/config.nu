@@ -192,18 +192,29 @@ $env.config = {
 
 # Handy aliases and small shell scripts
 
-# Find and goto dir recursively
-alias f = cd (
-    fd
-        --type directory
-        --exclude node_modules
-        --exclude target
-        --exclude vendor
-        --exclude site-packages
-        --exclude golang.org
-        --exclude registry
-    | fzf
-)
+# Find and goto dir recursively (with early exit support)
+export def --env f [] {
+    let fd_cmd = 'fd --type directory \
+        --exclude node_modules \
+        --exclude target \
+        --exclude vendor \
+        --exclude site-packages \
+        --exclude golang.org \
+        --exclude registry'
+
+    let path = (
+        ^fzf
+            --border
+            --layout=reverse
+            --height=40%
+            # Populate the list when fzf starts
+            --bind $"start:reload:($fd_cmd) || true"
+    )
+
+    cd $path
+}
+
+
 
 # Activates a python virtualenv
 alias activate = overlay use ./.venv/bin/activate.nu
@@ -229,7 +240,7 @@ def gitopen [] {
     start $url
 }
 
-$env.FZF_DEFAULT_OPTS = "--layout=reverse --height=40%"
+$env.FZF_DEFAULT_OPTS = "--layout=reverse --height=40% --border"
 # Removes direnv output
 $env.DIRENV_LOG_FORMAT = ""
 
@@ -247,3 +258,10 @@ $env.DIRENV_LOG_FORMAT = ""
 # def nvim [...$args] {
 #     NIX_LD=$nixld _nvim $args
 # }
+
+if ('~/nixos-flake/configs/nushell/secret.nu' | path exists) {
+    source ~/nixos-flake/configs/nushell/secret.nu
+}
+# if ('~/.zoxide.nu' | path exists) {
+# }
+source ~/.zoxide.nu

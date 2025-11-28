@@ -329,8 +329,8 @@ return {
             -- kulala_keymaps_prefix = "",
         },
     },
-    {
-        "bait.nvim",
-        dir = "~/Documents/coding/neovim-plugins/bait.nvim",
-    },
+    -- {
+    --     "bait.nvim",
+    --     dir = "~/Documents/coding/neovim-plugins/bait.nvim",
+    -- },
 }

@@ -264,4 +264,3 @@ if ('~/nixos-flake/configs/nushell/secret.nu' | path exists) {
 }
 # if ('~/.zoxide.nu' | path exists) {
 # }
-source ~/.zoxide.nu

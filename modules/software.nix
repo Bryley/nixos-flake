@@ -43,6 +43,7 @@
         gum
         ncdu
         ffmpeg
+        (import ./pkgs/streamdown.nix { inherit pkgs; })
 
         # Secrets/Encryption
         openssl

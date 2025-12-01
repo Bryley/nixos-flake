@@ -8,22 +8,28 @@ pkgs.python3Packages.buildPythonApplication rec {
 
   src = pkgs.fetchPypi {
     inherit pname version;
-    hash = ""; # temporary
+    hash = "sha256-SVn8/rJDbms3OkhBCPmCu1K+HVyNFIX7xgVVmjmsJdA=";
   };
 
+  nativeBuildInputs = with pkgs.python3Packages; [
+    hatchling
+  ];
+
   propagatedBuildInputs = with pkgs.python3Packages; [
-    # rich
-    # pygments
-    # ...
+    appdirs
+    pygments
+    pylatexenc
+    term-image
+    toml
+    wcwidth
   ];
 
   pythonImportsCheck = [ "streamdown" ];
 
   meta = with pkgs.lib; {
     description = "Streaming Markdown renderer for terminals";
-    homepage    = "https://pypi.org/project/streamdown/";
-    license     = licenses.mit;
+    homepage = "https://pypi.org/project/streamdown/";
+    license = licenses.mit;
     mainProgram = "sd";
   };
 }
-

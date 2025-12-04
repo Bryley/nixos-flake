@@ -214,6 +214,20 @@ export def --env f [] {
     cd $path
 }
 
+# Parses and loads a .env file into the environment
+export def load-dotenv [file: path = ".env"] {
+    (
+        open $file
+            | lines
+            | where (not ($it | str trim | str starts-with '#') and ($it | str trim) != "")
+            | each {|it| $it | str replace -r "^export " ""}
+            | split column -n 2 "="
+            | update column1 {|it| $it.column1 | str trim}
+            | update column2 {|it| $it.column2 | str trim}
+            | transpose --as-record  --header-row
+            | load-env
+    )
+}
 
 
 # Activates a python virtualenv

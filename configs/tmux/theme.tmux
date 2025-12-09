@@ -1,12 +1,11 @@
 
 # TODO set these configs in zsh
 
-time_format='%I:%M %p'
+time_format='%-I:%M %p'
 date_format='%d/%m/%Y'
 
 TMUX_VAR_FG=#626262
 TMUX_VAR_BG=#262626
-# TMUX_VAR_BG=#F52323
 
 TMUX_VAR_PRI=#5FAFFF
 
@@ -28,8 +27,8 @@ set-option -g status-left-length 25
 set-option -g status-left "#[fg=$TMUX_VAR_BG,bg=#{?client_prefix,$TMUX_VAR_FG,$TMUX_VAR_PRI,}] #S #[bg=$TMUX_VAR_BG] "
 
 # Window Status
-set-option -g window-status-format " #I #W "
-set-option -g window-status-current-format "#[fg=$TMUX_VAR_PRI,bold] #I #W "
+set-option -g window-status-format " #I#{?window_zoomed_flag,*,} #W "
+set-option -g window-status-current-format "#[fg=$TMUX_VAR_PRI,bold] #I#{?window_zoomed_flag,#[fg=yellow]*#[default],}#[fg=$TMUX_VAR_PRI,bold] #W "
 
 # Status Right
 set-option -g status-right-length 50

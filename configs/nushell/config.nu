@@ -194,13 +194,7 @@ $env.config = {
 
 # Find and goto dir recursively (with early exit support)
 export def --env f [] {
-    let fd_cmd = 'fd --type directory \
-        --exclude node_modules \
-        --exclude target \
-        --exclude vendor \
-        --exclude site-packages \
-        --exclude golang.org \
-        --exclude registry'
+    let fd_cmd = 'fd --type directory --exclude node_modules --exclude target --exclude vendor --exclude site-packages --exclude golang.org --exclude registry'
 
     let path = (
         ^fzf
@@ -208,7 +202,7 @@ export def --env f [] {
             --layout=reverse
             --height=40%
             # Populate the list when fzf starts
-            --bind $"start:reload:($fd_cmd) || true"
+            --bind $"start:reload:($fd_cmd)"
     )
 
     cd $path

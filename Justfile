@@ -76,6 +76,8 @@ setup-dotfiles:
 	let files = [
 		"nvim",
 		"zellij",
+		"tmux",
+		"presenterm",
 		"niri",
 		"nushell",
 		"kitty",

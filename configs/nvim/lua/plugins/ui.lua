@@ -220,9 +220,9 @@ return {
         -- UI for vim dadbod which is a SQL TUI in Neovim
         "kristijanhusak/vim-dadbod-ui",
         dependencies = {
-            { "tpope/vim-dadbod", lazy = true },
+            { "tpope/vim-dadbod",                     lazy = true },
             { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
-            { "pbogut/vim-dadbod-ssh" }, -- For ssh support
+            { "pbogut/vim-dadbod-ssh" },                                                      -- For ssh support
         },
         cmd = {
             "DBUI",
@@ -268,8 +268,8 @@ return {
                     ccc.output.css_oklch,
                 },
                 convert = {
-                    { ccc.picker.hex, ccc.output.css_rgb },
-                    { ccc.picker.css_rgb, ccc.output.css_oklch },
+                    { ccc.picker.hex,       ccc.output.css_rgb },
+                    { ccc.picker.css_rgb,   ccc.output.css_oklch },
                     { ccc.picker.css_oklch, ccc.output.hex },
                 },
             })
@@ -301,7 +301,13 @@ return {
         dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
-        opts = {},
+        opts = {
+            html = {
+                comment = {
+                    conceal = false, -- <- this is the key bit
+                },
+            },
+        },
     },
     {
         -- Measures typing speed quietly in the background

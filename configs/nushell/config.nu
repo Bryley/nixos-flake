@@ -223,7 +223,6 @@ export def load-dotenv [file: path = ".env"] {
     )
 }
 
-
 # Activates a python virtualenv
 alias activate = overlay use ./.venv/bin/activate.nu
 

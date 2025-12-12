@@ -17,6 +17,7 @@ return {
                 "<cmd>if empty(filter(getwininfo(), 'v:val.quickfix')) | botright copen | else | cclose | endif<CR>"
 
             local harpoon = require("harpoon")
+            local tb = require("telescope.builtin")
 
             whichkey.add({
                 -- Harpoon
@@ -129,7 +130,24 @@ return {
                 { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
                 { "<leader>fC", "<cmd>Telescope commands<cr>", desc = "Commands" },
                 { "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "Jumplist" },
-                { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+                {
+                    "<leader>fd",
+                    function()
+                        tb.diagnostics({
+                            severity = { min = vim.diagnostic.severity.WARN },
+                        })
+                    end,
+                    desc = "Diagnostics",
+                },
+                {
+                    "<leader>fs",
+                    function()
+                        tb.diagnostics({
+                            severity = vim.diagnostic.severity.HINT,
+                        })
+                    end,
+                    desc = "Diagnostics (Spelling Hints)",
+                },
                 { "<leader>fl", "<cmd>Telescope lsp_document_symbols<cr>", desc = "LSP Doc Symbols" },
                 { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
                 -- LSP

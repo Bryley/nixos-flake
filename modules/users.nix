@@ -7,7 +7,9 @@
 let
   dotfiles = [
     "nvim"
+    "tmux"
     "zellij"
+    "presenterm"
     "niri"
     "nushell"
     "kitty"

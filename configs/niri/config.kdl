@@ -33,6 +33,28 @@ window-rule {
     opacity 0.95
 }
 
+window-rule {
+    match app-id="^recording-kitty$"
+
+    open-floating true
+
+    // lock geometry to something wf-recorder-friendly 9:16
+    // min-height 1120
+    // max-height 1120
+    min-height 800
+    max-height 800
+    min-width 450
+    max-width 450
+
+    // // keep it tiled, not floating
+    // open-floating false
+    // // default width ~31.6% of the output → 9:16 on 16:9 screens
+    // default-column-width { proportion 0.3164; }
+
+    // make sure niri doesn't dim/transparent it
+    opacity 1.0
+}
+
 // TODO change wallpapers location
 spawn-at-startup "quickshell"
 spawn-at-startup "lxqt-policykit-agent"
@@ -71,6 +93,8 @@ binds {
     Mod+N              { focus-workspace-down; }
     Mod+Shift+P         { move-workspace-down; }
     Mod+Shift+N         { move-workspace-up; }
+
+    Mod+F { toggle-window-floating; }
 
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }

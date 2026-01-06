@@ -53,9 +53,11 @@
         bitwarden-cli
 
         # Essential TUI tools
+        tmux
         zellij
         yazi
         sc-im
+        presenterm
 
         # Extra tools
         typst
@@ -136,6 +138,8 @@
         hurl
         obsidian
         vlc
+        zoom-us
+        obs-studio
 
         postgresql_16
 
@@ -147,6 +151,7 @@
         kitty
         hyprlock
         wl-clipboard
+        wf-recorder
         hypridle
         swww
         wofi

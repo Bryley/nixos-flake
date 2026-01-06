@@ -55,17 +55,13 @@ def get_jj_info [] {
 
     if ($closest_bookmark | is-empty) {
         $closest_bookmark = "root()"
+    } else {
+        $closest_bookmark = $closest_bookmark | split words | get 0
     }
 
-    let changes_ahead = (jj log -r $"($closest_bookmark | split words | get 0)::@" --no-graph -T 'change_id ++ "\n"' | wc -l | into int) - 1
+    let changes_ahead = (jj log -r $"($closest_bookmark)::@" --no-graph -T 'change_id ++ "\n"' | wc -l | into int) - 1
 
     let label = if ($changes_ahead != 0) { $"($closest_bookmark)+($changes_ahead)" } else { $closest_bookmark }
-
-    # let label = (jj log -r @ -n 1 --no-graph -T 'coalesce(
-    #     local_bookmarks.map(|b| b.name()).join(", "),
-    #     parents.map(|p| p.local_bookmarks().map(|b| b.name()).join(", ")).join(", "),
-    #     change_id.shortest()
-    # )')
 
     # Turn into binary before attempting to decode as sometimes `jj diff` will
     # print special chars and nushell thinks it is binary

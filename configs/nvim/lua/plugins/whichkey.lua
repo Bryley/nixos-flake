@@ -134,6 +134,7 @@ return {
                     "<leader>fd",
                     function()
                         tb.diagnostics({
+                            sort_by = "severity",
                             severity = { min = vim.diagnostic.severity.WARN },
                         })
                     end,

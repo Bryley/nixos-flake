@@ -114,6 +114,7 @@
             CREATE EXTENSION IF NOT EXISTS pg_cron;
           '';
         };
+        seatd.enable = true;
       };
 
       virtualisation = {
@@ -152,7 +153,8 @@
         hyprlock
         wl-clipboard
         wf-recorder
-        hypridle
+        # hypridle
+        swayidle
         swww
         wofi
         lxqt.lxqt-policykit
@@ -170,6 +172,11 @@
 
       programs = {
         niri.enable = true;
+      };
+
+      systemd.user.services.idle = {
+        wantedBy = [ "graphical-session.target" ];
+        serviceConfig.ExecStart = "${pkgs.swayidle}/bin/swayidle -w timeout 300 '${pkgs.hyprlock}/bin/hyprlock' timeout 900 '${pkgs.systemd}/bin/systemctl suspend'";
       };
 
       fonts.packages = with pkgs; [

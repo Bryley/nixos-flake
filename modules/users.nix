@@ -126,6 +126,10 @@ in
         extraGroups = [
           "networkmanager"
           "docker"
+          "seat"
+          "video"
+          "render"
+          "input"
         ]
         ++ lib.optional user.admin "wheel";
       };
@@ -156,6 +160,7 @@ in
     # set via PAM early in login
     EDITOR = "nvim";
     VISUAL = "nvim";
+    LIBSEAT_BACKEND = "seatd";
   };
 
   programs = {

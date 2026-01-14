@@ -2,6 +2,7 @@ location = "/home/bryley/nixos-flake"
 publicKeys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPANRYprsXkHoTidipqDKIQfhnTkGiPpLwiEKlfSq5Y bryley@Bryleys-MacBook-Pro.local",
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBHmralFbmz2VmU2Cv9beabaDWoTdTRITqrvipXqdGdC bryley@laptop",
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ04D3ggEOIUsitrtqq3EsYh5899TvrugzPN64Jrxy3j bryley@laptop",
 ]
 
 [[users]]

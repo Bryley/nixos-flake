@@ -59,7 +59,7 @@ window-rule {
 spawn-at-startup "quickshell"
 spawn-at-startup "lxqt-policykit-agent"
 spawn-at-startup "sh" "-c" "swww-daemon && swww img ~/wallpaper"
-spawn-at-startup "swayidle -w timeout 300 'hyprlock' timeout 600 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors' before-sleep 'hyprlock'"
+spawn-at-startup "swayidle" "timeout" "300" "hyprlock" "timeout" "600" "niri msg action power-off-monitors" "resume" "niri msg action power-on-monitors" "before-sleep" "hyprlock"
 
 screenshot-path "~/Pictures/screenshots/screenshot-%Y-%m-%dT%H-%M-%S.png"
 

@@ -15,26 +15,27 @@ local LSP_SERVERS = {
             dap = {},
         }
     end,
-    "lua_ls", -- Lua
+    "lua_ls",    -- Lua
     "basedpyright", -- Python
-    "htmx", -- HTMX
-    "jsonls", -- JSON
-    "yamlls", -- YAML
-    "helm_ls", -- Helm
-    "elmls", -- ELM
+    "htmx",      -- HTMX
+    "jsonls",    -- JSON
+    "yamlls",    -- YAML
+    "helm_ls",   -- Helm
+    "elmls",     -- ELM
     -- "denols", -- Deno
     "tailwindcss", -- Tailwind
-    "nushell", -- Nushell
-    "nixd", -- Nix
-    "qmlls", -- QML language
+    "nushell",   -- Nushell
+    "nixd",      -- Nix
+    "qmlls",     -- QML language
     -- "vtsls", -- Typescript
-    "ltex", -- Latex and markdown
-    "gopls", -- Golang lsp
-    "emmet_ls", -- HTML expanding things like 'ul>li.item$*5'
+    "ltex",      -- Latex and markdown
+    "gopls",     -- Golang lsp
+    "emmet_ls",  -- HTML expanding things like 'ul>li.item$*5'
     "harper_ls", -- Language checking
-    "tinymist", -- Typst LSP
-    "ts_ls", -- Typescript
-    "svelte", -- Svelte
+    "tinymist",  -- Typst LSP
+    "ts_ls",     -- Typescript
+    "svelte",    -- Svelte
+    "slangd",    -- Slang shader programming
 }
 
 -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md
@@ -73,14 +74,14 @@ return {
         "neovim/nvim-lspconfig",
         cond = enabled,
         keys = {
-            { "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "goto definition" },
-            { "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", desc = "goto declaration" },
-            { "gr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "goto references" },
-            { "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", desc = "goto implementations" },
-            { "K", functions.show_documentation, desc = "show docs" },
+            { "gd",    "<cmd>lua vim.lsp.buf.definition()<CR>",     desc = "goto definition" },
+            { "gD",    "<cmd>lua vim.lsp.buf.declaration()<CR>",    desc = "goto declaration" },
+            { "gr",    "<cmd>lua vim.lsp.buf.references()<CR>",     desc = "goto references" },
+            { "gi",    "<cmd>lua vim.lsp.buf.implementation()<CR>", desc = "goto implementations" },
+            { "K",     functions.show_documentation,                desc = "show docs" },
             { "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", desc = "Show signature" },
-            { "<C-p>", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "goto prev diagnostic" },
-            { "<C-n>", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "goto next diagnostic" },
+            { "<C-p>", "<cmd>lua vim.diagnostic.goto_prev()<CR>",   desc = "goto prev diagnostic" },
+            { "<C-n>", "<cmd>lua vim.diagnostic.goto_next()<CR>",   desc = "goto next diagnostic" },
         },
         dependencies = {
             "hrsh7th/nvim-cmp", -- Completion engine
@@ -115,15 +116,15 @@ return {
         "hrsh7th/nvim-cmp",
         cond = enabled,
         dependencies = {
-            "hrsh7th/cmp-nvim-lsp", -- Enables LSP auto completion
-            "hrsh7th/cmp-buffer", -- Enables buffer completions
-            "hrsh7th/cmp-path", -- Path completions
-            "hrsh7th/cmp-cmdline", -- Enables cmdline completions
-            "hrsh7th/cmp-nvim-lua", -- Enables nvim lua autocompletions
-            "saadparwaiz1/cmp_luasnip", -- Enables snippet autocompletions
-            "folke/neodev.nvim", -- Better LSP docs support for Neovim Lua code
-            "onsails/lspkind.nvim", -- Adds pictograms to dropdown
-            "L3MON4D3/LuaSnip", -- Snippet engine
+            "hrsh7th/cmp-nvim-lsp",        -- Enables LSP auto completion
+            "hrsh7th/cmp-buffer",          -- Enables buffer completions
+            "hrsh7th/cmp-path",            -- Path completions
+            "hrsh7th/cmp-cmdline",         -- Enables cmdline completions
+            "hrsh7th/cmp-nvim-lua",        -- Enables nvim lua autocompletions
+            "saadparwaiz1/cmp_luasnip",    -- Enables snippet autocompletions
+            "folke/neodev.nvim",           -- Better LSP docs support for Neovim Lua code
+            "onsails/lspkind.nvim",        -- Adds pictograms to dropdown
+            "L3MON4D3/LuaSnip",            -- Snippet engine
             "kristijanhusak/vim-dadbod-completion", -- SQL dadbod completions
         },
         config = functions.cmp_config,

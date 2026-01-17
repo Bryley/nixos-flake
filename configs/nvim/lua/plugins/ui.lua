@@ -335,6 +335,20 @@ return {
             -- kulala_keymaps_prefix = "",
         },
     },
+    -- Lua
+    {
+        "f-person/auto-dark-mode.nvim",
+        opts = {
+            set_dark_mode = function()
+                vim.cmd.colorscheme("onedark")
+            end,
+            set_light_mode = function()
+                vim.cmd.colorscheme("base16-one-light")
+            end,
+            update_interval = 1000,
+            fallback = "dark",
+        },
+    },
     -- {
     --     "bait.nvim",
     --     dir = "~/Documents/coding/neovim-plugins/bait.nvim",

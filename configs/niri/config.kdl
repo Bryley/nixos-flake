@@ -117,6 +117,7 @@ binds {
     Mod+W { toggle-column-tabbed-display; }
 
     Mod+S { screenshot; }
+    Mod+D hotkey-overlay-title="Toggle Light/Dark theme" { spawn "sh" "-c" "$HOME/.config/nushell/bin/toggle-theme"; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+Shift+Return { spawn "sh" "-c" "niri msg action spawn -- kitty ; sleep 0.2 ; niri msg action consume-or-expel-window-left"; }

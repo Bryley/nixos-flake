@@ -197,6 +197,7 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend '~/.config/hypr/wallpap
 $env.PATH = ($env.PATH | prepend '/opt/homebrew/opt/mysql/bin')
 $env.PATH = ($env.PATH | prepend '~/go/bin')
 $env.PATH = ($env.PATH | prepend '~/.cargo/bin')
+$env.PATH = ($env.PATH | prepend '~/.config/nushell/bin')
 
 
 # Direnv integration

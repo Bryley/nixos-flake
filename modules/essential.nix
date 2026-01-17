@@ -48,16 +48,7 @@ in
       networking = {
         networkmanager = {
           enable = true;
-          wifi.powersave = false;
-          wifi.backend = "iwd";
-
         };
-        wireless.iwd.settings = {
-          General = {
-            AddressRandomization = "network";
-          };
-        };
-
         hostName = name;
       };
 

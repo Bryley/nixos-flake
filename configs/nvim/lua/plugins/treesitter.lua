@@ -21,7 +21,7 @@ return {
             ---@diagnostic disable: missing-fields
             require("nvim-treesitter.configs").setup({
                 ensure_installed = "all",
-                ignore_install = { "smali" },
+                ignore_install = { "smali", "ipkg" },
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = true,

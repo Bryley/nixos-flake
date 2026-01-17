@@ -1,6 +1,3 @@
-
-# TODO set these configs in zsh
-
 time_format='%-I:%M %p'
 date_format='%d/%m/%Y'
 
@@ -8,7 +5,6 @@ TMUX_VAR_FG=#626262
 TMUX_VAR_BG=#262626
 
 TMUX_VAR_PRI=#5FAFFF
-
 
 set-option -g status-interval 3
 set-option -g automatic-rename on

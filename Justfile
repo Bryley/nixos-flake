@@ -83,6 +83,7 @@ setup-dotfiles:
 		"kitty",
 		"qutebrowser",
 		"quickshell",
+		"hypr",
 	]
 
 	for file in $files {

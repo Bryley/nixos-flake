@@ -36,6 +36,7 @@ local LSP_SERVERS = {
     "ts_ls",     -- Typescript
     "svelte",    -- Svelte
     "slangd",    -- Slang shader programming
+    "wgsl_analyzer", -- WGSL shader programming
 }
 
 -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md

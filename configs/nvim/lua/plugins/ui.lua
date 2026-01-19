@@ -338,6 +338,7 @@ return {
     -- Lua
     {
         "f-person/auto-dark-mode.nvim",
+        enabled = vim.loop.os_uname().sysname ~= "Darwin",
         opts = {
             set_dark_mode = function()
                 vim.cmd.colorscheme("onedark")

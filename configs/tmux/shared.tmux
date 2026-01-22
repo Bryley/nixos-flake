@@ -46,9 +46,10 @@ set -g default-command "nu -l"
 bind | split-window -h -c "#{pane_current_path}"
 bind _ split-window -v -c "#{pane_current_path}"
 
-bind h select-pane -L
-bind j select-pane -D
-bind k select-pane -U
-bind l select-pane -R
+# Keep zoom when moving between panes (prefix + hjkl)
+bind -r h if-shell -F "#{window_zoomed_flag}" "select-pane -L \; resize-pane -Z" "select-pane -L"
+bind -r j if-shell -F "#{window_zoomed_flag}" "select-pane -D \; resize-pane -Z" "select-pane -D"
+bind -r k if-shell -F "#{window_zoomed_flag}" "select-pane -U \; resize-pane -Z" "select-pane -U"
+bind -r l if-shell -F "#{window_zoomed_flag}" "select-pane -R \; resize-pane -Z" "select-pane -R"
 
 bind r source-file ~/.config/tmux/tmux.conf

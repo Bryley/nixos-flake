@@ -11,6 +11,9 @@ set -as terminal-features ",xterm-256color:RGB,xterm-kitty:RGB"
 # Quicker Esc time (handy for neovim)
 set -sg escape-time 10
 
+# Decreases repeat time for speed
+set -g repeat-time 150
+
 # Enable mouse scrolling and stuff
 setw -g mouse on
 
@@ -47,9 +50,9 @@ bind | split-window -h -c "#{pane_current_path}"
 bind _ split-window -v -c "#{pane_current_path}"
 
 # Keep zoom when moving between panes (prefix + hjkl)
-bind -r h if-shell -F "#{window_zoomed_flag}" "select-pane -L \; resize-pane -Z" "select-pane -L"
-bind -r j if-shell -F "#{window_zoomed_flag}" "select-pane -D \; resize-pane -Z" "select-pane -D"
-bind -r k if-shell -F "#{window_zoomed_flag}" "select-pane -U \; resize-pane -Z" "select-pane -U"
-bind -r l if-shell -F "#{window_zoomed_flag}" "select-pane -R \; resize-pane -Z" "select-pane -R"
+bind h if-shell -F "#{window_zoomed_flag}" "select-pane -L \; resize-pane -Z" "select-pane -L"
+bind j if-shell -F "#{window_zoomed_flag}" "select-pane -D \; resize-pane -Z" "select-pane -D"
+bind k if-shell -F "#{window_zoomed_flag}" "select-pane -U \; resize-pane -Z" "select-pane -U"
+bind l if-shell -F "#{window_zoomed_flag}" "select-pane -R \; resize-pane -Z" "select-pane -R"
 
 bind r source-file ~/.config/tmux/tmux.conf

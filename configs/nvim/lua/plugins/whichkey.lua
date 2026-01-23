@@ -20,6 +20,17 @@ return {
             local tb = require("telescope.builtin")
 
             whichkey.add({
+                -- Yank
+                { "<leader>y", group = "Yank" },
+                {
+                    "<leader>yf",
+                    function()
+                        local filepath = vim.fn.expand("%:.")
+                        vim.fn.setreg('"', filepath)
+                        vim.fn.setreg("+", filepath)
+                    end,
+                    desc = "Yank relative file path",
+                },
                 -- Harpoon
                 { "<leader>h", group = "Harpoon" },
                 {

@@ -84,6 +84,7 @@ setup-dotfiles:
 		"qutebrowser",
 		"quickshell",
 		"hypr",
+		"opencode",
 	]
 
 	for file in $files {

@@ -190,6 +190,10 @@ $env.config = {
     }
 }
 
+const mise_path = ($nu.default-config-dir | path join "mise.nu")
+const mise_source = if ($mise_path | path exists) { $mise_path } else { null }
+source $mise_source
+
 # Handy aliases and small shell scripts
 
 # Find and goto dir recursively (with early exit support)

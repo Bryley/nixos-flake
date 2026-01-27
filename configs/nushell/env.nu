@@ -199,6 +199,13 @@ $env.PATH = ($env.PATH | prepend '~/go/bin')
 $env.PATH = ($env.PATH | prepend '~/.cargo/bin')
 $env.PATH = ($env.PATH | prepend '~/.config/nushell/bin')
 
+# mise activation cache for config.nu
+let mise_path = $nu.default-config-dir | path join "mise.nu"
+if (which mise | is-empty) {
+} else {
+    ^mise activate nu | save --force $mise_path
+}
+
 
 # Direnv integration
 $env.config = {

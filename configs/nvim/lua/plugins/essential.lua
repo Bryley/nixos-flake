@@ -82,7 +82,7 @@ return {
             require("telescope").setup({
                 defaults = {
                     -- works for pickers that list files (find_files, git_files, etc.)
-                    file_ignore_patterns = { [[(^|/)vendor(/|$)]] }, -- Lua pattern
+                    file_ignore_patterns = { [[(^|/)vendor(/|$)]], [[%.lock$]] }, -- Lua pattern
                     -- make ripgrep-based pickers (live_grep, grep_string) skip vendor too
                     vimgrep_arguments = (function()
                         local vga = {
@@ -95,7 +95,7 @@ return {
                             "--smart-case",
                         }
                         -- exclude vendor anywhere in the path
-                        vim.list_extend(vga, { "--glob", "!vendor/**" })
+                        vim.list_extend(vga, { "--glob", "!vendor/**", "--glob", "!**/*.lock" })
                         return vga
                     end)(),
                 },
@@ -104,7 +104,16 @@ return {
                         enable_preview = true,
                     },
                     find_files = {
-                        find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--exclude", "vendor" },
+                        find_command = {
+                            "fd",
+                            "--type",
+                            "f",
+                            "--strip-cwd-prefix",
+                            "--exclude",
+                            "vendor",
+                            "--exclude",
+                            "*.lock",
+                        },
                     },
                 },
             })

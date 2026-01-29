@@ -110,6 +110,16 @@ M.settings = function()
             },
             validate = { enable = true },
         },
+        taplo = {
+            schema = {
+                associations = {
+                    ["mise.toml"] = "https://mise.jdx.dev/schema/mise.json",
+                    ["mise.local.toml"] = "https://mise.jdx.dev/schema/mise.json",
+                    ["mise/config.toml"] = "https://mise.jdx.dev/schema/mise.json",
+                    [".mise/config.toml"] = "https://mise.jdx.dev/schema/mise.json",
+                },
+            },
+        },
         ["helm-ls"] = {
             yamlls = {
                 path = "yaml-language-server",

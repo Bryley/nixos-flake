@@ -30,6 +30,7 @@ local LSP_SERVERS = {
     -- "vtsls", -- Typescript
     "ltex",      -- Latex and markdown
     "gopls",     -- Golang lsp
+    "taplo",    -- TOML
     "emmet_ls",  -- HTML expanding things like 'ul>li.item$*5'
     "harper_ls", -- Language checking
     "tinymist",  -- Typst LSP

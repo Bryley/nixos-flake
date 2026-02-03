@@ -9,6 +9,13 @@
     }
   },
   "permission": {
+    "read": {
+      "*": "allow",
+      "**/*.env": "ask",
+      "**/*secret*": "ask",
+      "**/*secret*/**": "ask",
+      "**/history.txt": "ask"
+    },
     "bash": {
       "*": "allow",
       "sudo *": "ask",
@@ -31,6 +38,9 @@
       "paru *": "ask",
       "docker *": "ask",
       "kubectl *": "ask"
-    }
+    },
+    "edit": "ask",
+    "apply_patch": "ask",
+    "write": "ask"
   }
 }

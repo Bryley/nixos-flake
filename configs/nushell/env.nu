@@ -191,23 +191,21 @@ $env.MANROFFOPT = "-c"
 
 $env.EDITOR = "nvim"
 
-# To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-$env.PATH = ($env.PATH | split row (char esep) | prepend '~/.config/hypr/wallpapers/')
-
-$env.PATH = ($env.PATH | prepend "/opt/homebrew/bin")
-$env.PATH = ($env.PATH | prepend '/opt/homebrew/opt/mysql/bin')
-$env.PATH = ($env.PATH | prepend '~/go/bin')
-$env.PATH = ($env.PATH | prepend '~/.cargo/bin')
-$env.PATH = ($env.PATH | prepend '~/.config/nushell/bin')
 
 $env.CARAPACE_BRIDGES = "bash"
 
 # mise activation cache for config.nu
 let mise_path = $nu.default-config-dir | path join "mise.nu"
-if (which mise | is-empty) {
-} else {
+if (which mise | is-not-empty) {
     ^mise activate nu | save --force $mise_path
 }
+# To add entries to PATH (on Windows you might use Path), you can use the following pattern:
+$env.PATH = ($env.PATH | append '~/.config/nushell/bin')
+$env.PATH = ($env.PATH | append '~/.config/hypr/wallpapers/')
+$env.PATH = ($env.PATH | append '~/.cargo/bin')
+$env.PATH = ($env.PATH | append '~/go/bin')
+$env.PATH = ($env.PATH | append "/opt/homebrew/bin")
+$env.PATH = ($env.PATH | append '/opt/homebrew/opt/mysql/bin')
 
 
 # Direnv integration

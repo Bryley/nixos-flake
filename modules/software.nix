@@ -46,6 +46,8 @@
           ncdu
           ffmpeg
           (import ./pkgs/streamdown.nix { inherit pkgs; })
+          opencode
+          mise
 
           # Secrets/Encryption
           openssl

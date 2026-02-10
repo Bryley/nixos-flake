@@ -14,6 +14,23 @@
       {
         nixpkgs.config.allowUnfree = true;
 
+        programs.nix-ld = {
+          enable = true;
+          libraries = with pkgs; [
+            stdenv.cc.cc
+            zlib
+            openssl
+            curl
+            xz
+            bzip2
+            zstd
+            libxml2
+            libffi
+            sqlite
+            icu
+          ];
+        };
+
         environment.systemPackages = with pkgs; [
           # Essential CLI tools
           git
@@ -31,6 +48,9 @@
           jq
           fd
           cmake
+          gcc
+          binutils
+          pkg-config
           ripgrep
           pandoc
           tectonic

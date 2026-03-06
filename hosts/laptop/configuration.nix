@@ -4,8 +4,7 @@
   imports = [ ];
 
   boot = {
-    # Latest Linux kernel has better support for WIFI drivers
-    # kernelPackages = pkgs.linuxPackages_6_14;
+    kernelPackages = pkgs.linuxPackages_6_12;
     kernelParams = [
       "mt7925e.disable_aspm=1"
       # "amdgpu.dcdebugmask=0x610"

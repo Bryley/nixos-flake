@@ -17,7 +17,7 @@ def --env "update-env" [] {
 }
 export-env {
   
-  'set,PATH,/run/wrappers/bin:/home/bryley/.nix-profile/bin:/nix/profile/bin:/home/bryley/.local/state/nix/profile/bin:/etc/profiles/per-user/bryley/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin:/home/bryley/.config/nushell/bin:/home/bryley/.config/hypr/wallpapers/:/home/bryley/.cargo/bin:/home/bryley/go/bin:/opt/homebrew/bin:/opt/homebrew/opt/mysql/bin:/nix/store/pg3n4agjdcaq0sdh31kz6h7f2kqdwvaf-kitty-0.45.0/bin:/nix/store/dfj4g2rpz8yf1g6ybj7d37p4kmwsl772-imagemagick-7.1.2-11/bin:/nix/store/lrx5q7fas4bldb5m342liwyy693sas0g-ncurses-6.5-dev/bin
+  'set,PATH,/run/wrappers/bin:/home/bryley/.nix-profile/bin:/nix/profile/bin:/home/bryley/.local/state/nix/profile/bin:/etc/profiles/per-user/bryley/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin:/home/bryley/.config/nushell/bin:/home/bryley/.config/hypr/wallpapers/:/home/bryley/.cargo/bin:/home/bryley/go/bin:/opt/homebrew/bin:/opt/homebrew/opt/mysql/bin:/nix/store/7pjcjlyx7iafpgi606rczchcl980xdn6-kitty-0.45.0/bin:/nix/store/1h2q0hs7448xh93rsd8r4xajcgds8nzj-imagemagick-7.1.2-13/bin:/nix/store/f1ahhmizr4qi79k2hh0aaryrzzjivf0h-ncurses-6.6-dev/bin
 hide,MISE_SHELL,
 hide,__MISE_DIFF,
 hide,__MISE_DIFF,' | parse vars | update-env

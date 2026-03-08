@@ -56,3 +56,6 @@ bind k if-shell -F "#{window_zoomed_flag}" "select-pane -U \; resize-pane -Z" "s
 bind l if-shell -F "#{window_zoomed_flag}" "select-pane -R \; resize-pane -Z" "select-pane -R"
 
 bind r source-file ~/.config/tmux/tmux.conf
+
+# Auto-detect macOS theme once per server
+if-shell '[ "$(uname -s)" = "Darwin" ]' 'run-shell "if [ -z \"$(tmux show -gv @theme_autodetected)\" ]; then tmux set -g @theme_autodetected 1; if osascript -e \"tell application \\\"System Events\\\" to get dark mode\" | grep -q true; then tmux source-file \"$HOME/.config/tmux/tmux.conf\"; else tmux source-file \"$HOME/.config/tmux/tmux-light.conf\"; fi; fi"'

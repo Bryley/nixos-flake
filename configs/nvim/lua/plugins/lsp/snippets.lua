@@ -10,6 +10,10 @@ local r = ls.restore_node
 
 local fmt = require("luasnip.extras.fmt").fmt
 
+local function is_mise_toml()
+    return vim.fn.expand("%:t") == "mise.toml"
+end
+
 ls.add_snippets("nix", {
     s(
         "flake",
@@ -112,6 +116,54 @@ ls.add_snippets("nix", {
                 i(1),
                 i(2, "version"),
                 i(3, "executable"),
+            }
+        )
+    ),
+})
+
+ls.add_snippets("toml", {
+    s(
+        {
+            trig = "env",
+            condition = is_mise_toml,
+        },
+        fmt([[
+            [env]
+            _.file = '.env'
+            RUST_BACKTRACE = "1"
+        ]], {})
+    ),
+    s(
+        {
+            trig = "task",
+            condition = is_mise_toml,
+        },
+        fmt(
+            [[
+            [tasks.{}]
+            run = "{}"
+            ]],
+            {
+                i(1, "build"),
+                i(2, "command"),
+            }
+        )
+    ),
+    s(
+        {
+            trig = "taskd",
+            condition = is_mise_toml,
+        },
+        fmt(
+            [[
+            [tasks.{}]
+            description = "{}"
+            run = "{}"
+            ]],
+            {
+                i(1, "build"),
+                i(2, "Build the project"),
+                i(3, "command"),
             }
         )
     ),

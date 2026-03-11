@@ -68,6 +68,7 @@
           (import ./pkgs/streamdown.nix { inherit pkgs; })
           opencode
           mise
+          sshfs
 
           # Secrets/Encryption
           openssl
@@ -139,6 +140,8 @@
             '';
           };
           seatd.enable = true;
+
+          tailscale.enable = true;
         };
 
         virtualisation = {

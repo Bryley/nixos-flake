@@ -163,6 +163,33 @@ in
     LIBSEAT_BACKEND = "seatd";
   };
 
+  # # TODO if you are recreating this, add a symlink automatically to this dir in the home dir
+  # fileSystems."/mnt/homelab" = {
+  #   device = "bryley@homelab:/srv/storage";
+  #   fsType = "fuse.sshfs";
+  #   options = [
+  #     "_netdev"
+  #     "nofail"
+  #     "noauto"
+  #     "x-systemd.automount"
+  #     "x-systemd.idle-timeout=10min"
+  #     "x-systemd.mount-timeout=30"
+  #     "x-systemd.requires=network-online.target"
+  #     "x-systemd.after=network-online.target"
+  #     "reconnect"
+  #     "ServerAliveInterval=15"
+  #     "ServerAliveCountMax=3"
+  #     "idmap=user"
+  #     "allow_other"
+  #     "default_permissions"
+  #     "IdentityFile=/root/.ssh/id_ed25519"
+  #   ];
+  # };
+  #
+  # boot.supportedFilesystems = {
+  #   "fuse.sshfs" = true;
+  # };
+
   programs = {
     direnv = {
       enable = true;

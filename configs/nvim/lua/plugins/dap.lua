@@ -24,14 +24,6 @@ return {
             }
         end,
     },
-    -- {
-    --     "jay-babu/mason-nvim-dap.nvim",
-    --     config = function()
-    --         require("mason-nvim-dap").setup({
-    --             ensure_installed = { "codelldb" },
-    --         })
-    --     end,
-    -- },
     {
         -- Debugger user interface
         "rcarriga/nvim-dap-ui",
@@ -41,6 +33,14 @@ return {
         },
         config = function()
             require("dapui").setup()
+        end,
+    },
+    {
+        "leoluz/nvim-dap-go",
+        dependencies = { "mfussenegger/nvim-dap" },
+        ft = "go",
+        config = function()
+            require("dap-go").setup()
         end,
     },
 }

@@ -276,19 +276,6 @@ return {
         end,
     },
     {
-        "mozanunal/sllm.nvim",
-        dependencies = {
-            "echasnovski/mini.notify",
-            "echasnovski/mini.pick",
-        },
-        config = function()
-            require("sllm").setup({
-                llm_cmd = "llm -t default",
-                default_model = "default",
-            })
-        end,
-    },
-    {
         -- Basic speed typing inside Neovim
         "nvzone/typr",
         dependencies = "nvzone/volt",
@@ -349,8 +336,4 @@ return {
             fallback = "dark",
         },
     },
-    -- {
-    --     "bait.nvim",
-    --     dir = "~/Documents/coding/neovim-plugins/bait.nvim",
-    -- },
 }

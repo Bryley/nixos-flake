@@ -181,6 +181,7 @@ return {
                 -- Git
                 { "<leader>g", group = "Git" },
                 { "<leader>gd", "<cmd>Gitdiff<CR>", desc = "git diff" },
+                { "<leader>gb", "<cmd>GitBlameLine<CR>", desc = "git blame line" },
                 -- Table mode
                 { "<leader>t", group = "Table" },
                 { "<leader>tm", "<cmd>call tablemode#Toggle()<CR>", desc = "Toggle" },

@@ -1,4 +1,5 @@
 local opts = { noremap = true, silent = false }
+local git_blame_ns = vim.api.nvim_create_namespace("git_blame_line")
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -66,4 +67,28 @@ vim.api.nvim_create_user_command("Gitdiff", function()
 
     vim.fn.chansend(vim.b.terminal_job_id, tostring(target) .. 'G')
     vim.cmd("startinsert")
+end, {})
+
+vim.api.nvim_create_user_command("GitBlameLine", function()
+    local buf = vim.api.nvim_get_current_buf()
+    local line = vim.fn.line(".")
+    local file = vim.fn.expand("%:p")
+    local out = vim.fn.systemlist({ "git", "blame", "-L", line .. "," .. line, "--", file })
+
+    if vim.v.shell_error ~= 0 or #out == 0 then
+        vim.notify("GitBlameLine: unable to blame this line", vim.log.levels.WARN)
+        return
+    end
+
+    vim.api.nvim_buf_clear_namespace(buf, git_blame_ns, 0, -1)
+    vim.api.nvim_buf_set_extmark(buf, git_blame_ns, line - 1, 0, {
+        virt_lines = { { { "  " .. out[1], "Comment" } } },
+        virt_lines_above = false,
+    })
+
+    vim.defer_fn(function()
+        if vim.api.nvim_buf_is_valid(buf) then
+            vim.api.nvim_buf_clear_namespace(buf, git_blame_ns, 0, -1)
+        end
+    end, 4000)
 end, {})

@@ -12,7 +12,18 @@ local LSP_SERVERS = {
                 on_attach = functions.default_on_attach,
                 default_settings = settings.settings(),
             },
-            dap = {},
+            dap = {
+                adapter = {
+                    type = "server",
+                    host = "127.0.0.1",
+                    port = "${port}",
+                    executable = {
+                        command = vim.env.HOME .. "/.local/opt/codelldb/extension/adapter/codelldb",
+                        args = { "--port", "${port}" },
+                    },
+                    name = "codelldb",
+                },
+            },
         }
     end,
     "lua_ls",    -- Lua

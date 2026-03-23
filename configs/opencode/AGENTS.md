@@ -33,6 +33,7 @@ It defines how to use the local Markdown-based agent and skill system.
 | Name | Location | Default to this when |
 |---|---|---|
 | `debugger` | `./agents/debugger.md` | Debugging runtime, config, environment, networking, programming, and command issues |
+| `meta-agent` | `./agents/meta-agent.md` | Creating, updating, auditing, and repairing agent or skill definitions |
 
 
 ## Skills

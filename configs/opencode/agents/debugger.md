@@ -1,6 +1,6 @@
 ---
 description: Diagnose bugs and environment issues by gathering evidence, ranking hypotheses, and testing the smallest safe next step
-mode: all
+mode: subagent
 temperature: 0.1
 tools:
   write: true

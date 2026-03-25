@@ -42,6 +42,7 @@ It defines how to use the local Markdown-based agent and skill system.
 | Name | Location | Load this when |
 |---|---|---|
 | `documentation-lookup` | `./skills/documentation-lookup/SKILL.md` | Verifying any kind of documentation with high correctness |
+| `dependency-installer` | `./skills/dependency-installer/SKILL.md` | Installing missing dependencies safely using mise for CLI tools and system package flow for low-level packages |
 | `write-like-me` | `./skills/write-like-me/SKILL.md` | Writing that is meant to be perceived as if the user wrote it, git commit messages, emails, text messages, documentation, etc. |
 
 

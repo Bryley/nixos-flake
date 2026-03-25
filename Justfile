@@ -77,6 +77,7 @@ setup-dotfiles:
 		"nvim",
 		"zellij",
 		"tmux",
+		"television",
 		"presenterm",
 		"niri",
 		"nushell",

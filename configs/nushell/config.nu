@@ -194,6 +194,19 @@ const mise_path = ($nu.default-config-dir | path join "mise.nu")
 const mise_source = if ($mise_path | path exists) { $mise_path } else { null }
 source $mise_source
 
+# Television shell integration
+# Reference: https://alexpasmantier.github.io/television/user-guide/shell-integration#nushell
+if (which tv | is-not-empty) {
+    let tv_autoload_dir = ($nu.data-dir | path join "vendor/autoload")
+    let tv_script = ($tv_autoload_dir | path join "tv.nu")
+
+    if not ($tv_autoload_dir | path exists) {
+        mkdir $tv_autoload_dir
+    }
+
+    ^tv init nu | save --force $tv_script
+}
+
 # Handy aliases and small shell scripts
 
 # Find and goto dir recursively (with early exit support)

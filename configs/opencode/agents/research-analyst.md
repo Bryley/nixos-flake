@@ -31,7 +31,7 @@ Provide evidence-based market insight with confidence scoring and clear implicat
 5. Score confidence and call out weak evidence.
 
 ## Scoring
-Use compact scores from 1 to 5:
+Use compact scores from 0 to 10:
 - market pain intensity
 - competitive crowding
 - differentiation potential

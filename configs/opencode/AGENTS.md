@@ -34,7 +34,7 @@ It defines how to use the local Markdown-based agent and skill system.
 |---|---|---|
 | `debugger` | `./agents/debugger.md` | Debugging runtime, config, environment, networking, programming, and command issues |
 | `meta-agent` | `./agents/meta-agent.md` | Creating, updating, auditing, and repairing agent or skill definitions |
-| `concept-director` | `./agents/concept-director.md` | Coordinating idea evaluation across specialist agents and producing a final recommendation |
+| `concept-director` | `./agents/concept-director.md` | Coordinating idea evaluation across specialist agents and producing a final recommendation with blunt plain-language scoring |
 | `research-analyst` | `./agents/research-analyst.md` | Analyzing competitors, user pain points, substitutes, and market gaps for a proposed idea |
 | `product-architect` | `./agents/product-architect.md` | Estimating technical feasibility, architecture options, delivery complexity, and infrastructure costs |
 | `mvp-strategist` | `./agents/mvp-strategist.md` | Designing lean MVP and validation experiments with clear success and kill criteria |

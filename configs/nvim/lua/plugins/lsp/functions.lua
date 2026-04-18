@@ -47,17 +47,17 @@ end
 M.cmp_config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
-    local jira_cmp = require("plugins.lsp.cmp_jira")
+    -- local jira_cmp = require("plugins.lsp.cmp_jira")
 
-    jira_cmp.setup({
-        cache_ttl_ms = 300000,
-        prewarm = true,
-        in_progress_statuses = { "In Progress" },
-        done_statuses = { "Done", "Closed" },
-        done_recent_days = 3,
-        priority_keywords = { "P1", "P2", "High" },
-        max_results = 200,
-    })
+    -- jira_cmp.setup({
+    --     cache_ttl_ms = 300000,
+    --     prewarm = true,
+    --     in_progress_statuses = { "In Progress" },
+    --     done_statuses = { "Done", "Closed" },
+    --     done_recent_days = 3,
+    --     priority_keywords = { "P1", "P2", "High" },
+    --     max_results = 200,
+    -- })
 
     cmp.setup({
         snippet = {

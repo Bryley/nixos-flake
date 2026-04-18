@@ -69,6 +69,7 @@
           opencode
           mise
           sshfs
+          mediawriter
 
           # Secrets/Encryption
           openssl
@@ -116,6 +117,7 @@
         services = {
           # Needed for battery utilities
           upower.enable = true;
+          udisks2.enable = true;
 
           postgresql = {
             enable = true;
@@ -177,6 +179,7 @@
 
           # Wayland
           kitty
+          ghostty
           hyprlock
           wl-clipboard
           wf-recorder
@@ -187,6 +190,7 @@
           lxqt.lxqt-policykit
           inputs.quickshell.packages."${system}".default
           inputs.zen-browser.packages."${system}".default
+          inputs.helium-browser.packages."${system}".default
           brave
 
           # VM
